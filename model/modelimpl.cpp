@@ -1,5 +1,5 @@
 #include "modelimpl.h"
 
-ModelImpl::ModelImpl()
+Model::ModelImpl::ModelImpl()
 {
 }

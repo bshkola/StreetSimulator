@@ -18,15 +18,13 @@ SOURCES += main.cpp\
     controller/controllerimpl.cpp \
     model/imodel.cpp \
     model/modelimpl.cpp \
-    view/iview.cpp \
-    view/viewimpl.cpp
+    view/boardscene.cpp
 
 HEADERS  += mainwindow.h \
     controller/icontroller.h \
     controller/controllerimpl.h \
     model/imodel.h \
     model/modelimpl.h \
-    view/iview.h \
-    view/viewimpl.h
+    view/boardscene.h
 
 FORMS    += mainwindow.ui

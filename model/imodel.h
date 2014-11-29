@@ -1,10 +1,14 @@
 #ifndef IMODEL_H
 #define IMODEL_H
 
-class abstract IModel
+namespace Model {
+
+class IModel
 {
 public:
     IModel();
 };
+
+}
 
 #endif // IMODEL_H

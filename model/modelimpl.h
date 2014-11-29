@@ -1,12 +1,16 @@
 #ifndef MODELIMPL_H
 #define MODELIMPL_H
 
-#indlude "imodel.h"
+#include "imodel.h"
+
+namespace Model {
 
 class ModelImpl : public IModel
 {
 public:
     ModelImpl();
 };
+
+}
 
 #endif // MODELIMPL_H

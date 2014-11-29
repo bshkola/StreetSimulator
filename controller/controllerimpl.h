@@ -3,10 +3,14 @@
 
 #include "icontroller.h"
 
+namespace Controller {
+
 class ControllerImpl : public IController
 {
 public:
     ControllerImpl();
+//    virtual ~ControllerImpl();
 };
 
+}
 #endif // CONTROLLERIMPL_H

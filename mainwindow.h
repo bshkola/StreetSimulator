@@ -3,10 +3,13 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QGraphicsScene>
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
+class BoardScene;
+
 
 class MainWindow : public QMainWindow
 {
@@ -14,15 +17,18 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void resizeEvent(QResizeEvent *event);
     ~MainWindow();
 
 public slots:
     void updateButtons();
+    void updateBoardSize();
 
 protected:
 
 private:
     Ui::MainWindow *ui;
+    BoardScene* boardScene;
 
     QVector<QPushButton*> buttons;
 

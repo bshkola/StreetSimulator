@@ -1,5 +1,11 @@
 #include "controllerimpl.h"
+#include <iostream>
 
-ControllerImpl::ControllerImpl()
+Controller::ControllerImpl::ControllerImpl()
 {
+    std::cout << "Hello world" << std::endl;
 }
+
+//Controller::~ControllerImpl()
+//{
+//}

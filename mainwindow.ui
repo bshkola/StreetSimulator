@@ -45,16 +45,12 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="spinBox_2">
+         <widget class="QSpinBox" name="boardSizeSpinBox">
           <property name="minimum">
            <number>1</number>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="spinBox">
-          <property name="minimum">
-           <number>1</number>
+          <property name="value">
+           <number>8</number>
           </property>
          </widget>
         </item>
@@ -322,8 +318,7 @@
  </widget>
  <tabstops>
   <tabstop>graphicsView</tabstop>
-  <tabstop>spinBox_2</tabstop>
-  <tabstop>spinBox</tabstop>
+  <tabstop>boardSizeSpinBox</tabstop>
   <tabstop>sizeButton</tabstop>
   <tabstop>streetButton</tabstop>
   <tabstop>removeStreetButton</tabstop>
