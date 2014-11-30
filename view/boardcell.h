@@ -3,20 +3,22 @@
 
 #include <QGraphicsRectItem>
 
-class BoardCell : public QGraphicsRectItem
-{
-public:
-    BoardCell(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
+namespace Ui {
+    class BoardCell : public QGraphicsRectItem
+    {
+    public:
+        BoardCell(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
 
-    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
-    void setChecked(bool checked);
-    bool isChecked();
-signals:
+        void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
+        void setChecked(bool checked);
+        bool isChecked();
+    signals:
 
-public slots:
+    public slots:
 
-private:
-    bool checked;
-};
+    private:
+        bool checked;
+    };
+}
 
 #endif // BOARDCELL_H

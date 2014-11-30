@@ -7,9 +7,8 @@
 
 namespace Ui {
     class MainWindow;
+    class BoardScene;
 }
-class BoardScene;
-
 
 class MainWindow : public QMainWindow
 {
@@ -28,7 +27,7 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-    BoardScene* boardScene;
+    Ui::BoardScene* boardScene;
 
     QVector<QPushButton*> buttons;
 

@@ -13,13 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
     controller/icontroller.cpp \
     controller/controllerimpl.cpp \
     model/imodel.cpp \
     model/modelimpl.cpp \
     view/boardscene.cpp \
-    view/boardcell.cpp
+    view/boardcell.cpp \
+    view/mainwindow.cpp
 
 HEADERS  += mainwindow.h \
     controller/icontroller.h \
@@ -27,6 +27,7 @@ HEADERS  += mainwindow.h \
     model/imodel.h \
     model/modelimpl.h \
     view/boardscene.h \
-    view/boardcell.h
+    view/boardcell.h \
+    view/mainwindow.h
 
 FORMS    += mainwindow.ui

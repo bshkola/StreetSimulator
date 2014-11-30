@@ -1,14 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
-#include "view/boardscene.h"
+#include "boardscene.h"
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    boardScene = new BoardScene();
+    boardScene = new Ui::BoardScene();
     ui->graphicsView->setScene(boardScene);
     this->setWindowTitle("Editor");
     this->showMaximized();
