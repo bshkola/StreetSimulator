@@ -26,4 +26,14 @@ namespace Ui {
         painter->setBrush(QBrush(color));
         painter->drawRect(this->rect());
     }
+
+    void BoardCell::setCoordinates(int x, int y) {
+        coordinates.x = x;
+        coordinates.y = y;
+    }
+
+    Coordinates BoardCell::getCoordinates() {
+        return coordinates;
+    }
+
 }

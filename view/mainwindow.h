@@ -31,11 +31,6 @@ private:
 
     QVector<QPushButton*> buttons;
 
-//    QPushButton* sizeButton;
-//    QPushButton* streetsButton;
-//    QPushButton* removeStreetsButton;
-//    QPushButton* movableObjectButton;
-//    QPushButton* cameraButton;
 };
 
 #endif // MAINWINDOW_H

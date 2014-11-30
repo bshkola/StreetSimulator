@@ -3,6 +3,11 @@
 
 #include "controller/controllerimpl.h"
 #include "model/modelimpl.h"
+#include <iostream>
+
+#include <QFuture>
+#include <QtConcurrent/QtConcurrent>
+
 
 int main(int argc, char *argv[])
 {
@@ -10,8 +15,10 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    Controller::IController* c = new Controller::ControllerImpl;
     Model::IModel* m = new Model::ModelImpl;
+    Controller::ControllerImpl* c = new Controller::ControllerImpl;
+
+    QFuture<void> controllerThread = QtConcurrent::run(c, &Controller::ControllerImpl::start);
 
     return a.exec();
 }

@@ -19,7 +19,10 @@ SOURCES += main.cpp\
     model/modelimpl.cpp \
     view/boardscene.cpp \
     view/boardcell.cpp \
-    view/mainwindow.cpp
+    view/mainwindow.cpp \
+    controller/blockingqueue.cpp \
+    common/itemclickedevent.cpp \
+    common/event.cpp
 
 HEADERS  += mainwindow.h \
     controller/icontroller.h \
@@ -28,6 +31,10 @@ HEADERS  += mainwindow.h \
     model/modelimpl.h \
     view/boardscene.h \
     view/boardcell.h \
-    view/mainwindow.h
+    view/mainwindow.h \
+    controller/blockingqueue.h \
+    common/itemclickedevent.h \
+    common/coordinates.h \
+    common/event.h
 
 FORMS    += mainwindow.ui

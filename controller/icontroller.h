@@ -11,6 +11,7 @@ class IController : public QObject
 public:
     IController();
     virtual ~IController();
+    virtual void start() = 0;
 };
 
 }

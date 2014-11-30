@@ -5,6 +5,8 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QPainter>
 #include <QWidget>
+#include "../controller/blockingqueue.h"
+#include "../common/itemclickedevent.h"
 
 namespace Ui {
     BoardScene::BoardScene() : QGraphicsScene()
@@ -24,6 +26,7 @@ namespace Ui {
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
                 BoardCell* boardCell = new BoardCell(0, 0, shiftSize, shiftSize);
+                boardCell->setCoordinates(i, j);
                 boardCell->setPos(i * shiftSize, j * shiftSize);
                 this->addItem(boardCell);
             }
@@ -36,7 +39,7 @@ namespace Ui {
         {
             item->setChecked(!item->isChecked());
             item->update();
-
+            BlockingEventQueue::getInstance().push(new ItemClickedEvent(item->getCoordinates()));
         }
     }
 

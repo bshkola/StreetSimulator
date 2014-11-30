@@ -27,7 +27,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->removeStreetButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
     connect(ui->movableObjectButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
     connect(ui->cameraButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
-
 }
 
 MainWindow::~MainWindow()
