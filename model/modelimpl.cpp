@@ -3,3 +3,7 @@
 Model::ModelImpl::ModelImpl()
 {
 }
+
+Model::ModelImpl::~ModelImpl()
+{
+}

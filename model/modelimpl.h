@@ -9,6 +9,7 @@ class ModelImpl : public IModel
 {
 public:
     ModelImpl();
+    virtual ~ModelImpl();
 };
 
 }

@@ -1,5 +1,10 @@
 #include "boardscene.h"
+#include "boardcell.h"
 #include <iostream>
+#include <QGraphicsRectItem>
+#include <QGraphicsSceneMouseEvent>
+#include <QPainter>
+#include <QWidget>
 
 BoardScene::BoardScene() : QGraphicsScene()
 {
@@ -8,14 +13,34 @@ BoardScene::BoardScene() : QGraphicsScene()
 
 void BoardScene::updateBoardSize(int size) {
     this->clear();
-
-    QPen blackPen(Qt::black);
+    this->boardSize = size;
+    QPen noPen(Qt::NoPen);
     QBrush noBrush(Qt::NoBrush);
 
-    this->addRect(0, 0, borderSize, borderSize, blackPen, noBrush);
-    float shiftSize = std::min(width(), height()) / size;
-    for (int i = 1; i < size; ++i) {
-        addLine(i * shiftSize, 0, i * shiftSize, borderSize);
-        addLine(0, i * shiftSize, borderSize, i * shiftSize);
+    this->addRect(0, 0, borderSize, borderSize, noPen, noBrush);
+    shiftSize = std::min(width(), height()) / size;
+
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size; ++j) {
+            BoardCell* boardCell = new BoardCell(0, 0, shiftSize, shiftSize);
+            boardCell->setPos(i * shiftSize, j * shiftSize);
+            this->addItem(boardCell);
+        }
     }
+}
+
+void BoardScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+    BoardCell *item = (BoardCell *)this->itemAt(event->buttonDownScenePos(Qt::LeftButton), QTransform());
+    if (item)
+    {
+        item->setChecked(!item->isChecked());
+        item->update();
+
+    }
+}
+
+void BoardScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
+}
+
+void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
 }

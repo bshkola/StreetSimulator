@@ -10,7 +10,9 @@ public:
     explicit BoardScene();
 
     void updateBoardSize(int size);
-
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 protected:
 
 signals:
@@ -19,6 +21,8 @@ public slots:
 
 private:
     int borderSize;
+    float shiftSize;
+    int boardSize;
 
 };
 

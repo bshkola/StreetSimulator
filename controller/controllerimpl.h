@@ -9,7 +9,7 @@ class ControllerImpl : public IController
 {
 public:
     ControllerImpl();
-//    virtual ~ControllerImpl();
+    virtual ~ControllerImpl();
 };
 
 }
