@@ -10,6 +10,8 @@ public:
     ItemClickedEvent();
     ItemClickedEvent(Coordinates coordinates);
 
+    std::string getName();
+    Coordinates getCoordinates() { return coordinates; }
 private:
     Coordinates coordinates;
 };

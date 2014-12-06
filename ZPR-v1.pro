@@ -22,7 +22,12 @@ SOURCES += main.cpp\
     view/mainwindow.cpp \
     controller/blockingqueue.cpp \
     common/itemclickedevent.cpp \
-    common/event.cpp
+    common/event.cpp \
+    view/iview.cpp \
+    controller/strategy/closewindowstrategy.cpp \
+    controller/strategy/strategy.cpp \
+    controller/strategy/itemclickedstrategy.cpp \
+    common/windowclosedevent.cpp
 
 HEADERS  += mainwindow.h \
     controller/icontroller.h \
@@ -35,6 +40,11 @@ HEADERS  += mainwindow.h \
     controller/blockingqueue.h \
     common/itemclickedevent.h \
     common/coordinates.h \
-    common/event.h
+    common/event.h \
+    view/iview.h \
+    controller/strategy/closewindowstrategy.h \
+    controller/strategy/strategy.h \
+    controller/strategy/itemclickedstrategy.h \
+    common/windowclosedevent.h
 
 FORMS    += mainwindow.ui

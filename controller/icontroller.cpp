@@ -1,10 +1,10 @@
 #include "icontroller.h"
 #include <iostream>
 
-Controller::IController::IController()
+IController::IController()
 {
 }
 
-Controller::IController::~IController()
+IController::~IController()
 {
 }

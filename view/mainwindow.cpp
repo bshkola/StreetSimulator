@@ -2,9 +2,11 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include "boardscene.h"
+#include "../controller/blockingqueue.h"
+#include "../common/windowclosedevent.h"
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent), ui(new Ui::MainWindow)
+    QMainWindow(parent), IView(), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     boardScene = new Ui::BoardScene();
@@ -32,7 +34,14 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    std::cout << "~MainWindow" << std::endl;
 }
+
+void MainWindow::show()
+{
+    QMainWindow::show();
+}
+
 
 void MainWindow::updateBoardSize() {
     boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
@@ -64,4 +73,10 @@ void MainWindow::resizeEvent(QResizeEvent *event) {
 
     boardScene->setSceneRect(boardScene->sceneRect());
     ui->graphicsView->fitInView(boardScene->sceneRect(), Qt::KeepAspectRatio);
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QMainWindow::closeEvent(event);
+    BlockingEventQueue::getInstance().push(new WindowClosedEvent());
 }

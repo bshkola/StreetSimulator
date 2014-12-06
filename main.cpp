@@ -8,17 +8,15 @@
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
 
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+    IView* window = new MainWindow();
+    window->show();
 
-    Model::IModel* m = new Model::ModelImpl;
-    Controller::ControllerImpl* c = new Controller::ControllerImpl;
+    Model::IModel* model = new Model::ModelImpl();
+    IController* controller = new ControllerImpl(model, window);
 
-    QFuture<void> controllerThread = QtConcurrent::run(c, &Controller::ControllerImpl::start);
-
+    QFuture<void> controllerThread = QtConcurrent::run(controller, &IController::start);
     return a.exec();
 }

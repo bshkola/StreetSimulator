@@ -8,7 +8,7 @@ class Event : public QObject
     Q_OBJECT
 public:
     explicit Event(QObject *parent = 0);
-
+    virtual std::string getName() = 0;
 signals:
 
 public slots:

@@ -4,20 +4,23 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QGraphicsScene>
+#include "iview.h"
 
 namespace Ui {
     class MainWindow;
     class BoardScene;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, public IView
 {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void show();
     void resizeEvent(QResizeEvent *event);
-    ~MainWindow();
+    void closeEvent(QCloseEvent *event);
+    virtual ~MainWindow();
 
 public slots:
     void updateButtons();
