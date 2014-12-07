@@ -1,5 +1,5 @@
 #include "itemclickedevent.h"
-#include "event.h"
+#include "ievent.h"
 
 ItemClickedEvent::ItemClickedEvent() {
 }

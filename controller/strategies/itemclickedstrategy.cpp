@@ -5,7 +5,7 @@ ItemClickedStrategy::ItemClickedStrategy(Model::IModel* model, IView* view) : mo
 {
 }
 
-void ItemClickedStrategy::perform(Event* event)
+void ItemClickedStrategy::perform(IEvent* event)
 {
     std::cout << "ItemClickedStrategy" << std::endl;
 }

@@ -5,7 +5,7 @@ CloseWindowStrategy::CloseWindowStrategy(IController& controller) : controller_(
 {
 }
 
-void CloseWindowStrategy::perform(Event* event)
+void CloseWindowStrategy::perform(IEvent* event)
 {
     controller_->finish();
     std::cout << "CloseWindowStrategy" << std::endl;

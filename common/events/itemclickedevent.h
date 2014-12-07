@@ -1,10 +1,10 @@
 #ifndef ITEMCLICKEDEVENT_H
 #define ITEMCLICKEDEVENT_H
 
-#include "event.h"
-#include "coordinates.h"
+#include "ievent.h"
+#include "../coordinates.h"
 
-class ItemClickedEvent : public Event
+class ItemClickedEvent : public IEvent
 {
 public:
     ItemClickedEvent();

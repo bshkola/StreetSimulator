@@ -1,9 +1,9 @@
 #ifndef WINDOWCLOSEDEVENT_H
 #define WINDOWCLOSEDEVENT_H
 
-#include "event.h"
+#include "ievent.h"
 
-class WindowClosedEvent : public Event
+class WindowClosedEvent : public IEvent
 {
 public:
     WindowClosedEvent();

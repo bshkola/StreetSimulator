@@ -1,15 +1,15 @@
 #ifndef CLOSEWINDOWSTRATEGY_H
 #define CLOSEWINDOWSTRATEGY_H
 
-#include "strategy.h"
+#include "istrategy.h"
 #include <string>
 #include "../../controller/controllerimpl.h"
 
-class CloseWindowStrategy : public Strategy
+class CloseWindowStrategy : public IStrategy
 {
 public:
     CloseWindowStrategy(IController& controller);
-    void perform(Event* event);
+    void perform(IEvent* event);
     std::string getName();
 
 private:

@@ -1,16 +1,16 @@
 #ifndef ITEMCLICKEDSTRATEGY_H
 #define ITEMCLICKEDSTRATEGY_H
 
-#include "strategy.h"
+#include "istrategy.h"
 #include <string>
 #include "../../model/imodel.h"
 #include "../../view/iview.h"
 
-class ItemClickedStrategy : public Strategy
+class ItemClickedStrategy : public IStrategy
 {
 public:
     ItemClickedStrategy(Model::IModel* model, IView* view);
-    void perform(Event* event);
+    void perform(IEvent* event);
     std::string getName();
 
 private:

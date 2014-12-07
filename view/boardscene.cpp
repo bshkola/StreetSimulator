@@ -6,7 +6,7 @@
 #include <QPainter>
 #include <QWidget>
 #include "../controller/blockingqueue.h"
-#include "../common/itemclickedevent.h"
+#include "../common/events/itemclickedevent.h"
 
 namespace Ui {
     BoardScene::BoardScene() : QGraphicsScene()

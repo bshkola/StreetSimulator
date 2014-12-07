@@ -1,7 +1,7 @@
 #ifndef BLOCKINGQUEUE_H
 #define BLOCKINGQUEUE_H
 
-#include "../common/event.h"
+#include "../common/events/ievent.h"
 #include <mutex>
 #include <condition_variable>
 #include <deque>
@@ -16,11 +16,11 @@ private:
 
     std::mutex              d_mutex;
     std::condition_variable d_condition;
-    std::deque<Event*>       d_queue;
+    std::deque<IEvent*>       d_queue;
 
 public:
-    void push(Event* const& value);
-    Event* pop();
+    void push(IEvent* const& value);
+    IEvent* pop();
 
     static BlockingEventQueue& getInstance() {
         static BlockingEventQueue pInstance_;

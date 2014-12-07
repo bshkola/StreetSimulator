@@ -3,7 +3,7 @@
 #include <iostream>
 #include "boardscene.h"
 #include "../controller/blockingqueue.h"
-#include "../common/windowclosedevent.h"
+#include "../common/events/windowclosedevent.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), IView(), ui(new Ui::MainWindow)
