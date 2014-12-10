@@ -11,7 +11,7 @@
 class ControllerImpl : public IController
 {
 public:
-    ControllerImpl(Model::IModel* model, IView* view);
+    ControllerImpl(IModel* model, IView* view);
     virtual ~ControllerImpl();
 
     void start();

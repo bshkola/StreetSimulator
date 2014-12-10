@@ -7,13 +7,12 @@
 class ItemClickedEvent : public IEvent
 {
 public:
-    ItemClickedEvent();
     ItemClickedEvent(Coordinates coordinates);
 
     std::string getName();
-    Coordinates getCoordinates() { return coordinates; }
+    Coordinates getCoordinates();
 private:
-    Coordinates coordinates;
+    Coordinates coordinates_;
 };
 
 #endif // ITEMCLICKEDEVENT_H

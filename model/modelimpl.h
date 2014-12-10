@@ -3,15 +3,11 @@
 
 #include "imodel.h"
 
-namespace Model {
-
 class ModelImpl : public IModel
 {
 public:
     ModelImpl();
     virtual ~ModelImpl();
 };
-
-}
 
 #endif // MODELIMPL_H

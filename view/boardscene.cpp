@@ -6,7 +6,8 @@
 #include <QPainter>
 #include <QWidget>
 #include "../controller/blockingqueue.h"
-#include "../common/events/itemclickedevent.h"
+#include "../common/events/streetfieldaddedevent.h"
+#include "../common/events/streetfieldremovedevent.h"
 
 namespace Ui {
     BoardScene::BoardScene() : QGraphicsScene()
@@ -34,12 +35,17 @@ namespace Ui {
     }
 
     void BoardScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-        BoardCell *item = (BoardCell *)this->itemAt(event->buttonDownScenePos(Qt::LeftButton), QTransform());
+        BoardCell *item = (BoardCell *)this->itemAt(event->scenePos(), QTransform());
         if (item)
         {
-            item->setChecked(!item->isChecked());
+            if (event->button() == Qt::LeftButton) {
+                item->setChecked(true);
+                BlockingEventQueue::getInstance().push(new StreetFieldAddedEvent(item->getCoordinates()));
+            } else {
+                item->setChecked(false);
+                BlockingEventQueue::getInstance().push(new StreetFieldRemovedEvent(item->getCoordinates()));
+            }
             item->update();
-            BlockingEventQueue::getInstance().push(new ItemClickedEvent(item->getCoordinates()));
         }
     }
 

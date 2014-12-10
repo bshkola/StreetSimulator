@@ -23,6 +23,9 @@ namespace Ui {
     private:
         bool checked;
         Coordinates coordinates;
+        Qt::GlobalColor checkedStreetColor;
+        Qt::GlobalColor nonCheckedStreetColor;
+
     };
 }
 

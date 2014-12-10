@@ -1,6 +1,7 @@
 #ifndef ISTRATEGY_H
 #define ISTRATEGY_H
 
+#include "iostream"
 #include "../../common/events/ievent.h"
 
 class IStrategy

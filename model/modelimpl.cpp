@@ -1,9 +1,9 @@
 #include "modelimpl.h"
 
-Model::ModelImpl::ModelImpl()
+ModelImpl::ModelImpl()
 {
 }
 
-Model::ModelImpl::~ModelImpl()
+ModelImpl::~ModelImpl()
 {
 }

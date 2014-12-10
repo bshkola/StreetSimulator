@@ -21,13 +21,21 @@ SOURCES += main.cpp\
     view/boardcell.cpp \
     view/mainwindow.cpp \
     controller/blockingqueue.cpp \
-    common/events/itemclickedevent.cpp \
     view/iview.cpp \
+    controller/strategies/istrategy.cpp \
     controller/strategies/closewindowstrategy.cpp \
     controller/strategies/itemclickedstrategy.cpp \
-    common/events/windowclosedevent.cpp \
+    controller/strategies/boardsizechangedstrategy.cpp \
     common/events/ievent.cpp \
-    controller/strategies/istrategy.cpp
+    common/events/windowclosedevent.cpp \
+    common/events/itemclickedevent.cpp \
+    common/events/boardsizechangedevent.cpp \
+    common/events/streetfieldaddedevent.cpp \
+    common/events/streetfieldremovedevent.cpp \
+    controller/strategies/streetfieldaddedstrategy.cpp \
+    controller/strategies/streetfieldremovedstrategy.cpp
+
+
 
 HEADERS  += mainwindow.h \
     controller/icontroller.h \
@@ -38,13 +46,20 @@ HEADERS  += mainwindow.h \
     view/boardcell.h \
     view/mainwindow.h \
     controller/blockingqueue.h \
-    common/events/itemclickedevent.h \
     common/coordinates.h \
     view/iview.h \
+    controller/strategies/istrategy.h \
     controller/strategies/closewindowstrategy.h \
     controller/strategies/itemclickedstrategy.h \
-    common/events/windowclosedevent.h \
+    controller/strategies/boardsizechangedstrategy.h \
     common/events/ievent.h \
-    controller/strategies/istrategy.h
+    common/events/windowclosedevent.h \
+    common/events/itemclickedevent.h \
+    common/events/boardsizechangedevent.h \
+    common/events/streetfieldaddedevent.h \
+    common/events/streetfieldremovedevent.h \
+    controller/strategies/streetfieldaddedstrategy.h \
+    controller/strategies/streetfieldremovedstrategy.h
+
 
 FORMS    += mainwindow.ui

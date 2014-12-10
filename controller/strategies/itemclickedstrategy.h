@@ -9,12 +9,11 @@
 class ItemClickedStrategy : public IStrategy
 {
 public:
-    ItemClickedStrategy(Model::IModel* model, IView* view);
+    ItemClickedStrategy(IModel* model, IView* view);
     void perform(IEvent* event);
-    std::string getName();
 
 private:
-    Model::IModel* model_;
+    IModel* model_;
     IView* view_;
 };
 

@@ -1,5 +1,4 @@
 #include "closewindowstrategy.h"
-#include "iostream"
 
 CloseWindowStrategy::CloseWindowStrategy(IController& controller) : controller_(&controller)
 {

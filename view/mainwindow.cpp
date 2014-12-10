@@ -1,9 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <iostream>
+#include "QMessageBox"
 #include "boardscene.h"
 #include "../controller/blockingqueue.h"
 #include "../common/events/windowclosedevent.h"
+#include "../common/events/boardsizechangedevent.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), IView(), ui(new Ui::MainWindow)
@@ -14,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("Editor");
     this->showMaximized();
 
-    updateBoardSize();
+    boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
 
     // initialize signals-slots
     buttons.append(ui->streetButton);
@@ -44,7 +46,13 @@ void MainWindow::show()
 
 
 void MainWindow::updateBoardSize() {
-    boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Warning", "Do you want to change the size of the board? All information will be lost",
+                                QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes) {
+        boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
+        BlockingEventQueue::getInstance().push(new BoardSizeChangedEvent(ui->boardSizeSpinBox->value()));
+    }
 }
 
 void MainWindow::updateButtons() {
@@ -52,21 +60,6 @@ void MainWindow::updateButtons() {
         button->setChecked(false);
     }
 }
-
-//void MainWindow::setBoardSize() {
-//    boardScene = new BoardScene();
-
-//    boardScene->addRect(QRect(QPoint(0, 0), sceneSize));
-
-//    int shiftsNumber = ui->boardSizeSpinBox->value();
-//    float shiftSize = boardScene->width() / shiftsNumber;
-//    for(int i = 1; i < shiftsNumber; ++i) {
-//        boardScene->addLine(i * shiftSize, 0, i * shiftSize, 600);
-//        boardScene->addLine(0, i * shiftSize, 600, i * shiftSize);
-//    }
-
-//    ui->graphicsView->setScene(boardScene);
-//}
 
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QMainWindow::resizeEvent(event);
