@@ -2,8 +2,6 @@
 #define STREETFIELDADDEDSTRATEGY_H
 
 #include "istrategy.h"
-#include "../../model/imodel.h"
-#include "../../view/iview.h"
 
 class StreetFieldAddedStrategy : public IStrategy
 {

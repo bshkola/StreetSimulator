@@ -3,8 +3,6 @@
 
 #include "istrategy.h"
 #include <string>
-#include "../../model/imodel.h"
-#include "../../view/iview.h"
 
 class ItemClickedStrategy : public IStrategy
 {

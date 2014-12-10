@@ -33,7 +33,9 @@ SOURCES += main.cpp\
     common/events/streetfieldaddedevent.cpp \
     common/events/streetfieldremovedevent.cpp \
     controller/strategies/streetfieldaddedstrategy.cpp \
-    controller/strategies/streetfieldremovedstrategy.cpp
+    controller/strategies/streetfieldremovedstrategy.cpp \
+    common/events/caraddedevent.cpp \
+    controller/strategies/caraddedstrategy.cpp
 
 
 
@@ -59,7 +61,9 @@ HEADERS  += mainwindow.h \
     common/events/streetfieldaddedevent.h \
     common/events/streetfieldremovedevent.h \
     controller/strategies/streetfieldaddedstrategy.h \
-    controller/strategies/streetfieldremovedstrategy.h
+    controller/strategies/streetfieldremovedstrategy.h \
+    common/events/caraddedevent.h \
+    controller/strategies/caraddedstrategy.h
 
 
 FORMS    += mainwindow.ui

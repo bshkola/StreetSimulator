@@ -3,6 +3,8 @@
 
 #include "iostream"
 #include "../../common/events/ievent.h"
+#include "../../model/imodel.h"
+#include "../../view/iview.h"
 
 class IStrategy
 {
