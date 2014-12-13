@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = ZPR-v1
 TEMPLATE = app
-
+CONFIG += c++11
 
 SOURCES += main.cpp\
     controller/icontroller.cpp \
@@ -27,7 +27,11 @@ SOURCES += main.cpp\
     controller/strategy/closewindowstrategy.cpp \
     controller/strategy/strategy.cpp \
     controller/strategy/itemclickedstrategy.cpp \
-    common/windowclosedevent.cpp
+    common/windowclosedevent.cpp \
+    model/convert.cpp \
+    model/dijkstra.cpp \
+    model/graph.cpp \
+    model/simulationpreparator.cpp
 
 HEADERS  += mainwindow.h \
     controller/icontroller.h \
@@ -45,6 +49,10 @@ HEADERS  += mainwindow.h \
     controller/strategy/closewindowstrategy.h \
     controller/strategy/strategy.h \
     controller/strategy/itemclickedstrategy.h \
-    common/windowclosedevent.h
+    common/windowclosedevent.h \
+    model/convert.h \
+    model/dijkstra.h \
+    model/graph.h \
+    model/simulationpreparator.h
 
 FORMS    += mainwindow.ui
