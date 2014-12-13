@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include "QMessageBox"
-#include "boardscene.h"
 #include "../controller/blockingqueue.h"
 #include "../common/events/windowclosedevent.h"
 #include "../common/events/boardsizechangedevent.h"
@@ -16,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("Editor");
     this->showMaximized();
 
-    boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
+    //boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
 
     // initialize signals-slots
     buttons.append(ui->streetButton);
@@ -73,3 +72,10 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
     BlockingEventQueue::getInstance().push(new WindowClosedEvent());
 }
+
+void MainWindow::showBoard(const Board& board) {
+    std::cout << "showing Board" << std::endl;
+    ui->boardSizeSpinBox->setValue(board.size_);
+    boardScene->updateBoardSize(board.size_);
+}
+

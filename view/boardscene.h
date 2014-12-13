@@ -1,5 +1,5 @@
-#ifndef BOARD_H
-#define BOARD_H
+#ifndef BOARDSCENE_H
+#define BOARDSCENE_H
 
 #include <QGraphicsScene>
 
@@ -27,4 +27,4 @@ namespace Ui {
 
     };
 }
-#endif // BOARD_H
+#endif // BOARDSCENE_H

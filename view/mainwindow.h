@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QGraphicsScene>
 #include "iview.h"
+#include "boardscene.h"
+
 
 namespace Ui {
     class MainWindow;
@@ -20,6 +22,7 @@ public:
     void show();
     void resizeEvent(QResizeEvent *event);
     void closeEvent(QCloseEvent *event);
+    void showBoard(const Board& board);
     virtual ~MainWindow();
 
 public slots:

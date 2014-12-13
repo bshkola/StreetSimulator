@@ -11,7 +11,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = ZPR-v1
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
     controller/icontroller.cpp \
     controller/controllerimpl.cpp \
@@ -35,7 +34,10 @@ SOURCES += main.cpp\
     controller/strategies/streetfieldaddedstrategy.cpp \
     controller/strategies/streetfieldremovedstrategy.cpp \
     common/events/caraddedevent.cpp \
-    controller/strategies/caraddedstrategy.cpp
+    controller/strategies/caraddedstrategy.cpp \
+    controller/strategies/applicationstartedstrategy.cpp \
+    common/board.cpp \
+    common/events/applicationstartedevent.cpp
 
 
 
@@ -63,7 +65,10 @@ HEADERS  += mainwindow.h \
     controller/strategies/streetfieldaddedstrategy.h \
     controller/strategies/streetfieldremovedstrategy.h \
     common/events/caraddedevent.h \
-    controller/strategies/caraddedstrategy.h
+    controller/strategies/caraddedstrategy.h \
+    controller/strategies/applicationstartedstrategy.h \
+    common/board.h \
+    common/events/applicationstartedevent.h
 
 
 FORMS    += mainwindow.ui
