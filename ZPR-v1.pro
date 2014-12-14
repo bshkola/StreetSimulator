@@ -43,7 +43,9 @@ SOURCES += main.cpp\
     controller/strategies/istrategy.cpp \
     controller/strategies/itemclickedstrategy.cpp \
     controller/strategies/streetfieldaddedstrategy.cpp \
-    controller/strategies/streetfieldremovedstrategy.cpp
+    controller/strategies/streetfieldremovedstrategy.cpp \
+    model/database/database.cpp \
+    model/objectsonmap.cpp
 
 
 
@@ -80,7 +82,25 @@ HEADERS  += mainwindow.h \
     controller/strategies/istrategy.h \
     controller/strategies/itemclickedstrategy.h \
     controller/strategies/streetfieldaddedstrategy.h \
-    controller/strategies/streetfieldremovedstrategy.h
+    controller/strategies/streetfieldremovedstrategy.h \
+    common/field/field.h \
+    common/field/grassfield.h \
+    common/field/roadfield.h \
+    common/street/crossingt.h \
+    common/street/crossingx.h \
+    common/street/deadend.h \
+    common/street/straight.h \
+    common/street/street.h \
+    common/street/turn.h \
+    common/traffic/car.h \
+    common/traffic/pedestrian.h \
+    common/traffic/trafficparticipant.h \
+    common/traffic/truck.h \
+    common/traffic/vehicle.h \
+    common/camera.h \
+    common/direction.h \
+    model/database/database.h \
+    model/objectsonmap.h
 
 
 

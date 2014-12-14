@@ -2,6 +2,7 @@
 #define DIJKSTRA_H
 
 #include "graph.h"
+#include "../common/traffic/trafficparticipant.h"
 
 class Dijkstra
 {
@@ -10,7 +11,7 @@ public:
     ~Dijkstra();
 
     //zwraca tablice dla symulatora: tablicaWierzcholkowPrzezKtorePrzejedzaObiekt f-cja(obiektDlaKtoregoLiczymy)
-    void calculateWay(NameOfVertex source, NameOfVertex dest); //skad do kad jedziemy
+    void calculateWay(TrafficParticipant object); //skad do kad jedziemy
 private:
     Vertex selectLeastVertix();
     void calculateWeightForEdge(Vertex &ver);

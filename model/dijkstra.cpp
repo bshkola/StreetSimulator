@@ -10,12 +10,13 @@ Dijkstra::~Dijkstra()
 
 }
 
-void Dijkstra::calculateWay(NameOfVertex source, NameOfVertex dest)
+void Dijkstra::calculateWay(TrafficParticipant object)
 {
+    NameOfVertex source = object.start_point, dest = object.target_point;   //get source & destination of point
     Vertex tmp = graph.getVertex(source);
-    Vertex destVertex = graph.getVertex(dest);  //wierzcholke docelowy
+    Vertex destVertex = graph.getVertex(dest);  //finding a destination vertex
     while(tmp != destVertex || tmp != graph.end())
-    {   //wykonujemy dijkstre
+    {   //run dijkstra
         calculateWeightForEdge(tmp);
         tmp = selectLeastVertix();
     }

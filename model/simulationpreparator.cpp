@@ -1,19 +1,23 @@
 #include "model/simulationpreparator.h"
 
-SimulationPreparator::SimulationPreparator(const Board &board): convert(board)
+SimulationPreparator::SimulationPreparator(const Board &board, list<TrafficParticipant> &objects): convert(board)
 {
-    this->dijkstra = new Dijkstra(this->convert.generateGraph());   //generujemy graph i tworzymy dijkstre
+    this->dijkstra = new Dijkstra(this->convert.generateGraph());   //generate graph and put in dijkstra
+    this->objects = objects;
 }
 
 
 void SimulationPreparator::run()
-{   //oblicza droge dla kazdego obiektu i zapijuhe ja do tablicy
-    //TODO
+{
+    for(TrafficParticipant obj: objects)
+    {
+        dijkstra->calculateWay(obj);
+    }
 }
 
 SimulationPreparator::~SimulationPreparator()
 {
-    //niszczymy obiekty z dynamiczna alkacja pamieci w konstruktorze
+    //destroy the objects created by constructor
     delete this->dijkstra;
 }
 
