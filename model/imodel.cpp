@@ -1,5 +1,5 @@
 #include "imodel.h"
 
-Model::IModel::IModel()
+IModel::IModel()
 {
 }

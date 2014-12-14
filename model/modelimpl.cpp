@@ -1,9 +1,15 @@
 #include "modelimpl.h"
+#include <iostream>
 
-Model::ModelImpl::ModelImpl()
+ModelImpl::ModelImpl() : board(8)
+{
+
+}
+
+ModelImpl::~ModelImpl()
 {
 }
 
-Model::ModelImpl::~ModelImpl()
-{
+Board& ModelImpl::getBoard() {
+    return board;
 }

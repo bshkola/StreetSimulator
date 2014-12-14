@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     IView* window = new MainWindow();
     window->show();
 
-    Model::IModel* model = new Model::ModelImpl();
+    IModel* model = new ModelImpl();
     IController* controller = new ControllerImpl(model, window);
 
     QFuture<void> controllerThread = QtConcurrent::run(controller, &IController::start);

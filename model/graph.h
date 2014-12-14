@@ -2,13 +2,15 @@
 #define GRAPH_H
 
 #include <stdlib.h>
+#include <vector>
 #include <list>
-
-#include "../common/coordinates.h"
+#include <algorithm>
+#include <exception>
 
 using namespace  std;
 
-class vertex;
+class Vertex;
+typedef pair<int, int> NameOfVertex;
 
 class Graph
 {
@@ -16,38 +18,41 @@ public:
     Graph();
     ~Graph();
 
-    void addVertix(const Coordinates coor); //dodaje nowy wierzcholyk do grafu
-    void addEdge(const Coordinates source, const Coordinates dest); //dodaje krawedz pomiedzy wierzcholkami, jednoczesnie zmiena typ source wierzcholka
-    void getVertix(const Coordinates vert); //zwraca wierzcholek o tych koordynatach
+    void addVertex(const NameOfVertex &coor, bool isRoad); //dodaje nowy wierzcholyk do grafu
+    void addEdge(const NameOfVertex source, int si, const NameOfVertex dest, int di); //dodaje krawedz pomiedzy wierzcholkami,
+        //si di - mowia pod ktory numer dodajemy dana krawedz np si = 2 ==> edge[2] = source
+    Vertex getVertex(const NameOfVertex vert); //zwraca wierzcholek o tych koordynatach
 
+    Vertex end();
      // Private methods and member variables
-     private:
-        list<vertex> vertices;  //przchowuje wierzcholki
+private:
+    list<Vertex> vertices;  //przchowuje wierzcholki
 };
 
-
-struct edge
+struct Edge
 {
-  edge(vertex *edge) :
-    m_Edge(edge)
-    {}
-  vertex *m_Edge;
+  Edge(): m_Edge(NULL){};
+  Edge(Vertex *edge) :m_Edge(edge){}
+  Vertex *m_Edge;
 }; // END EDGE
 
-class vertex
+class Vertex
 {
 public:
-  vertex(Coordinates name) :
-    name(name)
-  {}
-  void connect_edge(vertex *adjacent);
-  const Coordinates getName();
-  const void getType();  //mowi jakiego typu jest dany wierzcholek
-  const list<edge> &getEdges();
+  Vertex(const NameOfVertex &name, bool isRoad):name(name), isRoad(isRoad){};
+  void connect_edge(Vertex *adjacent, int whatDirection); //adjacent - do jakiego ver laczymy, whatDirection - w jakim kierunku jest edge
+  const NameOfVertex getName();
+  void getType();  //mowi jakiego typu jest dany wierzcholek
+  const Edge &getEdge(const int number);    //zwraca krawedz 0-3
+  //int operator==(const Vertex &q) {return name == q.name;}
+  int operator==(const NameOfVertex &q) {return name == q;}
+  bool operator!=(const Vertex &q) {return name != q.name;}
 
 private:
   //type
-  list<edge> m_Edges;
-  Coordinates name;
+  Edge edges[4];    //mozemy miec tylko 4 krawedzie
+  NameOfVertex name;
+  bool isRoad;     //mowi czy dany wierzcholek jest odcinkiem drogi, czy czyms innym
 }; // END VERTE
+
 #endif // GRAPH_H

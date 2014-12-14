@@ -6,6 +6,8 @@ namespace Ui {
     BoardCell::BoardCell(qreal x, qreal y, qreal width, qreal height, QGraphicsItem * parent) :
         QGraphicsRectItem(x, y, width, height, parent) {
         checked = false;
+        checkedStreetColor = Qt::gray;
+        nonCheckedStreetColor = Qt::white;
     }
 
     void BoardCell::setChecked(bool checked) {
@@ -19,9 +21,9 @@ namespace Ui {
     void BoardCell::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
         Qt::GlobalColor color;
         if (checked) {
-            color = Qt::red;
+            color = checkedStreetColor;
         } else {
-            color = Qt::white;
+            color = nonCheckedStreetColor;
         }
         painter->setBrush(QBrush(color));
         painter->drawRect(this->rect());

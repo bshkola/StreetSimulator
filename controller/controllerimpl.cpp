@@ -1,12 +1,24 @@
 #include "controllerimpl.h"
 #include <iostream>
-#include "strategy/closewindowstrategy.h"
-#include "strategy/itemclickedstrategy.h"
+#include "strategies/closewindowstrategy.h"
+#include "strategies/itemclickedstrategy.h"
+#include "strategies/boardsizechangedstrategy.h"
+#include "strategies/streetfieldaddedstrategy.h"
+#include "strategies/streetfieldremovedstrategy.h"
+#include "strategies/applicationstartedstrategy.h"
 
-ControllerImpl::ControllerImpl(Model::IModel* model, IView* view) : finish_(false)
+#include "../common/events/applicationstartedevent.h"
+
+ControllerImpl::ControllerImpl(IModel* model, IView* view) : finish_(false)
 {
-    map.insert(std::pair<std::string, Strategy*>("WindowClosed", new CloseWindowStrategy(*this)));
-    map.insert(std::pair<std::string, Strategy*>("ItemClicked", new ItemClickedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("WindowClosed", new CloseWindowStrategy(*this)));
+    map.insert(std::pair<std::string, IStrategy*>("ItemClicked", new ItemClickedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("BoardSizeChanged", new BoardSizeChangedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("StreetFieldAdded", new StreetFieldAddedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("StreetFieldRemoved", new StreetFieldRemovedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("ApplicationStarted", new ApplicationStartedStrategy(model, view)));
+
+    BlockingEventQueue::getInstance().push(new ApplicationStartedEvent());
 }
 
 ControllerImpl::~ControllerImpl()
@@ -16,14 +28,17 @@ ControllerImpl::~ControllerImpl()
 
 void ControllerImpl::start() {
     while (!finish_) {
-        std::cout << "Got it1" << std::endl;
-        Event* event = BlockingEventQueue::getInstance().pop();
-        std::cout << "Got it2" << std::endl;
-        map.at(event->getName())->perform(event);
-        std::cout << "Got it3" << std::endl;
+        IEvent* event = BlockingEventQueue::getInstance().pop();
+        std::cout << "Got new event" << std::endl;
+        if (map.find(event->getName()) != map.end()) {
+            map.at(event->getName())->perform(event);
+            std::cout << "Performed" << std::endl;
+        }
+        else {
+            std::cout << "Event is bad" << std::endl;
+        }
     }
     std::cout << "Finished" << std::endl;
-
 }
 
 void ControllerImpl::finish()

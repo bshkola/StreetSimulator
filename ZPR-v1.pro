@@ -12,6 +12,7 @@ TARGET = ZPR-v1
 TEMPLATE = app
 CONFIG += c++11
 
+
 SOURCES += main.cpp\
     controller/icontroller.cpp \
     controller/controllerimpl.cpp \
@@ -21,17 +22,31 @@ SOURCES += main.cpp\
     view/boardcell.cpp \
     view/mainwindow.cpp \
     controller/blockingqueue.cpp \
-    common/itemclickedevent.cpp \
-    common/event.cpp \
     view/iview.cpp \
-    controller/strategy/closewindowstrategy.cpp \
-    controller/strategy/strategy.cpp \
-    controller/strategy/itemclickedstrategy.cpp \
-    common/windowclosedevent.cpp \
     model/convert.cpp \
     model/dijkstra.cpp \
     model/graph.cpp \
-    model/simulationpreparator.cpp
+    model/simulationpreparator.cpp \
+    common/events/applicationstartedevent.cpp \
+    common/events/boardsizechangedevent.cpp \
+    common/events/caraddedevent.cpp \
+    common/events/ievent.cpp \
+    common/events/itemclickedevent.cpp \
+    common/events/streetfieldaddedevent.cpp \
+    common/events/streetfieldremovedevent.cpp \
+    common/events/windowclosedevent.cpp \
+    common/board.cpp \
+    controller/strategies/applicationstartedstrategy.cpp \
+    controller/strategies/boardsizechangedstrategy.cpp \
+    controller/strategies/caraddedstrategy.cpp \
+    controller/strategies/closewindowstrategy.cpp \
+    controller/strategies/istrategy.cpp \
+    controller/strategies/itemclickedstrategy.cpp \
+    controller/strategies/streetfieldaddedstrategy.cpp \
+    controller/strategies/streetfieldremovedstrategy.cpp
+
+
+
 
 HEADERS  += mainwindow.h \
     controller/icontroller.h \
@@ -42,17 +57,32 @@ HEADERS  += mainwindow.h \
     view/boardcell.h \
     view/mainwindow.h \
     controller/blockingqueue.h \
-    common/itemclickedevent.h \
     common/coordinates.h \
-    common/event.h \
     view/iview.h \
-    controller/strategy/closewindowstrategy.h \
-    controller/strategy/strategy.h \
-    controller/strategy/itemclickedstrategy.h \
-    common/windowclosedevent.h \
     model/convert.h \
     model/dijkstra.h \
     model/graph.h \
-    model/simulationpreparator.h
+    model/simulationpreparator.h \
+    common/events/applicationstartedevent.h \
+    common/events/boardsizechangedevent.h \
+    common/events/caraddedevent.h \
+    common/events/ievent.h \
+    common/events/itemclickedevent.h \
+    common/events/streetfieldaddedevent.h \
+    common/events/streetfieldremovedevent.h \
+    common/events/windowclosedevent.h \
+    common/board.h \
+    common/coordinates.h \
+    controller/strategies/applicationstartedstrategy.h \
+    controller/strategies/boardsizechangedstrategy.h \
+    controller/strategies/caraddedstrategy.h \
+    controller/strategies/closewindowstrategy.h \
+    controller/strategies/istrategy.h \
+    controller/strategies/itemclickedstrategy.h \
+    controller/strategies/streetfieldaddedstrategy.h \
+    controller/strategies/streetfieldremovedstrategy.h
 
-FORMS    += mainwindow.ui
+
+
+FORMS    += mainwindow.ui \
+    mainwindow.ui
