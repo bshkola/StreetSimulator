@@ -1,6 +1,7 @@
 #include "startsimulationstrategy.h"
 
-StartSimulationStrategy::StartSimulationStrategy()
+StartSimulationStrategy::StartSimulationStrategy(ObjectsOnMap objectsOnMap):
+    objectsOnMap(objectsOnMap), simulationPreparation(objectsOnMap.getBoard(), objectsOnMap.getObjects())
 {
 
 }
@@ -8,5 +9,10 @@ StartSimulationStrategy::StartSimulationStrategy()
 StartSimulationStrategy::~StartSimulationStrategy()
 {
 
+}
+
+void StartSimulationStrategy::perform(IEvent *event)
+{
+    simulationPreparation.run();    //calculate way for object and building graph
 }
 

@@ -11,7 +11,7 @@ public:
     ~Dijkstra();
 
     //zwraca tablice dla symulatora: tablicaWierzcholkowPrzezKtorePrzejedzaObiekt f-cja(obiektDlaKtoregoLiczymy)
-    void calculateWay(TrafficParticipant object); //skad do kad jedziemy
+    void calculateWay(TrafficParticipant *object); //skad do kad jedziemy
 private:
     Vertex selectLeastVertix();
     void calculateWeightForEdge(Vertex &ver);

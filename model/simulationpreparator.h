@@ -9,13 +9,13 @@
 class SimulationPreparator
 {
 public:
-    SimulationPreparator(const Board &borad, list<TrafficParticipant> &objects);
+    SimulationPreparator(const Board *borad, list<TrafficParticipant*> objects);
     ~SimulationPreparator();
 
     void run(); //run the SimulationPreparator: calculate the paths and convert map to graph
 private:
     Convert convert;    //converter from map to graph
-    list<TrafficParticipant> objects; //list of the move objects on the map
+    list<TrafficParticipant*> objects; //list of the move objects on the map
     Dijkstra *dijkstra; //algorithm for calculate the path
 };
 

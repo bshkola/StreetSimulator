@@ -45,7 +45,9 @@ SOURCES += main.cpp\
     controller/strategies/streetfieldaddedstrategy.cpp \
     controller/strategies/streetfieldremovedstrategy.cpp \
     model/database/database.cpp \
-    model/objectsonmap.cpp
+    model/objectsonmap.cpp \
+    common/events/startsimulationevent.cpp \
+    controller/strategies/startsimulationstrategy.cpp
 
 
 
@@ -100,7 +102,9 @@ HEADERS  += mainwindow.h \
     common/camera.h \
     common/direction.h \
     model/database/database.h \
-    model/objectsonmap.h
+    model/objectsonmap.h \
+    common/events/startsimulationevent.h \
+    controller/strategies/startsimulationstrategy.h
 
 
 
