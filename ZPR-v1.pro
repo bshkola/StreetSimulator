@@ -54,8 +54,7 @@ SOURCES += main.cpp\
 
 
 
-HEADERS  += mainwindow.h \
-    controller/icontroller.h \
+HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
     model/imodel.h \
     model/modelimpl.h \

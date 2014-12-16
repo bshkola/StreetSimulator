@@ -1,3 +1,5 @@
+//Author: Wojciech Ceret
+//Represent object camera on the board
 #ifndef CAMERA_H
 #define CAMERA_H
 

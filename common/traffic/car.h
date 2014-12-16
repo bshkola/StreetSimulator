@@ -1,3 +1,5 @@
+//Author: Wojciech Ceret
+//Represent move object on the board
 #ifndef CAR_H
 #define CAR_H
 

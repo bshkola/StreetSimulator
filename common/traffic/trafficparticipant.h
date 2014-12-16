@@ -1,3 +1,5 @@
+//Author: Wojciech Ceret
+//Represent move object on the board
 #ifndef TRAFFICPARTICIPANT_H
 #define TRAFFICPARTICIPANT_H
 

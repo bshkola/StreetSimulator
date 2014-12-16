@@ -1,3 +1,5 @@
+//Author: Wojciech Ceret
+//Represent streen on the board
 #ifndef STREET_H
 #define STREET_H
 

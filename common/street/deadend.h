@@ -1,3 +1,5 @@
+//Author: Wojciech Ceret
+//Represent the end of a street
 #ifndef DEADEND_H
 #define DEADEND_H
 

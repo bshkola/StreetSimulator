@@ -1,3 +1,5 @@
+//Author: Wojciech Ceret
+//Represent move object on the board
 #ifndef PEDESTRIAN_H
 #define PEDESTRIAN_H
 
