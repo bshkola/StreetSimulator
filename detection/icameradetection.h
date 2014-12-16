@@ -7,11 +7,14 @@
 #include "../common/camera.h"
 #include "../common/traffic/trafficparticipant.h"
 #include "cameraobservation.h"
+#include "icameranoise.h"
 
 class ICameraDetection {
 public:
-    ICameraDetection() {};
-    virtual ~ICameraDetection() {};
+    ICameraDetection(ICameraNoise NoiseGenerator): NoiseGenerator(NoiseGenerator) {};
+    virtual ~ICameraDetection() { delete NoiseGenerator; };
+    
+    ICameraNoise NoiseGenerator;
 
     //arguments: (camera_list, tp_list, observation_list)
     // camera_list - reference to std::list of pointers to Camera class' objects
