@@ -44,7 +44,7 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
                 continue;   //if out of angle then skip
             //introduce noise
             tp_coordinates_noised =
-                (this->NoiseGenerator).introduceNoise(tp_coordinates.first, tp_coordinates.second, distance, 10);
+                (this->NoiseGenerator)->introduceNoise(tp_coordinates.first, tp_coordinates.second, distance, 10);
             //calculate noised distance
             noised_distance = this->distance(cam_coordinates, tp_coordinates_noised);
             //calculate noised azimuth
@@ -83,6 +83,8 @@ float CameraDetectionImpl::azimuth(const std::pair<float, float> A, const std::p
         return 450.0 - (180.0 / PI * acos(delta_x / distance));
     if(delta_y <= 0.0)                  //3rd & 4th quarter
         return 90.0 + (180.0 / PI * acos(delta_x / distance));
+
+    return 0.0;
 };
 
 bool CameraDetectionImpl::withinTheAngle(float cam_azimuth, float cam_angle, float tp_azimuth)

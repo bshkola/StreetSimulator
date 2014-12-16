@@ -1,3 +1,6 @@
+//Author: Andrzej Chmielowski
+//Convert map to graph
+//of observed object.
 #ifndef CONVERT_H
 #define CONVERT_H
 

@@ -1,3 +1,5 @@
+//Author: Andrzej Chmielowski
+//Algorithm to calculate way for one object
 #ifndef DIJKSTRA_H
 #define DIJKSTRA_H
 

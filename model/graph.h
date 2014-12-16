@@ -1,3 +1,5 @@
+//Author: Andrzej Chmielowski
+//Implementation of graph
 #ifndef GRAPH_H
 #define GRAPH_H
 

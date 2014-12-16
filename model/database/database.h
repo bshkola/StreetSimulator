@@ -1,3 +1,5 @@
+//Author: Andrzej Chmielowski
+//Connect to database and put some information to db or get some information from db
 #ifndef DATABASE_H
 #define DATABASE_H
 

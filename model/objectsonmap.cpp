@@ -27,9 +27,9 @@ void ObjectsOnMap::addCar(Cordination location, Position source, Position destin
     objects.push_back(new Car(location.first, location.second, speed, destination, source));
 }
 
-void ObjectsOnMap::addVehicle(Cordination location, Position source, Position destination, float speed)
+void ObjectsOnMap::addTruck(Cordination location, Position source, Position destination, float speed)
 {   //done
-    objects.push_back(new Vehicle(location.first, location.second, speed, destination, source));
+    objects.push_back(new Truck(location.first, location.second, speed, destination, source));
 }
 
 void ObjectsOnMap::setCellOnField(int i, int j, bool isStreet)

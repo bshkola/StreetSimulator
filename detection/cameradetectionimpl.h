@@ -8,10 +8,10 @@
 
 class CameraDetectionImpl : ICameraDetection {
 public:
-    CameraDetectionImpl(ICameraNoise NoiseGenerator): NoiseGenerator(NoiseGenerator) {};
+    CameraDetectionImpl(ICameraNoise *NoiseGenerator): ICameraDetection(NoiseGenerator), NoiseGenerator(NoiseGenerator) {};
     virtual ~CameraDetectionImpl() { delete NoiseGenerator; };
     
-    ICameraNoise NoiseGenerator;
+    ICameraNoise *NoiseGenerator;
     
     virtual void calculate( const std::list<Camera*>&,
                             const std::list<TrafficParticipant*>&,

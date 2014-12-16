@@ -1,3 +1,5 @@
+//Author: Andrzej Chmielowski
+//Remember object put on the map in View
 #ifndef OBJECTSONMAP_H
 #define OBJECTSONMAP_H
 
@@ -23,7 +25,7 @@ public:
 
     void addPedestrian(Cordination location, Position source, Position destination, float speed = 1);
     void addCar(Cordination location, Position source, Position destination, float speed = 1);
-    void addVehicle(Cordination location, Position source, Position destination, float speed = 1);
+    void addTruck(Cordination location, Position source, Position destination, float speed = 1);
     void addCamera(Position location, float azimuth, float angle, float range);
     void setCellOnField(int i, int j, bool isStreet);    //set cell on the field (true - it's street, false -it isn't street)
     void deleteObject(Cordination location, Position source, Position destinatios, float speed = 1); //erease object which has this arguments from list

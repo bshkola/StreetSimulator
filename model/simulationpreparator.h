@@ -1,3 +1,5 @@
+//Author: Andrzej Chmielowski
+//Ruler of converting and algorithm objects. Run converting map to graph and run calculate ways for each objects
 #ifndef SIMULATIONPREPARATOR_H
 #define SIMULATIONPREPARATOR_H
 

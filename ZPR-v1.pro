@@ -47,7 +47,9 @@ SOURCES += main.cpp\
     model/database/database.cpp \
     model/objectsonmap.cpp \
     common/events/startsimulationevent.cpp \
-    controller/strategies/startsimulationstrategy.cpp
+    controller/strategies/startsimulationstrategy.cpp \
+    detection/cameradetectionimpl.cpp \
+    detection/cameranoiseimpl.cpp
 
 
 
@@ -104,7 +106,12 @@ HEADERS  += mainwindow.h \
     model/database/database.h \
     model/objectsonmap.h \
     common/events/startsimulationevent.h \
-    controller/strategies/startsimulationstrategy.h
+    controller/strategies/startsimulationstrategy.h \
+    detection/cameradetectionimpl.h \
+    detection/cameranoiseimpl.h \
+    detection/cameraobservation.h \
+    detection/icameradetection.h \
+    detection/icameranoise.h
 
 
 

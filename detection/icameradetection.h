@@ -11,10 +11,10 @@
 
 class ICameraDetection {
 public:
-    ICameraDetection(ICameraNoise NoiseGenerator): NoiseGenerator(NoiseGenerator) {};
+    ICameraDetection(ICameraNoise *NoiseGenerator): NoiseGenerator(NoiseGenerator) {};
     virtual ~ICameraDetection() { delete NoiseGenerator; };
     
-    ICameraNoise NoiseGenerator;
+    ICameraNoise *NoiseGenerator;
 
     //arguments: (camera_list, tp_list, observation_list)
     // camera_list - reference to std::list of pointers to Camera class' objects
