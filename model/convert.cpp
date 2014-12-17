@@ -1,4 +1,4 @@
-#include "model/convert.h"
+#include "../model/convert.h"
 
 Convert::Convert(const Board *board) : board(board)
 {

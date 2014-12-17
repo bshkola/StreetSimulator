@@ -1,4 +1,4 @@
-#include "model/simulationpreparator.h"
+#include "../model/simulationpreparator.h"
 
 SimulationPreparator::SimulationPreparator(const Board *board, list<TrafficParticipant*> objects):
     convert(board)

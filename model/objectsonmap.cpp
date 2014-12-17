@@ -1,4 +1,4 @@
-#include "model/objectsonmap.h"
+#include "../model/objectsonmap.h"
 
 ObjectsOnMap::ObjectsOnMap()
 {   //empty

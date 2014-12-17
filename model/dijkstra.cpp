@@ -1,4 +1,4 @@
-#include "model/dijkstra.h"
+#include "../model/dijkstra.h"
 
 Dijkstra::Dijkstra(const Graph &graph): graph(graph)
 {
@@ -29,7 +29,7 @@ void Dijkstra::calculateWeightForEdge(Vertex &ver)
 
 Vertex Dijkstra::selectLeastVertix()
 {
-
+    throw new exception;
     //TODO wybieramy najmniejszy z posrod nieodwiedzony grafow
     //return tmp;
 }

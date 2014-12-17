@@ -1,4 +1,4 @@
-#include "model/graph.h"
+#include "../model/graph.h"
 
 Graph::Graph()
 {   //empty
