@@ -1,3 +1,6 @@
+//Author: Bogdan Shkola
+//Representing interface of the main window of application.
+
 #ifndef IVIEW_H
 #define IVIEW_H
 

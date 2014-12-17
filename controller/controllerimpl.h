@@ -1,3 +1,6 @@
+//Author: Bogdan Shkola
+//Representing main controller implementation of the application.
+
 #ifndef CONTROLLERIMPL_H
 #define CONTROLLERIMPL_H
 
@@ -19,7 +22,7 @@ public:
 
 private:
     bool finish_;
-    std::map<std::string, IStrategy*> map;
+    std::map<std::string, IStrategy*> map; // strategy maps which defines reaction on different events
 };
 
 #endif // CONTROLLERIMPL_H

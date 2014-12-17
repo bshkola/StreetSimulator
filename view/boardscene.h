@@ -1,3 +1,6 @@
+//Author: Bogdan Shkola
+//Representing graphics scene with a square street board.
+
 #ifndef BOARDSCENE_H
 #define BOARDSCENE_H
 
@@ -10,7 +13,7 @@ namespace Ui {
     public:
         explicit BoardScene();
 
-        void updateBoardSize(int size);
+        void updateBoardSize(int size); //updates the resolution of the square board
         void mousePressEvent(QGraphicsSceneMouseEvent *event);
         void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);

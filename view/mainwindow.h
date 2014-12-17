@@ -1,3 +1,6 @@
+//Author: Bogdan Shkola
+//Representing main window of application.
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

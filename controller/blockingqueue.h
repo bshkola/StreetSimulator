@@ -1,3 +1,6 @@
+//Author: Bogdan Shkola
+//Representing blocking queue used between controller and view modules.
+
 #ifndef BLOCKINGQUEUE_H
 #define BLOCKINGQUEUE_H
 
@@ -19,8 +22,8 @@ private:
     std::deque<IEvent*>       d_queue;
 
 public:
-    void push(IEvent* const& value);
-    IEvent* pop();
+    void push(IEvent* const& value); // puts an event to the queue
+    IEvent* pop(); //waits for the new event appears in the queue and gets it
 
     static BlockingEventQueue& getInstance() {
         static BlockingEventQueue pInstance_;
