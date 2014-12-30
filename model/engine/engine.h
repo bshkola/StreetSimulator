@@ -8,6 +8,7 @@
 #include "../database/database.h"
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 class Engine
 {
@@ -27,6 +28,8 @@ private:
     
     bool finish_; //if true then stop calculations
     std::chrono::milliseconds startTime, endTime;
+
+    std::chrono::milliseconds millisecondsInQuantum;
 };
 
 #endif // ENGINE_H

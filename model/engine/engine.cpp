@@ -6,6 +6,7 @@ Engine::Engine(const ObjectsOnMap &objectsOnMap, ICameraNoise *iCameraNoise): ob
     //this -> objectsOnMap = objectsOnMap;
     
     finish_ = false;
+    millisecondsInQuantum = std::chrono::duration<int, std::milli> (100);
 }
 
 Engine::~Engine()
