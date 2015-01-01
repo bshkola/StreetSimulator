@@ -2,6 +2,7 @@
 #include "boardcell.h"
 #include "truckcaritem.h"
 #include <iostream>
+#include <vector>
 #include <QGraphicsRectItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QPainter>
@@ -14,7 +15,7 @@ namespace Ui {
     BoardScene::BoardScene() : QGraphicsScene()
     {
         boardSizeInPixels = 300;
-        movingItem_ = NULL;
+        activeMenuItem_ = NULL;
     }
 
     void BoardScene::updateBoardSize(int size) {
@@ -36,7 +37,17 @@ namespace Ui {
             }
         }
 
-        IMovableItem* truckCarItem = new TruckCarItem(0, 0, shiftSize, shiftSize);
+        std::vector<IMovableItem*> menuItems;
+        menuItems.push_back(new TruckCarItem(0, 0, shiftSize, shiftSize));
+        //menuItems.push_back(new TruckCarItem(0, 0, shiftSize, shiftSize));
+
+        foreach(IMovableItem* availableItem, menuItems) {
+            this->addItem(availableItem);
+            availableItem->setPos(QPointF(boardSizeInPixels, shiftSize * availableItem->getItemIndex()) + availableItem->boundingRect().center());
+            availableItem->setFlag(QGraphicsItem::ItemIsMovable);
+        }
+
+        /*IMovableItem* truckCarItem = new TruckCarItem(0, 0, shiftSize, shiftSize);
         this->addItem(truckCarItem);
         truckCarItem->setPos(QPointF(boardSizeInPixels, 0) + truckCarItem->boundingRect().center());
         truckCarItem->setFlag(QGraphicsItem::ItemIsMovable);
@@ -44,8 +55,7 @@ namespace Ui {
         truckCarItem = new TruckCarItem(0, 0, shiftSize, shiftSize);
         this->addItem(truckCarItem);
         truckCarItem->setPos(QPointF(boardSizeInPixels, 0) + truckCarItem->boundingRect().center());
-        truckCarItem->setFlag(QGraphicsItem::ItemIsMovable);
-
+        truckCarItem->setFlag(QGraphicsItem::ItemIsMovable);*/
     }
 
     void BoardScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
@@ -53,7 +63,7 @@ namespace Ui {
         if (item) {
             if(item->flags().testFlag(QGraphicsItem::ItemIsMovable))
             {
-                movingItem_ = (IMovableItem*)item;
+                activeMenuItem_ = (IMovableItem*)item;
             } else {
                 if (event->button() == Qt::LeftButton) {
                     ((BoardCell*)item)->setChecked(true);
@@ -68,9 +78,9 @@ namespace Ui {
     }
 
     void BoardScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-        if (movingItem_ && movingItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
+        if (activeMenuItem_ && activeMenuItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
             if (isInsideScene(event->scenePos())) {
-                movingItem_->setPos(event->scenePos() - movingItem_->boundingRect().center());
+                activeMenuItem_->setPos(event->scenePos() - activeMenuItem_->boundingRect().center());
             }/* else {
                 movingItem_->setPos(QPointF(boardSizeInPixels, 0) + movingItem_->boundingRect().center());
             }*/
@@ -78,28 +88,28 @@ namespace Ui {
     }
 
     void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
-        if (movingItem_ && movingItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
+        if (activeMenuItem_ && activeMenuItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
             if (isInsideBoard(event->scenePos())) {
                 int endX = (event->scenePos().x()) / shiftSize;
                 int endY = (event->scenePos().y()) / shiftSize;
-                movingItem_->setPos(endX * shiftSize, endY * shiftSize);
+                activeMenuItem_->setPos(endX * shiftSize, endY * shiftSize);
 
-                if (!movingItem_->isOnBoard()) {
-                    IMovableItem* truckCarCell = new TruckCarItem(0, 0, shiftSize, shiftSize);
-                    this->addItem(truckCarCell);
-                    truckCarCell->setPos(QPointF(boardSizeInPixels, 0) + truckCarCell->boundingRect().center());
-                    truckCarCell->setFlag(QGraphicsItem::ItemIsMovable);
+                if (!activeMenuItem_->isOnBoard()) {
+                    IMovableItem* menuItem = new TruckCarItem(0, 0, shiftSize, shiftSize);
+                    this->addItem(menuItem);
+                    menuItem->setPos(QPointF(boardSizeInPixels, shiftSize * menuItem->getItemIndex()) + menuItem->boundingRect().center());
+                    menuItem->setFlag(QGraphicsItem::ItemIsMovable);
                 }
 
-                movingItem_->setCoordinates(endX, endY);
+                activeMenuItem_->setCoordinates(endX, endY);
             } else {
-                if (movingItem_->isOnBoard()) {
-                    removeItem(movingItem_);
+                if (activeMenuItem_->isOnBoard()) {
+                    removeItem(activeMenuItem_);
                 } else {
-                    movingItem_->setPos(QPointF(boardSizeInPixels, 0) + movingItem_->boundingRect().center());
+                    activeMenuItem_->setPos(QPointF(boardSizeInPixels, 0) + activeMenuItem_->boundingRect().center());
                 }
             }
-            movingItem_ = NULL;
+            activeMenuItem_ = NULL;
         }
     }
 

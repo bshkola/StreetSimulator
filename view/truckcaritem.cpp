@@ -3,33 +3,43 @@
 #include <QPainter>
 
 namespace Ui {
+    /*TruckCarItem::TruckCarItem(int itemIndex, qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent) :
+        IMovableItem(x + width / 4, y + height / 4, width / 2, height / 2, parent) {
+        color_ = Qt::blue;
+        coordinates_.x = -1;
+        coordinates_.y = -1;
+        item_index_ = itemIndex;
+    }*/
+
     TruckCarItem::TruckCarItem(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent) :
         IMovableItem(x + width / 4, y + height / 4, width / 2, height / 2, parent) {
-        color = Qt::blue;
-        coordinates.x = -1;
-        coordinates.y = -1;
+        color_ = Qt::blue;
+        coordinates_.x = -1;
+        coordinates_.y = -1;
     }
 
     void TruckCarItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
-        painter->setBrush(QBrush(color));
+        painter->setBrush(QBrush(color_));
         painter->drawRect(this->rect());
     }
 
     void TruckCarItem::setCoordinates(int x, int y) {
-        coordinates.x = x;
-        coordinates.y = y;
+        coordinates_.x = x;
+        coordinates_.y = y;
     }
 
     Coordinates TruckCarItem::getCoordinates() {
-        return coordinates;
+        return coordinates_;
     }
 
-    using namespace std;
     bool TruckCarItem::isOnBoard() {
-        if (coordinates.x == -1 && coordinates.y == -1) {
+        if (coordinates_.x == -1 && coordinates_.y == -1) {
             return false;
         }
         return true;
     }
 
+    int TruckCarItem::getItemIndex() {
+        return item_index_;
+    }
 }

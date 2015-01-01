@@ -28,7 +28,7 @@ namespace Ui {
         int boardSizeInPixels;
         float shiftSize;
         int boardSize;
-        IMovableItem* movingItem_;
+        IMovableItem* activeMenuItem_;
 
         bool isInsideBoard(const QPointF& pos);
         bool isInsideScene(const QPointF& pos);
