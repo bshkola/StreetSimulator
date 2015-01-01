@@ -1,6 +1,7 @@
 #include "boardscene.h"
 #include "boardcell.h"
 #include "truckcaritem.h"
+#include "passengercaritem.h"
 #include <iostream>
 #include <vector>
 #include <QGraphicsRectItem>
@@ -27,7 +28,6 @@ namespace Ui {
         this->addRect(0, 0, boardSizeInPixels + 50, boardSizeInPixels, noPen, noBrush); // change 50 to a variable
         shiftSize = std::min(width(), height()) / size;
 
-
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
                 BoardCell* boardCell = new BoardCell(0, 0, shiftSize, shiftSize);
@@ -38,8 +38,8 @@ namespace Ui {
         }
 
         std::vector<IMovableItem*> menuItems;
-        menuItems.push_back(new TruckCarItem(0, 0, shiftSize, shiftSize));
-        //menuItems.push_back(new TruckCarItem(0, 0, shiftSize, shiftSize));
+        menuItems.push_back(new TruckCarItem(QRectF(shiftSize / 4, shiftSize / 4, shiftSize / 2, shiftSize / 2)));
+        menuItems.push_back(new PassengerCarItem(QRectF(shiftSize / 4, shiftSize / 4, shiftSize / 2, shiftSize / 2)));
 
         foreach(IMovableItem* availableItem, menuItems) {
             this->addItem(availableItem);
@@ -95,7 +95,7 @@ namespace Ui {
                 activeMenuItem_->setPos(endX * shiftSize, endY * shiftSize);
 
                 if (!activeMenuItem_->isOnBoard()) {
-                    IMovableItem* menuItem = new TruckCarItem(0, 0, shiftSize, shiftSize);
+                    IMovableItem* menuItem = activeMenuItem_->clone();// new TruckCarItem(0, 0, shiftSize, shiftSize);
                     this->addItem(menuItem);
                     menuItem->setPos(QPointF(boardSizeInPixels, shiftSize * menuItem->getItemIndex()) + menuItem->boundingRect().center());
                     menuItem->setFlag(QGraphicsItem::ItemIsMovable);
@@ -106,7 +106,7 @@ namespace Ui {
                 if (activeMenuItem_->isOnBoard()) {
                     removeItem(activeMenuItem_);
                 } else {
-                    activeMenuItem_->setPos(QPointF(boardSizeInPixels, 0) + activeMenuItem_->boundingRect().center());
+                    activeMenuItem_->setPos(QPointF(boardSizeInPixels, shiftSize * activeMenuItem_->getItemIndex()) + activeMenuItem_->boundingRect().center());
                 }
             }
             activeMenuItem_ = NULL;

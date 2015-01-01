@@ -11,8 +11,8 @@ namespace Ui {
         item_index_ = itemIndex;
     }*/
 
-    TruckCarItem::TruckCarItem(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent) :
-        IMovableItem(x + width / 4, y + height / 4, width / 2, height / 2, parent) {
+    TruckCarItem::TruckCarItem(const QRectF& rect, QGraphicsItem* parent) :
+        IMovableItem(rect, parent) {
         color_ = Qt::blue;
         coordinates_.x = -1;
         coordinates_.y = -1;
@@ -41,5 +41,9 @@ namespace Ui {
 
     int TruckCarItem::getItemIndex() {
         return item_index_;
+    }
+
+    IMovableItem* TruckCarItem::clone() {
+        return new TruckCarItem(this->rect());
     }
 }
