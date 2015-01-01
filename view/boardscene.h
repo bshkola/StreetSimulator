@@ -5,6 +5,7 @@
 #define BOARDSCENE_H
 
 #include <QGraphicsScene>
+#include "imovableitem.h"
 
 namespace Ui {
     class BoardScene : public QGraphicsScene
@@ -27,7 +28,7 @@ namespace Ui {
         int boardSizeInPixels;
         float shiftSize;
         int boardSize;
-        QGraphicsItem* movingItem_;
+        IMovableItem* movingItem_;
 
         bool isInsideBoard(const QPointF& pos);
         bool isInsideScene(const QPointF& pos);

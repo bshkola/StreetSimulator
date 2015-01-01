@@ -50,7 +50,8 @@ SOURCES += main.cpp\
     controller/strategies/startsimulationstrategy.cpp \
     detection/cameradetectionimpl.cpp \
     detection/cameranoiseimpl.cpp \
-    view/truckcarcell.cpp
+    view/truckcaritem.cpp \
+    view/imovableitem.cpp
 
 
 
@@ -112,7 +113,8 @@ HEADERS  += controller/icontroller.h \
     detection/cameraobservation.h \
     detection/icameradetection.h \
     detection/icameranoise.h \
-    view/truckcarcell.h
+    view/truckcaritem.h \
+    view/imovableitem.h
 
 
 

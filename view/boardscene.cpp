@@ -1,6 +1,6 @@
 #include "boardscene.h"
 #include "boardcell.h"
-#include "truckcarcell.h"
+#include "truckcaritem.h"
 #include <iostream>
 #include <QGraphicsRectItem>
 #include <QGraphicsSceneMouseEvent>
@@ -23,7 +23,7 @@ namespace Ui {
         QPen noPen(Qt::NoPen);
         QBrush noBrush(Qt::NoBrush);
 
-        this->addRect(0, 0, boardSizeInPixels, boardSizeInPixels, noPen, noBrush);
+        this->addRect(0, 0, boardSizeInPixels + 50, boardSizeInPixels, noPen, noBrush); // change 50 to a variable
         shiftSize = std::min(width(), height()) / size;
 
 
@@ -36,10 +36,15 @@ namespace Ui {
             }
         }
 
-        TruckCarCell* truckCarCell = new TruckCarCell(0, 0, shiftSize, shiftSize);
-        this->addItem(truckCarCell);
-        truckCarCell->setPos(QPointF(boardSizeInPixels, 0) + truckCarCell->boundingRect().center());
-        truckCarCell->setFlag(QGraphicsItem::ItemIsMovable);
+        IMovableItem* truckCarItem = new TruckCarItem(0, 0, shiftSize, shiftSize);
+        this->addItem(truckCarItem);
+        truckCarItem->setPos(QPointF(boardSizeInPixels, 0) + truckCarItem->boundingRect().center());
+        truckCarItem->setFlag(QGraphicsItem::ItemIsMovable);
+
+        truckCarItem = new TruckCarItem(0, 0, shiftSize, shiftSize);
+        this->addItem(truckCarItem);
+        truckCarItem->setPos(QPointF(boardSizeInPixels, 0) + truckCarItem->boundingRect().center());
+        truckCarItem->setFlag(QGraphicsItem::ItemIsMovable);
 
     }
 
@@ -48,18 +53,17 @@ namespace Ui {
         if (item) {
             if(item->flags().testFlag(QGraphicsItem::ItemIsMovable))
             {
-                std::cout << "Mouse Pressed on Movable Item" << std::endl;
-                movingItem_ = item;
-            }
-
-            if (event->button() == Qt::LeftButton) {
-                ((BoardCell*)item)->setChecked(true);
-                BlockingEventQueue::getInstance().push(new StreetFieldAddedEvent(((BoardCell*)item)->getCoordinates()));
+                movingItem_ = (IMovableItem*)item;
             } else {
-                ((BoardCell*)item)->setChecked(false);
-                BlockingEventQueue::getInstance().push(new StreetFieldRemovedEvent(((BoardCell*)item)->getCoordinates()));
+                if (event->button() == Qt::LeftButton) {
+                    ((BoardCell*)item)->setChecked(true);
+                    BlockingEventQueue::getInstance().push(new StreetFieldAddedEvent(((BoardCell*)item)->getCoordinates()));
+                } else {
+                    ((BoardCell*)item)->setChecked(false);
+                    BlockingEventQueue::getInstance().push(new StreetFieldRemovedEvent(((BoardCell*)item)->getCoordinates()));
+                }
+                item->update();
             }
-            item->update();
         }
     }
 
@@ -67,31 +71,34 @@ namespace Ui {
         if (movingItem_ && movingItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
             if (isInsideScene(event->scenePos())) {
                 movingItem_->setPos(event->scenePos() - movingItem_->boundingRect().center());
-                std::cout << "inside" << std::endl;
             }/* else {
                 movingItem_->setPos(QPointF(boardSizeInPixels, 0) + movingItem_->boundingRect().center());
-                std::cout << "outside" << std::endl;
             }*/
         }
-        std::cout << "event" << std::endl;
     }
 
     void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
         if (movingItem_ && movingItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
-            //QPointF pos = movingItem_->pos();
-
             if (isInsideBoard(event->scenePos())) {
                 int endX = (event->scenePos().x()) / shiftSize;
                 int endY = (event->scenePos().y()) / shiftSize;
-                std::cout << "x >> " << event->scenePos().x() << " y >> " << event->scenePos().y() << std::endl;
-                std::cout << "x >> " << endX << " y >> " << endY << std::endl;
                 movingItem_->setPos(endX * shiftSize, endY * shiftSize);
-                std::cout << "x >> " << movingItem_->pos().x() << " y >> " << movingItem_->pos().y() << std::endl;
-                std::cout << "shift >> " << shiftSize << std::endl;
-            } else {
-                movingItem_->setPos(QPointF(boardSizeInPixels, 0) + movingItem_->boundingRect().center());
-            }
 
+                if (!movingItem_->isOnBoard()) {
+                    IMovableItem* truckCarCell = new TruckCarItem(0, 0, shiftSize, shiftSize);
+                    this->addItem(truckCarCell);
+                    truckCarCell->setPos(QPointF(boardSizeInPixels, 0) + truckCarCell->boundingRect().center());
+                    truckCarCell->setFlag(QGraphicsItem::ItemIsMovable);
+                }
+
+                movingItem_->setCoordinates(endX, endY);
+            } else {
+                if (movingItem_->isOnBoard()) {
+                    removeItem(movingItem_);
+                } else {
+                    movingItem_->setPos(QPointF(boardSizeInPixels, 0) + movingItem_->boundingRect().center());
+                }
+            }
             movingItem_ = NULL;
         }
     }

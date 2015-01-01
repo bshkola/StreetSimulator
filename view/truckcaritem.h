@@ -1,19 +1,20 @@
-#ifndef TRUCKCARCELL_H
-#define TRUCKCARCELL_H
+#ifndef TRUCKCARITEM_H
+#define TRUCKCARITEM_H
 
-#include <QGraphicsRectItem>
 #include "../common/coordinates.h"
+#include "imovableitem.h"
 
 namespace Ui {
 
-    class TruckCarCell : public QGraphicsRectItem
+    class TruckCarItem : public IMovableItem
     {
     public:
-        TruckCarCell(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
+        TruckCarItem(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
 
         void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
         void setCoordinates(int x, int y); //sets coordinates metadata to the cell
         Coordinates getCoordinates();
+        bool isOnBoard();
 
     private:
         Coordinates coordinates;
