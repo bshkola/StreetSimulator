@@ -24,9 +24,14 @@ namespace Ui {
     public slots:
 
     private:
-        int borderSize;
+        int boardSizeInPixels;
         float shiftSize;
         int boardSize;
+        QGraphicsItem* movingItem_;
+
+        bool isInsideBoard(const QPointF& pos);
+        bool isInsideScene(const QPointF& pos);
+//        QPointF getPositionInsideBoard(const QPointF& screenPosition);
 
     };
 }

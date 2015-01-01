@@ -49,7 +49,8 @@ SOURCES += main.cpp\
     common/events/startsimulationevent.cpp \
     controller/strategies/startsimulationstrategy.cpp \
     detection/cameradetectionimpl.cpp \
-    detection/cameranoiseimpl.cpp
+    detection/cameranoiseimpl.cpp \
+    view/truckcarcell.cpp
 
 
 
@@ -110,7 +111,8 @@ HEADERS  += controller/icontroller.h \
     detection/cameranoiseimpl.h \
     detection/cameraobservation.h \
     detection/icameradetection.h \
-    detection/icameranoise.h
+    detection/icameranoise.h \
+    view/truckcarcell.h
 
 
 
