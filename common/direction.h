@@ -2,10 +2,10 @@
 #define DIRECTION_H
 
 enum Direction {
-    north = 0;
-    east  = 1;
-    south = 2;
-    west  = 3;
+    NORTH = 0;
+    EAST  = 1;
+    SOUTH = 2;
+    WEST  = 3;
 };
 
 #endif // DIRECTION_H
