@@ -6,7 +6,7 @@
 
 #include "icameranoise.h"
 
-class CameraNoiseImpl : ICameraNoise {
+class CameraNoiseImpl : public ICameraNoise {
 public:
     CameraNoiseImpl();
     virtual ~CameraNoiseImpl();
