@@ -5,35 +5,41 @@
 #define BOARDSCENE_H
 
 #include <QGraphicsScene>
-#include "imovableitem.h"
+#include "items/imovableitem.h"
 
-namespace Ui {
-    class BoardScene : public QGraphicsScene
-    {
-        Q_OBJECT
-    public:
-        explicit BoardScene();
+class IMovableItem;
 
-        void updateBoardSize(int size); //updates the resolution of the square board
-        void mousePressEvent(QGraphicsSceneMouseEvent *event);
-        void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-    protected:
+class BoardScene : public QGraphicsScene
+{
+    Q_OBJECT
+public:
+    explicit BoardScene();
 
-    signals:
+    void updateBoardSize(int size); //updates the resolution of the square board
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
-    public slots:
+    bool isInsideBoard(const QPointF& pos);
+    bool isInsideScene(const QPointF& pos);
 
-    private:
-        int boardSizeInPixels;
-        float shiftSize;
-        int boardSize;
-        IMovableItem* activeMenuItem_;
+    QPointF getDiscretePosition(const QPointF& point);
+protected:
 
-        bool isInsideBoard(const QPointF& pos);
-        bool isInsideScene(const QPointF& pos);
+signals:
+
+public slots:
+
+private:
+    int boardSizeInPixels;
+    float shiftSize;
+    int boardSize;
+    IMovableItem* activeMenuItem_;
+    IMovableItem* lastSelectedItem_;
+
+
 //        QPointF getPositionInsideBoard(const QPointF& screenPosition);
 
-    };
-}
+};
+
 #endif // BOARDSCENE_H

@@ -50,11 +50,16 @@ SOURCES += main.cpp\
     controller/strategies/startsimulationstrategy.cpp \
     detection/cameradetectionimpl.cpp \
     detection/cameranoiseimpl.cpp \
-    view/truckcaritem.cpp \
-    view/imovableitem.cpp \
-    view/passengercaritem.cpp \
-    view/destinationitem.cpp \
-    view/cameraitem.cpp
+    view/items/truckcaritem.cpp \
+    view/items/imovableitem.cpp \
+    view/items/passengercaritem.cpp \
+    view/items/destinationitem.cpp \
+    view/items/cameraitem.cpp \
+    view/mouseeventhandler/mouseeventhandler.cpp \
+    view/mouseeventhandler/cameramouseeventhandler.cpp \
+    view/mouseeventhandler/trafficparticipansmouseeventhandler.cpp \
+    view/mouseeventhandler/destinationmouseeventhandler.cpp \
+    view/items/itrafficparticipantitem.cpp
 
 
 
@@ -116,11 +121,16 @@ HEADERS  += controller/icontroller.h \
     detection/cameraobservation.h \
     detection/icameradetection.h \
     detection/icameranoise.h \
-    view/truckcaritem.h \
-    view/imovableitem.h \
-    view/passengercaritem.h \
-    view/destinationitem.h \
-    view/cameraitem.h
+    view/items/truckcaritem.h \
+    view/items/imovableitem.h \
+    view/items/passengercaritem.h \
+    view/items/destinationitem.h \
+    view/items/cameraitem.h \
+    view/mouseeventhandler/mouseeventhandler.h \
+    view/mouseeventhandler/cameramouseeventhandler.h \
+    view/mouseeventhandler/trafficparticipansmouseeventhandler.h \
+    view/mouseeventhandler/destinationmouseeventhandler.h \
+    view/items/itrafficparticipantitem.h
 
 
 

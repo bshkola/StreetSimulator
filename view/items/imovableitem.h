@@ -3,6 +3,9 @@
 
 #include <QGraphicsRectItem>
 #include <iostream>
+#include "../mouseeventhandler/mouseeventhandler.h"
+
+class MouseEventHandler;
 
 class IMovableItem : public QGraphicsRectItem
 {
@@ -15,6 +18,9 @@ public:
     virtual int getItemIndex() = 0;
     virtual bool canBeRemoved() = 0;
     virtual bool hasDiscretePosition() = 0;
+    virtual MouseEventHandler* getMouseEventHandler() = 0;
+    virtual void setSelected(bool isSelected) = 0;
+
 
     virtual IMovableItem* clone() = 0;
 };

@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), IView(), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    boardScene = new Ui::BoardScene();
+    boardScene = new BoardScene();
     ui->graphicsView->setScene(boardScene);
     this->setWindowTitle("Editor");
     this->showMaximized();
