@@ -10,6 +10,8 @@
 
 int main(int argc, char *argv[])
 {
+    srand(time(NULL)); //initialize random seed
+
     QApplication a(argc, argv);
     IView* window = new MainWindow();
     window->show();
