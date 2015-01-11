@@ -3,7 +3,7 @@
 #ifndef DEADEND_H
 #define DEADEND_H
 
-struct DeadEnd : Street {
+struct DeadEnd : public Street {
 };
 
 #endif // DEADEND_H

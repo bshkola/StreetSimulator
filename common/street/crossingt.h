@@ -3,7 +3,7 @@
 #ifndef CROSSINGT_H
 #define CROSSINGT_H
 
-struct CrossingT : Street {
+struct CrossingT : public Street {
 };
 
 #endif // CROSSINGT_H
