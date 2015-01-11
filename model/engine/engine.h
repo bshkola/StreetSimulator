@@ -27,9 +27,11 @@ private:
     //TODO referencja na widok
     
     bool finish_; //if true then stop calculations
+    
+    //auxillary variables for time calculations
     std::chrono::milliseconds startTime, endTime;
-
     std::chrono::milliseconds millisecondsInQuantum;
+    std::chrono::milliseconds camerasTrigger, camerasTime;
 };
 
 #endif // ENGINE_H
