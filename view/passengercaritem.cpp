@@ -4,13 +4,6 @@
 
 namespace Ui {
 
-    /*PassangerCarItem::PassangerCarItem(const QRect& rect, QGraphicsItem* parent) :
-        IMovableItem(x + width / 4, y + height / 4, width / 2, height / 2, parent) {
-        color_ = Qt::red;
-        coordinates_.x = -1;
-        coordinates_.y = -1;
-    }*/
-
     PassengerCarItem::PassengerCarItem(const QRectF& rect, QGraphicsItem* parent) :
         IMovableItem(rect, parent) {
         color_ = Qt::red;
@@ -43,8 +36,17 @@ namespace Ui {
         return item_index_;
     }
 
+    bool PassengerCarItem::canBeRemoved() {
+        return true;
+    }
+
     IMovableItem* PassengerCarItem::clone() {
         return new PassengerCarItem(this->rect());
     }
+
+    bool PassengerCarItem::hasDiscretePosition() {
+        return true;
+    }
+
 
 }

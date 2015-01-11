@@ -1,16 +1,14 @@
-#ifndef PASSENGERCARITEM_H
-#define PASSENGERCARITEM_H
+#ifndef CAMERAITEM_H
+#define CAMERAITEM_H
 
 #include "../common/coordinates.h"
 #include "imovableitem.h"
 
 namespace Ui {
-
-    class PassengerCarItem : public IMovableItem
+    class CameraItem : public IMovableItem
     {
     public:
-        //PassangerCarItem(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
-        PassengerCarItem(const QRectF& rect, QGraphicsItem* parent = 0);
+        CameraItem(const QRectF& rect, QGraphicsItem* parent = 0);
 
         void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
         void setCoordinates(int x, int y); //sets coordinates metadata to the cell
@@ -21,14 +19,13 @@ namespace Ui {
         IMovableItem* clone();
         bool hasDiscretePosition();
 
-
     private:
         Coordinates coordinates_;
         Qt::GlobalColor color_;
 
-        const static int item_index_ = 1;
+        const static int item_index_ = 3;
     };
 
 }
 
-#endif // PASSENGERCARITEM_H
+#endif // CAMERAITEM_H

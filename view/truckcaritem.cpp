@@ -43,7 +43,17 @@ namespace Ui {
         return item_index_;
     }
 
+    bool TruckCarItem::canBeRemoved() {
+        return true;
+    }
+
     IMovableItem* TruckCarItem::clone() {
         return new TruckCarItem(this->rect());
     }
+
+    bool TruckCarItem::hasDiscretePosition() {
+        return true;
+    }
+
+
 }

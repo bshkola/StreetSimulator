@@ -17,8 +17,9 @@ namespace Ui {
         Coordinates getCoordinates();
         bool isOnBoard();
         int getItemIndex();
-
+        bool canBeRemoved();
         IMovableItem* clone();
+        bool hasDiscretePosition();
 
     private:
         Coordinates coordinates_;

@@ -52,7 +52,9 @@ SOURCES += main.cpp\
     detection/cameranoiseimpl.cpp \
     view/truckcaritem.cpp \
     view/imovableitem.cpp \
-    view/passengercaritem.cpp
+    view/passengercaritem.cpp \
+    view/destinationitem.cpp \
+    view/cameraitem.cpp
 
 
 
@@ -116,7 +118,9 @@ HEADERS  += controller/icontroller.h \
     detection/icameranoise.h \
     view/truckcaritem.h \
     view/imovableitem.h \
-    view/passengercaritem.h
+    view/passengercaritem.h \
+    view/destinationitem.h \
+    view/cameraitem.h
 
 
 
