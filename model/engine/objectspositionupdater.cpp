@@ -10,3 +10,12 @@ ObjectsPositionUpdater::~ObjectsPositionUpdater()
 
 }
 
+void ObjectsPositionUpdater::update()
+{
+    //TODO
+}
+
+list<TrafficParticipant*> &ObjectsPositionUpdater::getTrafficParticipants()
+{
+   return trafficParticipants;
+}

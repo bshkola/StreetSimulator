@@ -31,7 +31,7 @@ public:
     void deleteObject(Cordination location, Position source, Position destinatios, float speed = 1); //erease object which has this arguments from list
     void deleteCamera(Position location, float azimuth, float angle, float range); //erase camera which has this argument from list
     list<TrafficParticipant*> getObjects();
-    list<Camera*> getCameras();
+    list<Camera*> getCameras() const;
     Board *getBoard();
 private:
     list<TrafficParticipant*> objects;

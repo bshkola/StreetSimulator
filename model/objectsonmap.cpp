@@ -52,7 +52,7 @@ list<TrafficParticipant*> ObjectsOnMap::getObjects()
       return objects;
 }
 
-list<Camera*> ObjectsOnMap::getCameras()
+list<Camera*> ObjectsOnMap::getCameras() const
 {
     return cameras;
 }

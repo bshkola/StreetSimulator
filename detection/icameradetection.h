@@ -9,7 +9,7 @@
 #include "cameraobservation.h"
 #include "icameranoise.h"
 
-class ICameraDetection {
+class ICameraDetection{
 public:
     ICameraDetection(ICameraNoise *NoiseGenerator): NoiseGenerator(NoiseGenerator) {};
     virtual ~ICameraDetection() { delete NoiseGenerator; };

@@ -4,7 +4,7 @@
 #define DATABASE_H
 
 #include "list"
-#include "../../common/camera.h"
+#include "../../detection/cameraobservation.h"
 
 using namespace std;
 class Database
@@ -13,9 +13,11 @@ public:
     Database();
     ~Database();
 
-    void addCamerasToDatabase(const list<Camera> cameras);  //add cameras to database, insert information will push suite of camera
-    void saveMeasurent(const Camera camera); //save information to database
-    void getFromDB(const Camera camera);   //get information from database paramerts - about which camera we would get information
+    void addCamerasToDatabase();  //add cameras to database, insert information will push suite of camera
+    void saveMeasurent(); //save information to database
+    list<CameraObservation*> &getCameraObservation();   //get information from database paramerts - about which camera we would get information
+private:
+    list<CameraObservation*> cameraObservations; //list of result measured by camera
 };
 
 #endif // DATABASE_H

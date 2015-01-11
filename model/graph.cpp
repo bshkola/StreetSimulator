@@ -33,6 +33,16 @@ Vertex Graph::getVertex(const NameOfVertex vert)
    return *foundVertex;
 }
 
+bool Graph::isExist(const NameOfVertex &coor)
+{   //done
+    list<Vertex>::iterator finder = find(vertices.begin(), vertices.end(), coor);
+    if(finder != vertices.end()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 Vertex Graph::end()
 {   //done
     return *(vertices.end());

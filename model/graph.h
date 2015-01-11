@@ -12,7 +12,7 @@
 using namespace  std;
 
 class Vertex;
-typedef pair<int, int> NameOfVertex;
+typedef pair<int, int> NameOfVertex; //nazwa wierzcholka, nazwa wierzcholka sa to wspolrzedne go na mapie
 
 class Graph
 {
@@ -21,6 +21,7 @@ public:
     ~Graph();
 
     void addVertex(const NameOfVertex &coor, bool isRoad); //dodaje nowy wierzcholyk do grafu
+    bool isExist(const NameOfVertex &coor); //is this vertix already exist in Graph?
     void addEdge(const NameOfVertex source, int si, const NameOfVertex dest, int di); //dodaje krawedz pomiedzy wierzcholkami,
         //si di - mowia pod ktory numer dodajemy dana krawedz np si = 2 ==> edge[2] = source
     Vertex getVertex(const NameOfVertex vert); //zwraca wierzcholek o tych koordynatach

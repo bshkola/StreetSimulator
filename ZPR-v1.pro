@@ -52,7 +52,9 @@ SOURCES += main.cpp\
     detection/cameranoiseimpl.cpp \
     view/truckcaritem.cpp \
     view/imovableitem.cpp \
-    view/passengercaritem.cpp
+    view/passengercaritem.cpp \
+    model/engine/engine.cpp \
+    model/engine/objectspositionupdater.cpp
 
 
 
@@ -116,7 +118,9 @@ HEADERS  += controller/icontroller.h \
     detection/icameranoise.h \
     view/truckcaritem.h \
     view/imovableitem.h \
-    view/passengercaritem.h
+    view/passengercaritem.h \
+    model/engine/engine.h \
+    model/engine/objectspositionupdater.h
 
 
 
