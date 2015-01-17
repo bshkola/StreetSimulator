@@ -2,7 +2,7 @@
 #define CARADDEDEVENT_H
 
 #include "ievent.h"
-#include "../../common/coordinates.h"
+#include "../../common/types.h"
 
 class CarAddedEvent : public IEvent
 {

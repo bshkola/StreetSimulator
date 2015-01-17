@@ -5,7 +5,7 @@
 #define BOARDCELL_H
 
 #include <QGraphicsRectItem>
-#include "../common/coordinates.h"
+#include "../common/types.h"
 
 class BoardCell : public QGraphicsRectItem
 {

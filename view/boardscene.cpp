@@ -43,7 +43,7 @@ void BoardScene::updateBoardSize(int size) {
     std::vector<IMovableItem*> menuItems;
     menuItems.push_back(new TruckCarItem(QRectF(shiftSize / 4, shiftSize / 4, shiftSize / 2, shiftSize / 2)));
     menuItems.push_back(new PassengerCarItem(QRectF(shiftSize / 4, shiftSize / 4, shiftSize / 2, shiftSize / 2)));
-    menuItems.push_back(new CameraItem(QRectF(shiftSize / 4, shiftSize / 4, shiftSize / 2, shiftSize / 2)));
+    menuItems.push_back(new CameraItem(QRectF(shiftSize * 3 / 8, shiftSize * 3 / 8, shiftSize / 8, shiftSize / 8)));
 
     foreach(IMovableItem* availableItem, menuItems) {
         this->addItem(availableItem);
@@ -87,7 +87,7 @@ void BoardScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
 
 void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
     if (activeMenuItem_ && activeMenuItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
-        activeMenuItem_->getMouseEventHandler()->handleRelease(event, this, activeMenuItem_); //TODO check for left click
+        activeMenuItem_->getMouseEventHandler()->handleRelease(event, this, activeMenuItem_); //TODO check for left/right click
         if (isInsideBoard(event->scenePos())) {
             activeMenuItem_->setSelected(true);
             if (activeMenuItem_ != lastSelectedItem_) {
@@ -103,92 +103,8 @@ void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
         lastSelectedItem_ = activeMenuItem_;
         activeMenuItem_ = NULL;
     }
-
-    /*
-        if (isInsideBoard(event->scenePos())) {
-            if (activeMenuItem_->hasDiscretePosition()) {
-                int endX = (event->scenePos().x()) / shiftSize;
-                int endY = (event->scenePos().y()) / shiftSize;
-                activeMenuItem_->setPos(endX * shiftSize, endY * shiftSize);
-                if (!isInsideBoard(event->buttonDownScenePos(Qt::LeftButton))) {
-                    DestinationItem* dest = new DestinationItem(activeMenuItem_, QRectF(shiftSize *3/8, shiftSize *3/8, shiftSize / 8, shiftSize / 8));
-                    this->addItem(dest);
-                    dest->setPos(QPointF(endX * shiftSize, endY * shiftSize));
-                    dest->setFlag(QGraphicsItem::ItemIsMovable);
-                }
-            }
-        } else {
-            if (!activeMenuItem_->canBeRemoved()) {
-                activeMenuItem_->setPos(0, 0);
-            } else {
-                removeItem(activeMenuItem_);
-            }
-        }
-        activeMenuItem_ = NULL;
-    }
-    */
-
 }
 
-
-/*void BoardScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-    QGraphicsItem *item = this->itemAt(event->scenePos(), QTransform());
-    if (item) {
-        if(item->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
-            if (isInsideBoard(event->scenePos())) {
-                activeMenuItem_ = (IMovableItem*)item;
-            }
-            else {
-                activeMenuItem_ = ((IMovableItem*)item)->clone();
-                this->addItem(activeMenuItem_);
-                activeMenuItem_->setPos(QPointF(boardSizeInPixels, shiftSize * activeMenuItem_->getItemIndex()));
-                activeMenuItem_->setFlag(QGraphicsItem::ItemIsMovable);
-            }
-        } else {
-            if (event->button() == Qt::LeftButton) {
-                ((BoardCell*)item)->setChecked(true);
-                BlockingEventQueue::getInstance().push(new StreetFieldAddedEvent(((BoardCell*)item)->getCoordinates()));
-            } else {
-                ((BoardCell*)item)->setChecked(false);
-                BlockingEventQueue::getInstance().push(new StreetFieldRemovedEvent(((BoardCell*)item)->getCoordinates()));
-            }
-            item->update();
-        }
-    }
-}
-
-void BoardScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event) {
-    if (activeMenuItem_ && activeMenuItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
-        if (isInsideScene(event->scenePos())) {
-            activeMenuItem_->setPos(event->scenePos() - activeMenuItem_->boundingRect().center());
-        }
-    }
-}
-
-void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
-    if (activeMenuItem_ && activeMenuItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
-        if (isInsideBoard(event->scenePos())) {
-            if (activeMenuItem_->hasDiscretePosition()) {
-                int endX = (event->scenePos().x()) / shiftSize;
-                int endY = (event->scenePos().y()) / shiftSize;
-                activeMenuItem_->setPos(endX * shiftSize, endY * shiftSize);
-                if (!isInsideBoard(event->buttonDownScenePos(Qt::LeftButton))) {
-                    DestinationItem* dest = new DestinationItem(activeMenuItem_, QRectF(shiftSize *3/8, shiftSize *3/8, shiftSize / 8, shiftSize / 8));
-                    this->addItem(dest);
-                    dest->setPos(QPointF(endX * shiftSize, endY * shiftSize));
-                    dest->setFlag(QGraphicsItem::ItemIsMovable);
-                }
-            }
-        } else {
-            if (!activeMenuItem_->canBeRemoved()) {
-                activeMenuItem_->setPos(0, 0);
-            } else {
-                removeItem(activeMenuItem_);
-            }
-        }
-        activeMenuItem_ = NULL;
-    }
-}*/
 
 bool BoardScene::isInsideBoard(const QPointF& pos) {
     if (pos.x() >= 0 && pos.x() < boardSizeInPixels && pos.y() >= 0 && pos.y() < boardSizeInPixels) {
@@ -210,4 +126,5 @@ QPointF BoardScene::getDiscretePosition(const QPointF& point) {
     int indexY = point.y() / shiftSize;
     return QPointF(indexX * shiftSize, indexY * shiftSize);
 }
+
 

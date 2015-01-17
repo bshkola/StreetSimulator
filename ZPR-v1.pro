@@ -59,7 +59,13 @@ SOURCES += main.cpp\
     view/mouseeventhandler/cameramouseeventhandler.cpp \
     view/mouseeventhandler/trafficparticipansmouseeventhandler.cpp \
     view/mouseeventhandler/destinationmouseeventhandler.cpp \
-    view/items/itrafficparticipantitem.cpp
+    view/items/itrafficparticipantitem.cpp \
+    common/events/cameraaddedevent.cpp \
+    common/events/camerareplacedevent.cpp \
+    common/events/cameraremovedevent.cpp \
+    controller/strategies/cameraaddedstrategy.cpp \
+    controller/strategies/cameraremovedstrategy.cpp \
+    controller/strategies/camerareplacedstrategy.cpp
 
 
 
@@ -72,7 +78,6 @@ HEADERS  += controller/icontroller.h \
     view/boardcell.h \
     view/mainwindow.h \
     controller/blockingqueue.h \
-    common/coordinates.h \
     view/iview.h \
     model/convert.h \
     model/dijkstra.h \
@@ -87,7 +92,6 @@ HEADERS  += controller/icontroller.h \
     common/events/streetfieldremovedevent.h \
     common/events/windowclosedevent.h \
     common/board.h \
-    common/coordinates.h \
     controller/strategies/applicationstartedstrategy.h \
     controller/strategies/boardsizechangedstrategy.h \
     controller/strategies/caraddedstrategy.h \
@@ -130,7 +134,14 @@ HEADERS  += controller/icontroller.h \
     view/mouseeventhandler/cameramouseeventhandler.h \
     view/mouseeventhandler/trafficparticipansmouseeventhandler.h \
     view/mouseeventhandler/destinationmouseeventhandler.h \
-    view/items/itrafficparticipantitem.h
+    view/items/itrafficparticipantitem.h \
+    common/events/cameraaddedevent.h \
+    common/events/camerareplacedevent.h \
+    common/events/cameraremovedevent.h \
+    common/types.h \
+    controller/strategies/cameraaddedstrategy.h \
+    controller/strategies/cameraremovedstrategy.h \
+    controller/strategies/camerareplacedstrategy.h
 
 
 

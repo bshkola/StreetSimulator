@@ -5,6 +5,7 @@
 #define IEVENT_H
 
 #include <QObject>
+#include "../../common/types.h"
 
 class IEvent : public QObject
 {

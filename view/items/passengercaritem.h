@@ -1,7 +1,7 @@
 #ifndef PASSENGERCARITEM_H
 #define PASSENGERCARITEM_H
 
-#include "../../common/coordinates.h"
+#include "../../common/types.h"
 #include "itrafficparticipantitem.h"
 
 class PassengerCarItem : public ITrafficParticipantItem

@@ -1,7 +1,7 @@
 #ifndef CAMERAITEM_H
 #define CAMERAITEM_H
 
-#include "../../common/coordinates.h"
+#include "../../common/types.h"
 #include "imovableitem.h"
 
 class CameraItem : public IMovableItem

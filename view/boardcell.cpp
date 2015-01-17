@@ -29,8 +29,8 @@ void BoardCell::paint(QPainter* painter, const QStyleOptionGraphicsItem* option,
 }
 
 void BoardCell::setCoordinates(int x, int y) {
-    coordinates.x = x;
-    coordinates.y = y;
+    coordinates.first = x;
+    coordinates.second = y;
 }
 
 Coordinates BoardCell::getCoordinates() {

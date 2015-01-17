@@ -7,8 +7,8 @@
 DestinationItem::DestinationItem(const QRectF& rect, ITrafficParticipantItem* parent) :
     IMovableItem(rect, parent) {
     color_ = Qt::black;
-    coordinates_.x = -1;
-    coordinates_.y = -1;
+    coordinates_.first = -1;
+    coordinates_.second = -1;
     selected_ = false;
 
     parentItem_ = parent;
@@ -30,7 +30,7 @@ void DestinationItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* o
 //    }
 
 bool DestinationItem::isOnBoard() {
-    if (coordinates_.x == -1 && coordinates_.y == -1) {
+    if (coordinates_.first == -1 && coordinates_.second == -1) {
         return false;
     }
     return true;

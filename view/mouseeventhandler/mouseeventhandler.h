@@ -3,6 +3,7 @@
 
 #include "../boardscene.h"
 #include <QGraphicsSceneMouseEvent>
+#include "../../controller/blockingqueue.h"
 
 class BoardScene;
 class IMovableItem;

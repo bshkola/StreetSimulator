@@ -10,8 +10,8 @@ PassengerCarItem::PassengerCarItem(const QRectF& rect, QGraphicsItem* parent) :
     unselectedColor_ = Qt::darkRed;
     color_ = unselectedColor_;
 
-    coordinates_.x = -1;
-    coordinates_.y = -1;
+    coordinates_.first = -1;
+    coordinates_.second = -1;
 }
 
 void PassengerCarItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
@@ -20,8 +20,8 @@ void PassengerCarItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* 
 }
 
 void PassengerCarItem::setCoordinates(int x, int y) {
-    coordinates_.x = x;
-    coordinates_.y = y;
+    coordinates_.first = x;
+    coordinates_.second = y;
 }
 
 Coordinates PassengerCarItem::getCoordinates() {
@@ -29,7 +29,7 @@ Coordinates PassengerCarItem::getCoordinates() {
 }
 
 bool PassengerCarItem::isOnBoard() {
-    if (coordinates_.x == -1 && coordinates_.y == -1) {
+    if (coordinates_.first == -1 && coordinates_.second == -1) {
         return false;
     }
     return true;

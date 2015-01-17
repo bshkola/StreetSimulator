@@ -24,6 +24,7 @@ public:
     bool isInsideScene(const QPointF& pos);
 
     QPointF getDiscretePosition(const QPointF& point);
+
 protected:
 
 signals:

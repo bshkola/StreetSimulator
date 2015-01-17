@@ -2,6 +2,7 @@
 #define MODELIMPL_H
 
 #include "imodel.h"
+#include "objectsonmap.h"
 
 class ModelImpl : public IModel
 {
@@ -10,9 +11,12 @@ public:
     virtual ~ModelImpl();
 
     Board& getBoard();
+    void addCamera(Coordinates coordinates);
+    void replaceCamera(Coordinates startCoordinates, Coordinates finishCoordinates);
+    void removeCamera(Coordinates coordinates);
 
 private:
-     Board board;
+    ObjectsOnMap objectsOnMap_;
 };
 
 #endif // MODELIMPL_H

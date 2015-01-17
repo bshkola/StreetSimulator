@@ -2,7 +2,7 @@
 #define STREETFIELDADDEDEVENT_H
 
 #include "ievent.h"
-#include "../../common/coordinates.h"
+#include "../../common/types.h"
 
 class StreetFieldAddedEvent : public IEvent
 {

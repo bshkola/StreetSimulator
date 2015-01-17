@@ -1,7 +1,7 @@
 #ifndef TRUCKCARITEM_H
 #define TRUCKCARITEM_H
 
-#include "../../common/coordinates.h"
+#include "../../common/types.h"
 #include "itrafficparticipantitem.h"
 
 class TruckCarItem : public ITrafficParticipantItem

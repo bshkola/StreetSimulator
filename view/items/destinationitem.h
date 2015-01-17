@@ -1,7 +1,7 @@
 #ifndef DESTINATIONITEM_H
 #define DESTINATIONITEM_H
 
-#include "../../common/coordinates.h"
+#include "../../common/types.h"
 #include "imovableitem.h"
 #include "itrafficparticipantitem.h"
 

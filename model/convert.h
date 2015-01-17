@@ -10,13 +10,13 @@
 class Convert
 {
 public:
-    Convert(const Board *board);
+    Convert(const Board &board);
     ~Convert();
 
     Graph generateGraph();  //tworzy graf na podstawie przekazanej board
     Graph getGraph();   //zwraca graf, ktory tworzymy
 private:
-    const Board *board;
+    const Board &board;
     Graph graph_;   //tu tworzymy graph
 };
 

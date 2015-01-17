@@ -1,6 +1,6 @@
 #include "../model/simulationpreparator.h"
 
-SimulationPreparator::SimulationPreparator(const Board *board, list<TrafficParticipant*> objects):
+SimulationPreparator::SimulationPreparator(const Board &board, list<TrafficParticipant*> objects):
     convert(board)
 {
     this->dijkstra = new Dijkstra(this->convert.generateGraph());   //generate graph and put in dijkstra

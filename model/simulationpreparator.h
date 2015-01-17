@@ -11,7 +11,7 @@
 class SimulationPreparator
 {
 public:
-    SimulationPreparator(const Board *borad, list<TrafficParticipant*> objects);
+    SimulationPreparator(const Board &board, list<TrafficParticipant*> objects);
     ~SimulationPreparator();
 
     void run(); //run the SimulationPreparator: calculate the paths and convert map to graph
