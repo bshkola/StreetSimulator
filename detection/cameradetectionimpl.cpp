@@ -30,8 +30,8 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
             cam_coordinates.first  = (*cam_it)->x_;
             cam_coordinates.second = (*cam_it)->y_;
             //set coordinates of traffic participant
-            tp_coordinates.first  = (*tp_it)->x;
-            tp_coordinates.second = (*tp_it)->y;
+            tp_coordinates.first  = (*tp_it)->x_;
+            tp_coordinates.second = (*tp_it)->y_;
             //calculate real distance
             distance = this->distance(cam_coordinates, tp_coordinates);
             //decision if traffic participant within camera's range

@@ -22,14 +22,14 @@ void CameraMouseEventHandler::handleRelease(QGraphicsSceneMouseEvent* event, Boa
     if (!scene->isInsideBoard(event->scenePos())) {
         scene->removeItem(item);
         QPointF pressPosition = event->buttonDownScenePos(Qt::LeftButton);
-        BlockingEventQueue::getInstance().push(new CameraRemovedEvent(std::make_pair(pressPosition.x() / scene->width(), pressPosition.y() / scene->height())));
+        BlockingEventQueue::getInstance().push(new CameraRemovedEvent(Coordinates(pressPosition.x() / scene->width(), pressPosition.y() / scene->height())));
     } else {
         QPointF pressPosition = event->buttonDownScenePos(Qt::LeftButton);
         if (scene->isInsideBoard(pressPosition)) {
-            BlockingEventQueue::getInstance().push(new CameraReplacedEvent(std::make_pair(pressPosition.x() / scene->width(), pressPosition.y() / scene->height()),
-                                                                           std::make_pair(event->scenePos().x() / scene->width(), event->scenePos().y() / scene->height())));
+            BlockingEventQueue::getInstance().push(new CameraReplacedEvent(Coordinates(pressPosition.x() / scene->width(), pressPosition.y() / scene->height()),
+                                                                           Coordinates(event->scenePos().x() / scene->width(), event->scenePos().y() / scene->height())));
         } else {
-            BlockingEventQueue::getInstance().push(new CameraAddedEvent(std::make_pair(event->scenePos().x() / scene->width(), event->scenePos().y() / scene->height())));
+            BlockingEventQueue::getInstance().push(new CameraAddedEvent(Coordinates(event->scenePos().x() / scene->width(), event->scenePos().y() / scene->height())));
         }
     }
 }

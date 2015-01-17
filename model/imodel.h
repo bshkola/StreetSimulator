@@ -12,6 +12,10 @@ public:
     virtual void addCamera(Coordinates coordinates) = 0;
     virtual void replaceCamera(Coordinates startCoordinates, Coordinates finishCoordinates) = 0;
     virtual void removeCamera(Coordinates coordinates) = 0;
+
+    virtual void addCar(Position coordinates) = 0;
+    virtual void replaceCar(Position startCoordinates, Position finishCoordinates) = 0;
+    virtual void removeCar(Position coordinates) = 0;
 };
 
 #endif // IMODEL_H

@@ -12,8 +12,12 @@ public:
 
     Board& getBoard();
     void addCamera(Coordinates coordinates);
-    void replaceCamera(Coordinates startCoordinates, Coordinates finishCoordinates);
+    void replaceCamera(Coordinates oldCoordinates, Coordinates newCoordinates);
     void removeCamera(Coordinates coordinates);
+
+    void addCar(Position coordinates);
+    void replaceCar(Position oldCoordinates, Position newCoordinates);
+    void removeCar(Position coordinates);
 
 private:
     ObjectsOnMap objectsOnMap_;

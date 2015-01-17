@@ -6,7 +6,7 @@ CameraReplacedStrategy::CameraReplacedStrategy(IModel* model, IView* view) : mod
 }
 
 void CameraReplacedStrategy::perform(IEvent* event) {
-    CameraReplacedEvent* cameraAddedEvent = static_cast<CameraReplacedEvent*>(event);
-    model_->replaceCamera(cameraAddedEvent->getOldCoordinates(), cameraAddedEvent->getNewCoordinates());
+    CameraReplacedEvent* cameraReplacedEvent = static_cast<CameraReplacedEvent*>(event);
+    model_->replaceCamera(cameraReplacedEvent->getOldCoordinates(), cameraReplacedEvent->getNewCoordinates());
     std::cout << "CameraReplacedStrategy" << std::endl;
 }

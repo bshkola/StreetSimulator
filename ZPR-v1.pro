@@ -65,7 +65,11 @@ SOURCES += main.cpp\
     common/events/cameraremovedevent.cpp \
     controller/strategies/cameraaddedstrategy.cpp \
     controller/strategies/cameraremovedstrategy.cpp \
-    controller/strategies/camerareplacedstrategy.cpp
+    controller/strategies/camerareplacedstrategy.cpp \
+    common/events/carremovedevent.cpp \
+    common/events/carreplacedevent.cpp \
+    controller/strategies/carremovedstrategy.cpp \
+    controller/strategies/carreplacedstrategy.cpp
 
 
 
@@ -141,7 +145,11 @@ HEADERS  += controller/icontroller.h \
     common/types.h \
     controller/strategies/cameraaddedstrategy.h \
     controller/strategies/cameraremovedstrategy.h \
-    controller/strategies/camerareplacedstrategy.h
+    controller/strategies/camerareplacedstrategy.h \
+    common/events/carremovedevent.h \
+    common/events/carreplacedevent.h \
+    controller/strategies/carremovedstrategy.h \
+    controller/strategies/carreplacedstrategy.h
 
 
 

@@ -2,19 +2,16 @@
 #define CARADDEDEVENT_H
 
 #include "ievent.h"
-#include "../../common/types.h"
 
 class CarAddedEvent : public IEvent
 {
 public:
-    CarAddedEvent(Coordinates starting_coordinates, Coordinates destination_coordinates);
+    CarAddedEvent(Position coordinates);
     std::string getName();
-    Coordinates getStartingCoordinates();
-    Coordinates getDestinationCoordinates();
+    Position getCoordinates();
 
 private:
-    Coordinates starting_coordinates_;
-    Coordinates destination_coordinates_;
+    Position coordinates_;
 };
 
 #endif // CARADDEDEVENT_H

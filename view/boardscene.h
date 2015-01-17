@@ -6,6 +6,7 @@
 
 #include <QGraphicsScene>
 #include "items/imovableitem.h"
+#include "../common/types.h"
 
 class IMovableItem;
 
@@ -24,6 +25,7 @@ public:
     bool isInsideScene(const QPointF& pos);
 
     QPointF getDiscretePosition(const QPointF& point);
+    Position getDiscreteCoordinates(const QPointF& point);
 
 protected:
 

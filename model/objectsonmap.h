@@ -22,12 +22,13 @@ public:
     ObjectsOnMap();
     ~ObjectsOnMap();
 
-    void addPedestrian(Coordinates location, Position source, Position destination, float speed = 1);
-    void addCar(Coordinates location, Position source, Position destination, float speed = 1);
-    void addTruck(Coordinates location, Position source, Position destination, float speed = 1);
+    void addPedestrian(Position location, Position source, Position destination, float speed = 1);
+    void addCar(Position location, Position source, Position destination, float speed = 1);
+    void addTruck(Position location, Position source, Position destination, float speed = 1);
     void addCamera(Coordinates location, float azimuth, float angle, float range);
     void setCellOnField(int i, int j, bool isStreet);    //set cell on the field (true - it's street, false -it isn't street)
-    void deleteObject(Coordinates location, Position source, Position destinatios, float speed = 1); //erease object which has this arguments from list
+    void replaceObject(Position oldLocation, Position newLocation);
+    void deleteObject(Position location, Position source, Position destinatios, float speed = 1); //erease object which has this arguments from list
     void replaceCamera(Coordinates oldCordinates, Coordinates newCordinates); //erase camera which has this argument from list
     void deleteCamera(Coordinates location, float azimuth, float angle, float range); //erase camera which has this argument from list
     list<TrafficParticipant*> getObjects();

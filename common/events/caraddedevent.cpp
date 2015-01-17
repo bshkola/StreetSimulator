@@ -1,7 +1,7 @@
-#include "caraddedevent.h"
+#include "../../common/events/caraddedevent.h"
 
-CarAddedEvent::CarAddedEvent(Coordinates starting_coordinates, Coordinates destination_coordinates)
-    : starting_coordinates_(starting_coordinates), destination_coordinates_(destination_coordinates)
+CarAddedEvent::CarAddedEvent(Position coordinates)
+    : coordinates_(coordinates)
 {
 }
 
@@ -10,12 +10,7 @@ std::string CarAddedEvent::getName()
     return "CarAdded";
 }
 
-Coordinates CarAddedEvent::getStartingCoordinates()
+Position CarAddedEvent::getCoordinates()
 {
-    return starting_coordinates_;
-}
-
-Coordinates CarAddedEvent::getDestinationCoordinates()
-{
-    return destination_coordinates_;
+    return coordinates_;
 }

@@ -127,4 +127,8 @@ QPointF BoardScene::getDiscretePosition(const QPointF& point) {
     return QPointF(indexX * shiftSize, indexY * shiftSize);
 }
 
+Position BoardScene::getDiscreteCoordinates(const QPointF& point) {
+    return Position(point.x() / shiftSize, point.y() / shiftSize);
+}
+
 
