@@ -4,10 +4,10 @@
 #include "ievent.h"
 
 
-class CarRemovedEvent : public IEvent
+class TrafficObjectRemovedEvent : public IEvent
 {
 public:
-    CarRemovedEvent(Position coordinates);
+    TrafficObjectRemovedEvent(Position coordinates);
     std::string getName();
     Position getCoordinates();
 

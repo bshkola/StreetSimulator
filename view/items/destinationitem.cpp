@@ -36,8 +36,8 @@ bool DestinationItem::isOnBoard() {
     return true;
 }
 
-int DestinationItem::getItemIndex() {
-    return item_index_;
+ObjectType DestinationItem::getTrafficObjectType() {
+    return trafficObjectType_;
 }
 
 bool DestinationItem::canBeRemoved() {

@@ -9,9 +9,10 @@
 #include "strategies/cameraaddedstrategy.h"
 #include "strategies/camerareplacedstrategy.h"
 #include "strategies/cameraremovedstrategy.h"
-#include "strategies/caraddedstrategy.h"
-#include "strategies/carreplacedstrategy.h"
-#include "strategies/carremovedstrategy.h"
+#include "strategies/trafficobjectaddedstrategy.h"
+#include "strategies/trafficobjectreplacedstrategy.h"
+#include "strategies/trafficobjectremovedstrategy.h"
+#include "strategies/destinationreplacedstrategy.h"
 
 #include "../common/events/applicationstartedevent.h"
 
@@ -26,9 +27,10 @@ ControllerImpl::ControllerImpl(IModel* model, IView* view) : finish_(false)
     map.insert(std::pair<std::string, IStrategy*>("CameraAdded", new CameraAddedStrategy(model, view)));
     map.insert(std::pair<std::string, IStrategy*>("CameraReplaced", new CameraReplacedStrategy(model, view)));
     map.insert(std::pair<std::string, IStrategy*>("CameraRemoved", new CameraRemovedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("CarAdded", new CarAddedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("CarReplaced", new CarReplacedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("CarRemoved", new CarRemovedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("TrafficObjectAdded", new TrafficObjectAddedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("TrafficObjectReplaced", new TrafficObjectReplacedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("TrafficObjectRemoved", new TrafficObjectRemovedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("DestinationReplaced", new DestinationReplacedStrategy(model, view)));
 
     BlockingEventQueue::getInstance().push(new ApplicationStartedEvent());
 }

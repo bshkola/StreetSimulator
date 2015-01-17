@@ -35,8 +35,8 @@ bool CameraItem::isOnBoard() {
     return true;
 }
 
-int CameraItem::getItemIndex() {
-    return item_index_;
+ObjectType CameraItem::getTrafficObjectType() {
+    return trafficObjectType_;
 }
 
 bool CameraItem::canBeRemoved() {

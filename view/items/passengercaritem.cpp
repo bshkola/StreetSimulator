@@ -35,7 +35,7 @@ bool PassengerCarItem::isOnBoard() {
     return true;
 }
 
-int PassengerCarItem::getItemIndex() {
+ObjectType PassengerCarItem::getTrafficObjectType() {
     return item_index_;
 }
 

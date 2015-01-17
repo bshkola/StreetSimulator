@@ -3,10 +3,10 @@
 
 #include "ievent.h"
 
-class CarReplacedEvent : public IEvent
+class TrafficObjectReplacedEvent : public IEvent
 {
 public:
-    CarReplacedEvent(Position oldCoordinates, Position newCoordinates);
+    TrafficObjectReplacedEvent(Position oldCoordinates, Position newCoordinates);
     std::string getName();
     Position getOldCoordinates();
     Position getNewCoordinates();

@@ -3,10 +3,10 @@
 
 #include "istrategy.h"
 
-class CarReplacedStrategy : public IStrategy
+class TrafficObjectReplacedStrategy : public IStrategy
 {
 public:
-    CarReplacedStrategy(IModel* model, IView* view);
+    TrafficObjectReplacedStrategy(IModel* model, IView* view);
     void perform(IEvent* event);
 
 private:

@@ -18,26 +18,30 @@ ObjectsOnMap::~ObjectsOnMap()
     }
 }
 
-void ObjectsOnMap::addPedestrian(Position location, Position source, Position destination, float speed)
-{   //done
-    objects.push_back(new Pedestrian(location.first, location.second, speed, destination, source));
-}
+void ObjectsOnMap::addTrafficObject(Position location, ObjectType objectType)
+{
+    float speed = 1;
 
-void ObjectsOnMap::addCar(Position location, Position source, Position destination, float speed)
-{   //done
-    objects.push_back(new Car(location.first, location.second, speed, destination, source));
+    switch (objectType) {
+    case PEDESTRIAN:
+        objects.push_back(new Pedestrian(location.first, location.second, speed, location, location));
+        break;
+    case CAR:
+        objects.push_back(new Car(location.first, location.second, speed, location, location));
+        break;
+    case TRUCK:
+        objects.push_back(new Truck(location.first, location.second, speed, location, location));
+        break;
+    default:
+        throw exception("Wrong type of object");
+    }
     for (TrafficParticipant* trafficParticipant : objects) {
         std::cout << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
     }
 }
 
-void ObjectsOnMap::addTruck(Position location, Position source, Position destination, float speed)
-{   //done
-    objects.push_back(new Truck(location.first, location.second, speed, destination, source));
-}
-
 void ObjectsOnMap::addCamera(Coordinates location, float azimuth, float angle, float range)
-{   //done
+{
     cameras.push_back(new Camera(location.first, location.second, azimuth, angle, range));
     for (Camera* camera : cameras) {
         std::cout << camera->x_ << " " << camera->y_ << " " << camera->angle_ << std::endl;
@@ -54,9 +58,7 @@ void ObjectsOnMap::replaceObject(Position oldLocation, Position newLocation)
     std::list<TrafficParticipant*>::iterator i = objects.begin();
     while (i != objects.end())
     {
-        //std::cout << (location.first - (*i)->x_) + (location.second - (*i)->y_) << std::endl;
         if ((oldLocation.first == (*i)->x_) && (oldLocation.second == (*i)->y_)) {
-            //std::cout << "Erasing " << (*i)->x_ << " " << (*i)->y_ << std::endl;
             (*i)->x_ = newLocation.first;
             (*i)->y_ = newLocation.second;
             break;
@@ -73,9 +75,7 @@ void ObjectsOnMap::deleteObject(Position location, Position source, Position des
     std::list<TrafficParticipant*>::iterator i = objects.begin();
     while (i != objects.end())
     {
-        //std::cout << (location.first - (*i)->x_) + (location.second - (*i)->y_) << std::endl;
         if ((location.first == (*i)->x_) && (location.second == (*i)->y_)) {
-            //std::cout << "Erasing " << (*i)->x_ << " " << (*i)->y_ << std::endl;
             objects.erase(i);
             break;
         }
@@ -90,9 +90,7 @@ void ObjectsOnMap::replaceCamera(Coordinates oldCordinates, Coordinates newCordi
     std::list<Camera*>::iterator i = cameras.begin();
     while (i != cameras.end())
     {
-        //std::cout << (location.first - (*i)->x_) + (location.second - (*i)->y_) << std::endl;
         if (abs(oldCordinates.first - (*i)->x_) + (oldCordinates.second - (*i)->y_) < 0.01) {
-            //std::cout << "Erasing " << (*i)->x_ << " " << (*i)->y_ << std::endl;
             (*i)->x_ = newCordinates.first;
             (*i)->y_ = newCordinates.second;
             break;
@@ -107,39 +105,42 @@ void ObjectsOnMap::replaceCamera(Coordinates oldCordinates, Coordinates newCordi
 
 void ObjectsOnMap::deleteCamera(Coordinates location, float azimuth, float angle, float range)
 {
-    //cameras.push_back(new Camera(location.first, location.second, azimuth, angle, range));
-    /*std::cout << "was " << cameras.empty() << std::endl;
-    for (Camera* camera : cameras) {
-        std::cout << camera->x_ << " " << camera->y_ << " " << camera->angle_ << std::endl;
-    }*/
-
-    //std::cout << "location" << location.first << " " << location.second << std::endl;
-
     std::list<Camera*>::iterator i = cameras.begin();
     while (i != cameras.end())
     {
-        //std::cout << (location.first - (*i)->x_) + (location.second - (*i)->y_) << std::endl;
         if (abs(location.first - (*i)->x_) + (location.second - (*i)->y_) < 0.01) {
-            //std::cout << "Erasing " << (*i)->x_ << " " << (*i)->y_ << std::endl;
             cameras.erase(i++);
         }
         else {
             i++;
         }
     }
-    //for (Camera* camera : cameras) {
-
-    //}
-    //std::cout << "is" << std::endl;
     for (Camera* camera : cameras) {
         std::cout << camera->x_ << " " << camera->y_ << " " << camera->angle_ << std::endl;
     }
+}
+
+void ObjectsOnMap::replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates)
+{
+    std::list<TrafficParticipant*>::iterator i = objects.begin();
+    while (i != objects.end())
+    {
+        if ((trafficObjectCoordinates.first == (*i)->x_) && (trafficObjectCoordinates.second == (*i)->y_)) {
+            (*i)->targetPoint_ = newCoordinates;
+            break;
+        }
+        i++;
+    }
+//    for (TrafficParticipant* trafficParticipant : objects) {
+//        std::cout << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
+//    }
+
     //TODO
 }
 
 list<TrafficParticipant*> ObjectsOnMap::getObjects()
 {
-      return objects;
+    return objects;
 }
 
 list<Camera*> ObjectsOnMap::getCameras()

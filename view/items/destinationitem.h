@@ -15,7 +15,7 @@ public:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
     //void setCoordinates(int x, int y); //sets coordinates metadata to the cell
     bool isOnBoard();
-    int getItemIndex();
+    ObjectType getTrafficObjectType();
     bool canBeRemoved();
     IMovableItem* clone();
     bool hasDiscretePosition();
@@ -31,7 +31,7 @@ private:
     ITrafficParticipantItem* parentItem_;
 
     bool selected_;
-    const static int item_index_ = -1;
+    const static ObjectType trafficObjectType_ = DESTINATION;
 };
 
 #endif // DESTINATIONITEM_H

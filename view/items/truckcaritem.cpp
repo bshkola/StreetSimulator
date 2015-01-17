@@ -43,8 +43,8 @@ bool TruckCarItem::isOnBoard() {
     return true;
 }
 
-int TruckCarItem::getItemIndex() {
-    return item_index_;
+ObjectType TruckCarItem::getTrafficObjectType() {
+    return trafficObjectType_;
 }
 
 bool TruckCarItem::canBeRemoved() {

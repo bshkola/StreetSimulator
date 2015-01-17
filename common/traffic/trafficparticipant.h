@@ -3,16 +3,17 @@
 #ifndef TRAFFICPARTICIPANT_H
 #define TRAFFICPARTICIPANT_H
 
-#include<utility>
+#include <utility>
+#include "../../common/types.h"
 
 struct TrafficParticipant {
     int x_, y_;     //coordinates of object placed on the map
-    float speed;    //speed of moving object
-    std::pair<int, int> start_point, target_point;  //begin & end of path
+    float speed_;    //speed of moving object
+    Position startPoint_, targetPoint_;  //begin & end of path
 protected:
-    TrafficParticipant(int x, int y, float speed, std::pair<int, int> start_point, std::pair<int, int> target_point):
-        x_(x), y_(y), speed(speed), start_point(start_point), target_point(target_point)
-    {};
+    TrafficParticipant(int x, int y, float speed, Position startPoint, Position targetPoint):
+        x_(x), y_(y), speed_(speed), startPoint_(startPoint), targetPoint_(targetPoint)
+    {}
 };
 
 #endif // TRAFFICPARTICIPANT_H

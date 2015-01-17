@@ -29,7 +29,6 @@ SOURCES += main.cpp\
     model/simulationpreparator.cpp \
     common/events/applicationstartedevent.cpp \
     common/events/boardsizechangedevent.cpp \
-    common/events/caraddedevent.cpp \
     common/events/ievent.cpp \
     common/events/itemclickedevent.cpp \
     common/events/streetfieldaddedevent.cpp \
@@ -38,7 +37,6 @@ SOURCES += main.cpp\
     common/board.cpp \
     controller/strategies/applicationstartedstrategy.cpp \
     controller/strategies/boardsizechangedstrategy.cpp \
-    controller/strategies/caraddedstrategy.cpp \
     controller/strategies/closewindowstrategy.cpp \
     controller/strategies/istrategy.cpp \
     controller/strategies/itemclickedstrategy.cpp \
@@ -66,10 +64,14 @@ SOURCES += main.cpp\
     controller/strategies/cameraaddedstrategy.cpp \
     controller/strategies/cameraremovedstrategy.cpp \
     controller/strategies/camerareplacedstrategy.cpp \
-    common/events/carremovedevent.cpp \
-    common/events/carreplacedevent.cpp \
-    controller/strategies/carremovedstrategy.cpp \
-    controller/strategies/carreplacedstrategy.cpp
+    controller/strategies/trafficobjectaddedstrategy.cpp \
+    controller/strategies/trafficobjectreplacedstrategy.cpp \
+    controller/strategies/trafficobjectremovedstrategy.cpp \
+    common/events/trafficobjectaddedevent.cpp \
+    common/events/trafficobjectremovedevent.cpp \
+    common/events/trafficobjectreplacedevent.cpp \
+    controller/strategies/destinationreplacedstrategy.cpp \
+    common/events/destinationreplaceevent.cpp
 
 
 
@@ -89,7 +91,6 @@ HEADERS  += controller/icontroller.h \
     model/simulationpreparator.h \
     common/events/applicationstartedevent.h \
     common/events/boardsizechangedevent.h \
-    common/events/caraddedevent.h \
     common/events/ievent.h \
     common/events/itemclickedevent.h \
     common/events/streetfieldaddedevent.h \
@@ -98,7 +99,6 @@ HEADERS  += controller/icontroller.h \
     common/board.h \
     controller/strategies/applicationstartedstrategy.h \
     controller/strategies/boardsizechangedstrategy.h \
-    controller/strategies/caraddedstrategy.h \
     controller/strategies/closewindowstrategy.h \
     controller/strategies/istrategy.h \
     controller/strategies/itemclickedstrategy.h \
@@ -146,10 +146,14 @@ HEADERS  += controller/icontroller.h \
     controller/strategies/cameraaddedstrategy.h \
     controller/strategies/cameraremovedstrategy.h \
     controller/strategies/camerareplacedstrategy.h \
-    common/events/carremovedevent.h \
-    common/events/carreplacedevent.h \
-    controller/strategies/carremovedstrategy.h \
-    controller/strategies/carreplacedstrategy.h
+    controller/strategies/destinationreplacedstrategy.h \
+    common/events/destinationreplaceevent.h \
+    common/events/trafficobjectremovedevent.h \
+    common/events/trafficobjectreplacedevent.h \
+    common/events/trafficobjectaddedevent.h \
+    controller/strategies/trafficobjectaddedstrategy.h \
+    controller/strategies/trafficobjectreplacedstrategy.h \
+    controller/strategies/trafficobjectremovedstrategy.h
 
 
 

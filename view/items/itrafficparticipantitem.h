@@ -14,7 +14,7 @@ public:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) = 0;
     //virtual void setCoordinates(int x, int y) = 0; //sets coordinates metadata to the cell
     bool isOnBoard() = 0;
-    int getItemIndex() = 0;
+    ObjectType getTrafficObjectType() = 0;
     bool canBeRemoved() = 0;
     bool hasDiscretePosition() = 0;
     MouseEventHandler* getMouseEventHandler() = 0;

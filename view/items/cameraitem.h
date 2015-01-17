@@ -13,7 +13,7 @@ public:
     void setCoordinates(int x, int y); //sets coordinates metadata to the cell
     Coordinates getCoordinates();
     bool isOnBoard();
-    int getItemIndex();
+    ObjectType getTrafficObjectType();
     bool canBeRemoved();
     IMovableItem* clone();
     bool hasDiscretePosition();
@@ -27,7 +27,7 @@ private:
     Qt::GlobalColor selectedColor_;
     Qt::GlobalColor unselectedColor_;
 
-    const static int item_index_ = 3;
+    const static ObjectType trafficObjectType_ = CAMERA;
 };
 
 #endif // CAMERAITEM_H

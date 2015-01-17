@@ -15,9 +15,11 @@ public:
     void replaceCamera(Coordinates oldCoordinates, Coordinates newCoordinates);
     void removeCamera(Coordinates coordinates);
 
-    void addCar(Position coordinates);
-    void replaceCar(Position oldCoordinates, Position newCoordinates);
-    void removeCar(Position coordinates);
+    void addTrafficObject(Position coordinates, ObjectType objectType);
+    void replaceTrafficObject(Position oldCoordinates, Position newCoordinates);
+    void removeTrafficObject(Position coordinates);
+
+    void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates);
 
 private:
     ObjectsOnMap objectsOnMap_;

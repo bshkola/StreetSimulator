@@ -14,7 +14,7 @@ public:
     void setCoordinates(int x, int y); //sets coordinates metadata to the cell
     Coordinates getCoordinates();
     bool isOnBoard();
-    int getItemIndex();
+    ObjectType getTrafficObjectType();
     bool canBeRemoved();
     IMovableItem* clone();
     bool hasDiscretePosition();
@@ -23,7 +23,7 @@ public:
 private:
     Coordinates coordinates_;
 
-    const static int item_index_ = 0;
+    const static ObjectType trafficObjectType_ = TRUCK;
 };
 
 #endif // TRUCKCARITEM_H

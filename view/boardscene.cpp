@@ -47,7 +47,7 @@ void BoardScene::updateBoardSize(int size) {
 
     foreach(IMovableItem* availableItem, menuItems) {
         this->addItem(availableItem);
-        availableItem->setPos(QPointF(boardSizeInPixels, shiftSize * availableItem->getItemIndex()));
+        availableItem->setPos(QPointF(boardSizeInPixels, shiftSize * availableItem->getTrafficObjectType()));
         availableItem->setFlag(QGraphicsItem::ItemIsMovable);
     }
 }
@@ -61,7 +61,7 @@ void BoardScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
             } else {
                 activeMenuItem_ = ((IMovableItem*)item)->clone();
                 this->addItem(activeMenuItem_);
-                activeMenuItem_->setPos(QPointF(boardSizeInPixels, shiftSize * activeMenuItem_->getItemIndex()));
+                activeMenuItem_->setPos(QPointF(boardSizeInPixels, shiftSize * activeMenuItem_->getTrafficObjectType()));
                 activeMenuItem_->setFlag(QGraphicsItem::ItemIsMovable);
                 std::cout << "Created" << std::endl;
             }

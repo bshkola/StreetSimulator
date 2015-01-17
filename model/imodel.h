@@ -10,12 +10,15 @@ public:
     IModel();
     virtual Board& getBoard() = 0;
     virtual void addCamera(Coordinates coordinates) = 0;
-    virtual void replaceCamera(Coordinates startCoordinates, Coordinates finishCoordinates) = 0;
+    virtual void replaceCamera(Coordinates oldCoordinates, Coordinates newCoordinates) = 0;
     virtual void removeCamera(Coordinates coordinates) = 0;
 
-    virtual void addCar(Position coordinates) = 0;
-    virtual void replaceCar(Position startCoordinates, Position finishCoordinates) = 0;
-    virtual void removeCar(Position coordinates) = 0;
+    virtual void addTrafficObject(Position coordinates, ObjectType objectType) = 0;
+    virtual void replaceTrafficObject(Position oldCoordinates, Position newCoordinates) = 0;
+    virtual void removeTrafficObject(Position coordinates) = 0;
+
+    virtual void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates) = 0;
+
 };
 
 #endif // IMODEL_H

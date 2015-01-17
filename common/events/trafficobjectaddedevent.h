@@ -3,15 +3,17 @@
 
 #include "ievent.h"
 
-class CarAddedEvent : public IEvent
+class TrafficObjectAddedEvent : public IEvent
 {
 public:
-    CarAddedEvent(Position coordinates);
+    TrafficObjectAddedEvent(Position coordinates, ObjectType objectType);
     std::string getName();
     Position getCoordinates();
+    ObjectType getObjectType();
 
 private:
     Position coordinates_;
+    ObjectType objectType_;
 };
 
 #endif // CARADDEDEVENT_H
