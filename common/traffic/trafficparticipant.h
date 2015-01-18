@@ -8,6 +8,7 @@
 #include "../../common/types.h"
 
 struct TrafficParticipant {
+    int xBefore_, yBefore_;
     int x_, y_;     //coordinates of object placed on the map
     float speed_;    //speed of moving object
     Position startPoint_, targetPoint_;  //begin & end of path
