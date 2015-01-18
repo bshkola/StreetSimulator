@@ -15,10 +15,14 @@
 #include "strategies/destinationreplacedstrategy.h"
 #include "strategies/startsimulationstrategy.h"
 
+
+
+#include "../common/events/windowclosedevent.h"
 #include "../common/events/applicationstartedevent.h"
 
-ControllerImpl::ControllerImpl(IModel* model, IView* view) : finish_(false)
+ControllerImpl::ControllerImpl(std::shared_ptr<IModel> model, IView* view) : finish_(false)
 {
+    std::cout << "ControllerImpl()" << std::endl;
     map.insert(std::pair<std::string, IStrategy*>("WindowClosed", new CloseWindowStrategy(*this)));
     map.insert(std::pair<std::string, IStrategy*>("ItemClicked", new ItemClickedStrategy(model, view)));
     map.insert(std::pair<std::string, IStrategy*>("BoardSizeChanged", new BoardSizeChangedStrategy(model, view)));
@@ -35,26 +39,35 @@ ControllerImpl::ControllerImpl(IModel* model, IView* view) : finish_(false)
     map.insert(std::pair<std::string, IStrategy*>("StartSimulation", new StartSimulationStrategy(model, view)));
 
     BlockingEventQueue::getInstance().push(new ApplicationStartedEvent());
+
 }
 
 ControllerImpl::~ControllerImpl()
 {
-    std::cout << "~ControllerImpl" << std::endl;
+    //std::cout << map.size() << std::endl;
+
+    //map.erase(map.begin(), map.end());
+    for (std::pair<std::string, IStrategy*> i : map) {
+
+        std::cout << "label >>> " << i.first << std::endl;
+        delete i.second;
+    }
+    std::cout << "~ControllerImpl()" << std::endl;
 }
 
 void ControllerImpl::start() {
     while (!finish_) {
         IEvent* event = BlockingEventQueue::getInstance().pop();
-        std::cout << "Got new event" << std::endl;
+        //std::cout << "Got new event" << std::endl;
         if (map.find(event->getName()) != map.end()) {
             map.at(event->getName())->perform(event);
-            std::cout << "Performed" << std::endl;
+            //std::cout << "Performed" << std::endl;
         }
         else {
-            std::cout << "Event is bad" << std::endl;
+            //std::cout << "Event is bad" << std::endl;
         }
     }
-    std::cout << "Finished" << std::endl;
+    std::cout << "===Finished===" << std::endl;
 }
 
 void ControllerImpl::finish()

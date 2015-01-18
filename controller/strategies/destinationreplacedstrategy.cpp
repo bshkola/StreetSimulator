@@ -1,8 +1,11 @@
 #include "../../controller/strategies/destinationreplacedstrategy.h"
 #include "../../common/events/destinationreplaceevent.h"
 
-DestinationReplacedStrategy::DestinationReplacedStrategy(IModel* model, IView* view) : model_(model), view_(view)
+DestinationReplacedStrategy::DestinationReplacedStrategy(std::shared_ptr<IModel> model, IView* view) : model_(model), view_(view)
 {
+}
+
+DestinationReplacedStrategy::~DestinationReplacedStrategy() {
 }
 
 void DestinationReplacedStrategy::perform(IEvent* event) {

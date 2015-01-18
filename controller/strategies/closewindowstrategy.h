@@ -10,6 +10,7 @@ class CloseWindowStrategy : public IStrategy
 public:
     CloseWindowStrategy(IController& controller);
     void perform(IEvent* event);
+    virtual ~CloseWindowStrategy();
 
 private:
     IController* controller_;

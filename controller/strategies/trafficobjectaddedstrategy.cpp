@@ -1,8 +1,11 @@
 #include "../../controller/strategies/trafficobjectaddedstrategy.h"
 #include "../../common/events/trafficobjectaddedevent.h"
 
-TrafficObjectAddedStrategy::TrafficObjectAddedStrategy(IModel* model, IView* view) : model_(model), view_(view)
+TrafficObjectAddedStrategy::TrafficObjectAddedStrategy(std::shared_ptr<IModel> model, IView* view) : model_(model), view_(view)
 {
+}
+
+TrafficObjectAddedStrategy::~TrafficObjectAddedStrategy() {
 }
 
 void TrafficObjectAddedStrategy::perform(IEvent* event) {

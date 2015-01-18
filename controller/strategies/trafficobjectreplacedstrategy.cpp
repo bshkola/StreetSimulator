@@ -1,8 +1,11 @@
 #include "../../controller/strategies/trafficobjectreplacedstrategy.h"
 #include "../../common/events/trafficobjectreplacedevent.h"
 
-TrafficObjectReplacedStrategy::TrafficObjectReplacedStrategy(IModel* model, IView* view) : model_(model), view_(view)
+TrafficObjectReplacedStrategy::TrafficObjectReplacedStrategy(std::shared_ptr<IModel> model, IView* view) : model_(model), view_(view)
 {
+}
+
+TrafficObjectReplacedStrategy::~TrafficObjectReplacedStrategy() {
 }
 
 void TrafficObjectReplacedStrategy::perform(IEvent* event) {

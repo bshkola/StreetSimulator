@@ -10,11 +10,12 @@
 #include "strategies/istrategy.h"
 #include "../model/imodel.h"
 #include "../view/iview.h"
+#include <memory>
 
 class ControllerImpl : public IController
 {
 public:
-    ControllerImpl(IModel* model, IView* view);
+    ControllerImpl(std::shared_ptr<IModel> model, IView* view);
     virtual ~ControllerImpl();
 
     void start();

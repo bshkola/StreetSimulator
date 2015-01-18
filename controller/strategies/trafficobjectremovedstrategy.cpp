@@ -1,8 +1,11 @@
 #include "../../controller/strategies/trafficobjectremovedstrategy.h"
 #include "../../common/events/trafficobjectremovedevent.h"
 
-TrafficObjectRemovedStrategy::TrafficObjectRemovedStrategy(IModel* model, IView* view) : model_(model), view_(view)
+TrafficObjectRemovedStrategy::TrafficObjectRemovedStrategy(std::shared_ptr<IModel> model, IView* view) : model_(model), view_(view)
 {
+}
+
+TrafficObjectRemovedStrategy::~TrafficObjectRemovedStrategy() {
 }
 
 void TrafficObjectRemovedStrategy::perform(IEvent* event) {

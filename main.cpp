@@ -1,5 +1,6 @@
 #include "view/mainwindow.h"
 #include <QApplication>
+#include <memory>
 
 #include "controller/controllerimpl.h"
 #include "model/modelimpl.h"
@@ -7,6 +8,8 @@
 
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
@@ -16,9 +19,9 @@ int main(int argc, char *argv[])
     IView* window = new MainWindow();
     window->show();
 
-    IModel* model = new ModelImpl();
-    IController* controller = new ControllerImpl(model, window);
-
-    QFuture<void> controllerThread = QtConcurrent::run(controller, &IController::start);
+    shared_ptr<IModel> model = make_shared<ModelImpl>();
+    shared_ptr<IController> controller = make_shared<ControllerImpl>(model, window);
+    QtConcurrent::run(controller.get(), &IController::start);
+    cout << "models >> " << model.use_count() << endl;
     return a.exec();
 }

@@ -1,8 +1,11 @@
 #include "../../controller/strategies/cameraaddedstrategy.h"
 #include "../../common/events/cameraaddedevent.h"
 
-CameraAddedStrategy::CameraAddedStrategy(IModel* model, IView* view) : model_(model), view_(view)
+CameraAddedStrategy::CameraAddedStrategy(std::shared_ptr<IModel> model, IView* view) : model_(model), view_(view)
 {
+}
+
+CameraAddedStrategy::~CameraAddedStrategy() {
 }
 
 void CameraAddedStrategy::perform(IEvent* event) {

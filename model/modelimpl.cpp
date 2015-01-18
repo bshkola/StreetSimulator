@@ -3,10 +3,12 @@
 
 ModelImpl::ModelImpl()
 {
+    std::cout << "ModelImpl()" << std::endl;
 }
 
 ModelImpl::~ModelImpl()
 {
+    std::cout << "~ModelImpl()" << std::endl;
 }
 
 Board& ModelImpl::getBoard() {

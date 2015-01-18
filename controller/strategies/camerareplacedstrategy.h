@@ -6,11 +6,12 @@
 class CameraReplacedStrategy : public IStrategy
 {
 public:
-    CameraReplacedStrategy(IModel* model, IView* view);
+    CameraReplacedStrategy(std::shared_ptr<IModel> model, IView* view);
     void perform(IEvent* event);
+    virtual ~CameraReplacedStrategy();
 
 private:
-    IModel* model_;
+    std::shared_ptr<IModel> model_;
     IView* view_;
 };
 
