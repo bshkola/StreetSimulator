@@ -1,0 +1,9 @@
+Kompilacja programu wymaga zainstalowania w systemie biblioteki Qt (wersja 5)
+oraz programu qmake.
+
+Aby zainstalować wymagane oprogramowanie w systemie Ubuntu 14.04 LTS
+(lub Linux Mint 17) należy wydać następujące polecenie:
+
+sudo apt-get install qt5-default qttools5-dev qttools5-dev-tools qt5-doc qt5-qmake
+
+Po zakończonej kompilacji plik binarny zostanie umieszczony w katalogu ./bin/
