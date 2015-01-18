@@ -6,7 +6,7 @@
 
 #include "icameradetection.h"
 
-class CameraDetectionImpl : ICameraDetection {
+class CameraDetectionImpl : public ICameraDetection {
 public:
     CameraDetectionImpl(ICameraNoise *NoiseGenerator): ICameraDetection(NoiseGenerator), NoiseGenerator(NoiseGenerator) {};
     virtual ~CameraDetectionImpl() { delete NoiseGenerator; };

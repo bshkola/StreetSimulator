@@ -44,7 +44,10 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
                 continue;   //if out of angle then skip
             //introduce noise
             tp_coordinates_noised =
-                (this->NoiseGenerator)->introduceNoise(tp_coordinates.first, tp_coordinates.second, distance, 10);
+                (this->NoiseGenerator)->introduceNoise(tp_coordinates.first,
+                                                       tp_coordinates.second,
+                                                       distance,
+                                                       10);
             //calculate noised distance
             noised_distance = this->distance(cam_coordinates, tp_coordinates_noised);
             //calculate noised azimuth
@@ -63,12 +66,16 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
 
 };
 
-float CameraDetectionImpl::distance(const std::pair<float, float> A, const std::pair<float, float> B)
+float CameraDetectionImpl::distance(const std::pair<float, float> A,
+                                    const std::pair<float, float> B
+                                   )
 {
-    return sqrt(pow((A.first - B.first), 2.0) + pow((A.second - B.second), 2.0));
+    return hypot((A.first - B.first), (A.second - B.second));
 };
 
-float CameraDetectionImpl::azimuth(const std::pair<float, float> A, const std::pair<float, float> B)
+float CameraDetectionImpl::azimuth(const std::pair<float, float> A,
+                                   const std::pair<float, float> B
+                                  )
 {
     const float PI = acos(-1.0);
     float distance = this->distance(A, B);
@@ -87,18 +94,29 @@ float CameraDetectionImpl::azimuth(const std::pair<float, float> A, const std::p
     return 0.0;
 };
 
-bool CameraDetectionImpl::withinTheAngle(float cam_azimuth, float cam_angle, float tp_azimuth)
+bool CameraDetectionImpl::withinTheAngle(float cam_azimuth,
+                                         float cam_angle,
+                                         float tp_azimuth
+                                        )
 {
     float max_azimuth = cam_azimuth + cam_angle / 2.0;
     float mim_azimuth = cam_azimuth - cam_angle / 2.0;
     
     if(max_azimuth < 360.0){
-        if(mim_azimuth <= tp_azimuth && tp_azimuth <= max_azimuth) return true;
-        else return false;
+        if(mim_azimuth <= tp_azimuth && tp_azimuth <= max_azimuth){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     else {
-        if(mim_azimuth <= tp_azimuth && tp_azimuth < 360.0) return true;
-        if(0.0 <= tp_azimuth && tp_azimuth <= max_azimuth - 360.0) return true;
+        if(mim_azimuth <= tp_azimuth && tp_azimuth < 360.0){
+            return true;
+        }
+        if(0.0 <= tp_azimuth && tp_azimuth <= max_azimuth - 360.0){
+            return true;
+        }
         return false;
     }
 };

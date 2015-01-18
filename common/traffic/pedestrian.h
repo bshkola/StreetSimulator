@@ -5,7 +5,7 @@
 
 #include "trafficparticipant.h"
 
-struct Pedestrian : TrafficParticipant {
+struct Pedestrian : public TrafficParticipant {
     Pedestrian(float x, float y, float speed, std::pair<int, int> start_point, std::pair<int, int> target_point):
         TrafficParticipant(x, y, speed, start_point, target_point)
     {}
