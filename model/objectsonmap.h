@@ -11,32 +11,36 @@
 #include "../common/traffic/car.h"
 #include "../common/traffic/vehicle.h"
 #include "../common/camera.h"
+#include "../common/types.h"
 
 using namespace std;
 
 class ObjectsOnMap
 {
 public:
-    typedef pair<float, float> Cordination;
-    typedef pair<int, int> Position;
 
     ObjectsOnMap(const int sizeOfMap);
     ~ObjectsOnMap();
 
-    void addPedestrian(Cordination location, Position source, Position destination, float speed = 1);
-    void addCar(Cordination location, Position source, Position destination, float speed = 1);
-    void addTruck(Cordination location, Position source, Position destination, float speed = 1);
-    void addCamera(Position location, float azimuth, float angle, float range);
+    //void addPedestrian(Position location, Position source, Position destination, float speed = 1);
+    void addTrafficObject(Position location, ObjectType objectType);
+    //void addTruck(Position location, Position source, Position destination, float speed = 1);
+    void addCamera(Coordinates location, float azimuth, float angle, float range);
     void setCellOnField(int i, int j, bool isStreet);    //set cell on the field (true - it's street, false -it isn't street)
-    void deleteObject(Cordination location, Position source, Position destinatios, float speed = 1); //erease object which has this arguments from list
-    void deleteCamera(Position location, float azimuth, float angle, float range); //erase camera which has this argument from list
-    const list<TrafficParticipant*> *getObjects() const;
-    list<Camera*> getCameras() const;
+
+    void replaceObject(Position oldLocation, Position newLocation);
+    void deleteObject(Position location, Position source, Position destinatios, float speed = 1); //erease object which has this arguments from list
+    void replaceCamera(Coordinates oldCordinates, Coordinates newCordinates); //erase camera which has this argument from list
+    void deleteCamera(Coordinates location, float azimuth, float angle, float range); //erase camera which has this argument from list
+    void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates);
+
+    const list<TrafficParticipant*> &getObjects() const;
+    list<Camera*> getCameras();
     Board *getBoard() const;
 private:
     list<TrafficParticipant*> objects;
     list<Camera*> cameras;
-    Board *board;   //field of simulation
+    Board board;   //field of simulation
 };
 
 #endif // OBJECTSONMAP_H

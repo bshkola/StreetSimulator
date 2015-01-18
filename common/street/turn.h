@@ -3,7 +3,7 @@
 #ifndef TURN_H
 #define TURN_H
 
-struct Turn : Street {
+struct Turn : public Street {
 };
 
 #endif // TURN_H

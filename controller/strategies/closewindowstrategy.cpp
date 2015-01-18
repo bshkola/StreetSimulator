@@ -1,4 +1,4 @@
-#include "closewindowstrategy.h"
+#include "../../controller/strategies/closewindowstrategy.h"
 
 CloseWindowStrategy::CloseWindowStrategy(IController& controller) : controller_(&controller)
 {

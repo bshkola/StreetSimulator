@@ -2,7 +2,7 @@
 #define ITEMCLICKEDEVENT_H
 
 #include "ievent.h"
-#include "../coordinates.h"
+#include "../types.h"
 
 class ItemClickedEvent : public IEvent
 {

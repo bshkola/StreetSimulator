@@ -3,7 +3,7 @@
 #ifndef ROADFIELD_H
 #define ROADFIELD_H
 
-struct RoadField : Field {
+struct RoadField : public Field {
 };
 
 #endif // ROADFIELD_H

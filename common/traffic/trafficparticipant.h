@@ -5,16 +5,17 @@
 
 #include <utility>
 #include <deque>
+#include "../../common/types.h"
 
 struct TrafficParticipant {
-    float x, y;     //coordinates of object placed on the map
-    float speed;    //speed of moving object
-    std::pair<int, int> start_point, target_point;  //begin & end of path
+    int x_, y_;     //coordinates of object placed on the map
+    float speed_;    //speed of moving object
+    Position startPoint_, targetPoint_;  //begin & end of path
     std::deque<std::pair<int, int>> way; //way where is ride object
 protected:
-    TrafficParticipant(float x, float y, float speed, std::pair<int, int> start_point, std::pair<int, int> target_point):
-        x(x), y(y), speed(speed), start_point(start_point), target_point(target_point)
-    {};
+    TrafficParticipant(int x, int y, float speed, Position startPoint, Position targetPoint):
+        x_(x), y_(y), speed_(speed), startPoint_(startPoint), targetPoint_(targetPoint)
+    {}
 };
 
 #endif // TRAFFICPARTICIPANT_H

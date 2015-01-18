@@ -11,8 +11,6 @@ CameraNoiseImpl::CameraNoiseImpl() {};
 CameraNoiseImpl::~CameraNoiseImpl() {};
 
 std::pair<float, float> CameraNoiseImpl::introduceNoise(float x, float y, float distance, int percentage = MAX_PERCENTAGE){
-    srand(time(NULL)); //initialize random seed
-
     //constrain max noise
     int used_percentage = 
         percentage ? MAX_PERCENTAGE : (0 <= percentage && percentage < MAX_PERCENTAGE);

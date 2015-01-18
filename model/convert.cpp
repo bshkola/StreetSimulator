@@ -1,6 +1,6 @@
 #include "../model/convert.h"
 
-Convert::Convert(const Board *board) : board(board)
+Convert::Convert(const Board &board) : board(board)
 {
     //generateGraph();
 }

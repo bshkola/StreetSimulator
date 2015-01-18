@@ -1,4 +1,4 @@
-#include "itemclickedstrategy.h"
+#include "../../controller/strategies/itemclickedstrategy.h"
 
 ItemClickedStrategy::ItemClickedStrategy(IModel* model, IView* view) : model_(model), view_(view)
 {

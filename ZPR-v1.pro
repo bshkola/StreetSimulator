@@ -29,7 +29,6 @@ SOURCES += main.cpp\
     model/simulationpreparator.cpp \
     common/events/applicationstartedevent.cpp \
     common/events/boardsizechangedevent.cpp \
-    common/events/caraddedevent.cpp \
     common/events/ievent.cpp \
     common/events/itemclickedevent.cpp \
     common/events/streetfieldaddedevent.cpp \
@@ -38,7 +37,6 @@ SOURCES += main.cpp\
     common/board.cpp \
     controller/strategies/applicationstartedstrategy.cpp \
     controller/strategies/boardsizechangedstrategy.cpp \
-    controller/strategies/caraddedstrategy.cpp \
     controller/strategies/closewindowstrategy.cpp \
     controller/strategies/istrategy.cpp \
     controller/strategies/itemclickedstrategy.cpp \
@@ -50,11 +48,37 @@ SOURCES += main.cpp\
     controller/strategies/startsimulationstrategy.cpp \
     detection/cameradetectionimpl.cpp \
     detection/cameranoiseimpl.cpp \
+
     view/truckcaritem.cpp \
     view/imovableitem.cpp \
     view/passengercaritem.cpp \
     model/engine/engine.cpp \
     model/engine/objectspositionupdater.cpp
+
+    view/items/truckcaritem.cpp \
+    view/items/imovableitem.cpp \
+    view/items/passengercaritem.cpp \
+    view/items/destinationitem.cpp \
+    view/items/cameraitem.cpp \
+    view/mouseeventhandler/mouseeventhandler.cpp \
+    view/mouseeventhandler/cameramouseeventhandler.cpp \
+    view/mouseeventhandler/trafficparticipansmouseeventhandler.cpp \
+    view/mouseeventhandler/destinationmouseeventhandler.cpp \
+    view/items/itrafficparticipantitem.cpp \
+    common/events/cameraaddedevent.cpp \
+    common/events/camerareplacedevent.cpp \
+    common/events/cameraremovedevent.cpp \
+    controller/strategies/cameraaddedstrategy.cpp \
+    controller/strategies/cameraremovedstrategy.cpp \
+    controller/strategies/camerareplacedstrategy.cpp \
+    controller/strategies/trafficobjectaddedstrategy.cpp \
+    controller/strategies/trafficobjectreplacedstrategy.cpp \
+    controller/strategies/trafficobjectremovedstrategy.cpp \
+    common/events/trafficobjectaddedevent.cpp \
+    common/events/trafficobjectremovedevent.cpp \
+    common/events/trafficobjectreplacedevent.cpp \
+    controller/strategies/destinationreplacedstrategy.cpp \
+    common/events/destinationreplaceevent.cpp
 
 
 
@@ -67,7 +91,6 @@ HEADERS  += controller/icontroller.h \
     view/boardcell.h \
     view/mainwindow.h \
     controller/blockingqueue.h \
-    common/coordinates.h \
     view/iview.h \
     model/convert.h \
     model/dijkstra.h \
@@ -75,17 +98,14 @@ HEADERS  += controller/icontroller.h \
     model/simulationpreparator.h \
     common/events/applicationstartedevent.h \
     common/events/boardsizechangedevent.h \
-    common/events/caraddedevent.h \
     common/events/ievent.h \
     common/events/itemclickedevent.h \
     common/events/streetfieldaddedevent.h \
     common/events/streetfieldremovedevent.h \
     common/events/windowclosedevent.h \
     common/board.h \
-    common/coordinates.h \
     controller/strategies/applicationstartedstrategy.h \
     controller/strategies/boardsizechangedstrategy.h \
-    controller/strategies/caraddedstrategy.h \
     controller/strategies/closewindowstrategy.h \
     controller/strategies/istrategy.h \
     controller/strategies/itemclickedstrategy.h \
@@ -116,11 +136,38 @@ HEADERS  += controller/icontroller.h \
     detection/cameraobservation.h \
     detection/icameradetection.h \
     detection/icameranoise.h \
+
     view/truckcaritem.h \
     view/imovableitem.h \
     view/passengercaritem.h \
     model/engine/engine.h \
     model/engine/objectspositionupdater.h
+
+    view/items/truckcaritem.h \
+    view/items/imovableitem.h \
+    view/items/passengercaritem.h \
+    view/items/destinationitem.h \
+    view/items/cameraitem.h \
+    view/mouseeventhandler/mouseeventhandler.h \
+    view/mouseeventhandler/cameramouseeventhandler.h \
+    view/mouseeventhandler/trafficparticipansmouseeventhandler.h \
+    view/mouseeventhandler/destinationmouseeventhandler.h \
+    view/items/itrafficparticipantitem.h \
+    common/events/cameraaddedevent.h \
+    common/events/camerareplacedevent.h \
+    common/events/cameraremovedevent.h \
+    common/types.h \
+    controller/strategies/cameraaddedstrategy.h \
+    controller/strategies/cameraremovedstrategy.h \
+    controller/strategies/camerareplacedstrategy.h \
+    controller/strategies/destinationreplacedstrategy.h \
+    common/events/destinationreplaceevent.h \
+    common/events/trafficobjectremovedevent.h \
+    common/events/trafficobjectreplacedevent.h \
+    common/events/trafficobjectaddedevent.h \
+    controller/strategies/trafficobjectaddedstrategy.h \
+    controller/strategies/trafficobjectreplacedstrategy.h \
+    controller/strategies/trafficobjectremovedstrategy.h
 
 
 

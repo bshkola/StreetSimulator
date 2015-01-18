@@ -1,4 +1,4 @@
-#include "boardsizechangedstrategy.h"
+#include "../../controller/strategies/boardsizechangedstrategy.h"
 
 BoardSizeChangedStrategy::BoardSizeChangedStrategy(IModel* model, IView* view) : model_(model), view_(view)
 {

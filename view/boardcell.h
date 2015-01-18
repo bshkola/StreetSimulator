@@ -5,30 +5,28 @@
 #define BOARDCELL_H
 
 #include <QGraphicsRectItem>
-#include "../common/coordinates.h"
+#include "../common/types.h"
 
-namespace Ui {
-    class BoardCell : public QGraphicsRectItem
-    {
-    public:
-        BoardCell(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
+class BoardCell : public QGraphicsRectItem
+{
+public:
+    BoardCell(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
 
-        void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
-        void setChecked(bool checked); //sets the flag, changing the color of the cell
-        bool isChecked();
-        void setCoordinates(int x, int y); //sets coordinates metadata to the cell
-        Coordinates getCoordinates();
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
+    void setChecked(bool checked); //sets the flag, changing the color of the cell
+    bool isChecked();
+    void setCoordinates(int x, int y); //sets coordinates metadata to the cell
+    Coordinates getCoordinates();
 
-    signals:
+signals:
 
-    public slots:
+public slots:
 
-    private:
-        bool checked;
-        Coordinates coordinates;
-        Qt::GlobalColor checkedStreetColor;
-        Qt::GlobalColor nonCheckedStreetColor;
-    };
-}
+private:
+    bool checked;
+    Coordinates coordinates;
+    Qt::GlobalColor checkedStreetColor;
+    Qt::GlobalColor nonCheckedStreetColor;
+};
 
 #endif // BOARDCELL_H

@@ -3,12 +3,11 @@
 
 #include "ievent.h"
 
-
 class StartSimulationEvent : public IEvent
 {
 public:
     StartSimulationEvent();
-    ~StartSimulationEvent();
+    std::string getName();
 };
 
 #endif // STARTSIMULATIONEVENT_H

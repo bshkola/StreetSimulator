@@ -4,7 +4,7 @@
 #ifndef STRAIGHT_H
 #define STRAIGHT_H
 
-struct Straight : Street {
+struct Straight : public Street {
 };
 
 #endif // STRAIGHT_H

@@ -1,4 +1,4 @@
-#include "applicationstartedstrategy.h"
+#include "../../controller/strategies/applicationstartedstrategy.h"
 
 ApplicationStartedStrategy::ApplicationStartedStrategy(IModel* model, IView* view) : model_(model), view_(view)
 {
