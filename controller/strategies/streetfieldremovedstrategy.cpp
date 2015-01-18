@@ -1,4 +1,4 @@
-#include "streetfieldremovedstrategy.h"
+#include "../../controller/strategies/streetfieldremovedstrategy.h"
 
 StreetFieldRemovedStrategy::StreetFieldRemovedStrategy(IModel* model, IView* view) : model_(model), view_(view)
 {

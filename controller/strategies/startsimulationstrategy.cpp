@@ -1,18 +1,11 @@
-#include "startsimulationstrategy.h"
+#include "../../controller/strategies/startsimulationstrategy.h"
 
-StartSimulationStrategy::StartSimulationStrategy(ObjectsOnMap objectsOnMap):
-    objectsOnMap(objectsOnMap), simulationPreparation(objectsOnMap.getBoard(), objectsOnMap.getObjects())
+StartSimulationStrategy::StartSimulationStrategy(IModel* model, IView* view) : model_(model), view_(view)
 {
-
 }
 
-StartSimulationStrategy::~StartSimulationStrategy()
+void StartSimulationStrategy::perform(IEvent* event)
 {
-
+    model_->startSimulation();
+    std::cout << "StartSimulationStrategy" << std::endl;
 }
-
-void StartSimulationStrategy::perform(IEvent *event)
-{
-    simulationPreparation.run();    //calculate way for object and building graph
-}
-

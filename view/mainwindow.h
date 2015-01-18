@@ -31,6 +31,7 @@ public:
 public slots:
     void updateButtons();
     void updateBoardSize();
+    void startSimulation();
 
 protected:
 

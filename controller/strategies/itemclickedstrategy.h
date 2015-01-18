@@ -2,7 +2,6 @@
 #define ITEMCLICKEDSTRATEGY_H
 
 #include "istrategy.h"
-#include <string>
 
 class ItemClickedStrategy : public IStrategy
 {

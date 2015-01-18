@@ -19,6 +19,8 @@ public:
 
     virtual void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates) = 0;
 
+    virtual void startSimulation() = 0;
+
 };
 
 #endif // IMODEL_H

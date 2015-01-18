@@ -1,12 +1,9 @@
-#include "startsimulationevent.h"
+#include "../../common/events/startsimulationevent.h"
 
-StartSimulationEvent::StartSimulationEvent()
+StartSimulationEvent::StartSimulationEvent() : IEvent()
 {
-
 }
 
-StartSimulationEvent::~StartSimulationEvent()
-{
-
+std::string StartSimulationEvent::getName() {
+    return "StartSimulation";
 }
-

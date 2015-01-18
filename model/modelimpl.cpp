@@ -3,7 +3,6 @@
 
 ModelImpl::ModelImpl()
 {
-
 }
 
 ModelImpl::~ModelImpl()
@@ -47,4 +46,8 @@ void ModelImpl::replaceDestination(Position oldCoordinates, Position newCoordina
 //    std::cout << "ReplaceCar " << oldCoordinates.first << " " << oldCoordinates.second << std::endl;
 //    std::cout << "To         " << newCoordinates.first << " " << newCoordinates.second << std::endl;
 //    std::cout << "Parent     " << trafficObjectCoordinates.first << " " << trafficObjectCoordinates.second << std::endl;
+}
+
+void ModelImpl::startSimulation() {
+    //TODO
 }

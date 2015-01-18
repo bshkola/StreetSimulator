@@ -5,6 +5,7 @@
 #include "../controller/blockingqueue.h"
 #include "../common/events/windowclosedevent.h"
 #include "../common/events/boardsizechangedevent.h"
+#include "../common/events/startsimulationevent.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), IView(), ui(new Ui::MainWindow)
@@ -30,6 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->removeStreetButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
     connect(ui->movableObjectButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
     connect(ui->cameraButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
+
+    connect(ui->simmulationButton, SIGNAL(pressed()), this, SLOT(startSimulation()));
 }
 
 MainWindow::~MainWindow()
@@ -43,6 +46,9 @@ void MainWindow::show()
     QMainWindow::show();
 }
 
+void MainWindow::startSimulation() {
+    BlockingEventQueue::getInstance().push(new StartSimulationEvent());
+}
 
 void MainWindow::updateBoardSize() {
     QMessageBox::StandardButton reply;

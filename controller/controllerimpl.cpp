@@ -13,6 +13,7 @@
 #include "strategies/trafficobjectreplacedstrategy.h"
 #include "strategies/trafficobjectremovedstrategy.h"
 #include "strategies/destinationreplacedstrategy.h"
+#include "strategies/startsimulationstrategy.h"
 
 #include "../common/events/applicationstartedevent.h"
 
@@ -31,6 +32,7 @@ ControllerImpl::ControllerImpl(IModel* model, IView* view) : finish_(false)
     map.insert(std::pair<std::string, IStrategy*>("TrafficObjectReplaced", new TrafficObjectReplacedStrategy(model, view)));
     map.insert(std::pair<std::string, IStrategy*>("TrafficObjectRemoved", new TrafficObjectRemovedStrategy(model, view)));
     map.insert(std::pair<std::string, IStrategy*>("DestinationReplaced", new DestinationReplacedStrategy(model, view)));
+    map.insert(std::pair<std::string, IStrategy*>("StartSimulation", new StartSimulationStrategy(model, view)));
 
     BlockingEventQueue::getInstance().push(new ApplicationStartedEvent());
 }
