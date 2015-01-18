@@ -3,6 +3,8 @@ ZPR-v1
 Makefile
 *.o
 
+bin/
+
     #ignoring following files according to naming pattern
     #moc_blockingqueue.cpp
     #moc_boardscene.cpp
