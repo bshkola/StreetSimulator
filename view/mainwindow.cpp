@@ -81,7 +81,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::showBoard(const Board& board) {
     std::cout << "showing Board" << std::endl;
-    ui->boardSizeSpinBox->setValue(board.size_);
-    boardScene->updateBoardSize(board.size_);
+    ui->boardSizeSpinBox->setValue(8);
+    boardScene->updateBoardSize(8);
 }
 

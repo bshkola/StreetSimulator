@@ -48,13 +48,8 @@ SOURCES += main.cpp\
     controller/strategies/startsimulationstrategy.cpp \
     detection/cameradetectionimpl.cpp \
     detection/cameranoiseimpl.cpp \
-
-    view/truckcaritem.cpp \
-    view/imovableitem.cpp \
-    view/passengercaritem.cpp \
     model/engine/engine.cpp \
-    model/engine/objectspositionupdater.cpp
-
+    model/engine/objectspositionupdater.cpp \
     view/items/truckcaritem.cpp \
     view/items/imovableitem.cpp \
     view/items/passengercaritem.cpp \
@@ -79,9 +74,6 @@ SOURCES += main.cpp\
     common/events/trafficobjectreplacedevent.cpp \
     controller/strategies/destinationreplacedstrategy.cpp \
     common/events/destinationreplaceevent.cpp
-
-
-
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
@@ -136,13 +128,8 @@ HEADERS  += controller/icontroller.h \
     detection/cameraobservation.h \
     detection/icameradetection.h \
     detection/icameranoise.h \
-
-    view/truckcaritem.h \
-    view/imovableitem.h \
-    view/passengercaritem.h \
     model/engine/engine.h \
-    model/engine/objectspositionupdater.h
-
+    model/engine/objectspositionupdater.h \
     view/items/truckcaritem.h \
     view/items/imovableitem.h \
     view/items/passengercaritem.h \
@@ -168,8 +155,6 @@ HEADERS  += controller/icontroller.h \
     controller/strategies/trafficobjectaddedstrategy.h \
     controller/strategies/trafficobjectreplacedstrategy.h \
     controller/strategies/trafficobjectremovedstrategy.h
-
-
 
 FORMS    += mainwindow.ui \
     mainwindow.ui

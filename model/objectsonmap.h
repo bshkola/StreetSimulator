@@ -19,7 +19,7 @@ class ObjectsOnMap
 {
 public:
 
-    ObjectsOnMap(const int sizeOfMap);
+    ObjectsOnMap();
     ~ObjectsOnMap();
 
     //void addPedestrian(Position location, Position source, Position destination, float speed = 1);
@@ -35,8 +35,8 @@ public:
     void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates);
 
     const list<TrafficParticipant*> &getObjects() const;
-    list<Camera*> getCameras();
-    Board *getBoard() const;
+    list<Camera*> getCameras() const;
+    const Board &getBoard() const;
 private:
     list<TrafficParticipant*> objects;
     list<Camera*> cameras;

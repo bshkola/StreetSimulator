@@ -15,8 +15,8 @@ void ObjectsPositionUpdater::update()
     for(TrafficParticipant *el: trafficParticipants)
     {   //update all elements
         el->way.pop_front();
-        el->x = el->way.front().first;
-        el->x = el->way.front().second;
+        el->x_ = el->way.front().first;
+        el->y_ = el->way.front().second;
     }
 }
 

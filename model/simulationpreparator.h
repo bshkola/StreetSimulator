@@ -21,7 +21,7 @@ public:
     void run(); //run the SimulationPreparator: calculate the paths and convert map to graph
 private:
     Convert convert;    //converter from map to graph
-    const list<TrafficParticipant*> *objects; //list of the move objects on the map
+    const list<TrafficParticipant*> &objects; //list of the move objects on the map
     Dijkstra *dijkstra; //algorithm for calculate the path
     list<TrafficParticipant*> waysObjects; //remember objectd and their way
     const ObjectsOnMap &objectOnMap;

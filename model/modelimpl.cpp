@@ -1,4 +1,4 @@
-#include "modelimpl.h"
+#include "../model/modelimpl.h"
 #include <iostream>
 
 ModelImpl::ModelImpl()
@@ -9,8 +9,8 @@ ModelImpl::~ModelImpl()
 {
 }
 
-Board& ModelImpl::getBoard() {
-    return objectsOnMap_.getBoard();
+Board& ModelImpl::getBoard() { //TODO getBoardSize()!!!!!!!!
+    //return objectsOnMap_.getBoard(); //TODO
 }
 
 void ModelImpl::addCamera(Coordinates coordinates) {

@@ -10,10 +10,10 @@ Dijkstra::~Dijkstra()
     delete graph;
 }
 
-TrafficParticipant*  Dijkstra::calculateWay(TrafficParticipant *object)
+TrafficParticipant *Dijkstra::calculateWay(TrafficParticipant *object)
 {
     list<pair<Vertex*, Vertex_str>> avaibleVertex; //vertex which we can visite
-    NameOfVertex source = object -> start_point, dest = object -> target_point;   //get source & destination of point
+    NameOfVertex source = object -> startPoint_, dest = object -> targetPoint_;   //get source & destination of point
     Vertex* tmpVertex = graph->getVertex(source);
     Vertex* destVertex = graph->getVertex(dest);  //finding a destination vertex
     avaibleVertex.push_back(make_pair(tmpVertex, Vertex_str(0, false, NULL))); //inicializate the algorithm
@@ -28,7 +28,7 @@ TrafficParticipant*  Dijkstra::calculateWay(TrafficParticipant *object)
     pair<Vertex*, Vertex_str> *tmpPoint = &tmp;
     while(tmpPoint != NULL)
     {
-        object->way.push_front(tmpPoint -> first->getName());
+        object -> way.push_front(tmpPoint -> first->getName());
         tmpPoint = tmpPoint->second.before;
     }
     return object;

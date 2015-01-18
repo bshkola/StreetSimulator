@@ -1,16 +1,15 @@
 #include "../model/simulationpreparator.h"
 
 SimulationPreparator::SimulationPreparator(const ObjectsOnMap &objectOnMap):
-    convert(objectOnMap.getBoard()), objectOnMap(objectOnMap)
+    convert(objectOnMap.getBoard()), objectOnMap(objectOnMap), objects(objectOnMap.getObjects())
 {
     this->dijkstra = new Dijkstra(this->convert.generateGraph());   //generate graph and put in dijkstra
-    this->objects = objectOnMap.getObjects();
 }
 
 
 void SimulationPreparator::run()
 {    
-    for(TrafficParticipant *obj: *objects)
+    for(TrafficParticipant *obj: *(&objects))
     {
         waysObjects.push_back(dijkstra->calculateWay(obj));
     }

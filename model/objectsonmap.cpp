@@ -4,7 +4,6 @@
 
 ObjectsOnMap::ObjectsOnMap() : board(8)
 {   
-    board = new Board(sizeOfMap);
 }
 
 ObjectsOnMap::~ObjectsOnMap()
@@ -139,7 +138,7 @@ void ObjectsOnMap::replaceDestination(Position oldCoordinates, Position newCoord
     //TODO
 }
 
-const list<TrafficParticipant*> *ObjectsOnMap::getObjects() const
+const list<TrafficParticipant*> &ObjectsOnMap::getObjects() const
 {
     return objects;
 }
@@ -149,7 +148,7 @@ list<Camera*> ObjectsOnMap::getCameras() const
     return cameras;
 }
 
-Board& ObjectsOnMap::getBoard()
+const Board &ObjectsOnMap::getBoard() const
 {
     return board;
 }

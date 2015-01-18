@@ -32,7 +32,8 @@ int main(int argc, char *argv[])
 
 void sokolTest()
 {
-    ObjectsOnMap objectsOnMap(50);
+    ObjectsOnMap objectsOnMap;
+    //objectsOnMap.getBoard().size_ = 50;
     for(int i = 0; i < 50; i++)
     {
         for(int j = 0; j < 50; j++)
@@ -43,10 +44,10 @@ void sokolTest()
                 objectsOnMap.setCellOnField(i, j, false);
         }
     }
-    objectsOnMap.addPedestrian(ObjectsOnMap::Cordination(5, 0),
-                               ObjectsOnMap::Position(4, 5), ObjectsOnMap::Position(8,5));
-    objectsOnMap.addPedestrian(ObjectsOnMap::Cordination(5, 0),
-                               ObjectsOnMap::Position(4, 5), ObjectsOnMap::Position(25,5));
+    //objectsOnMap.addPedestrian(ObjectsOnMap::Cordination(5, 0),
+    //                           ObjectsOnMap::Position(4, 5), ObjectsOnMap::Position(8,5));
+    //objectsOnMap.addPedestrian(ObjectsOnMap::Cordination(5, 0),
+       //                        ObjectsOnMap::Position(4, 5), ObjectsOnMap::Position(25,5));
     SimulationPreparator simulationPreparator(objectsOnMap);
     simulationPreparator.run();
 }
