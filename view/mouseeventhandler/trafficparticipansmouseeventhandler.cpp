@@ -24,7 +24,7 @@ void TrafficParticipansMouseEventHandler::handleRelease(QGraphicsSceneMouseEvent
         QPointF position = scene->getDiscretePosition(event->scenePos());
         item->setPos(position);
         if (!scene->isInsideBoard(event->buttonDownScenePos(Qt::LeftButton))) {
-            DestinationItem* dest = new DestinationItem(QRectF(dest->rect().x(), dest->rect().y(), dest->rect().width() / 2, dest->rect().height() / 2), (ITrafficParticipantItem*)item);
+            DestinationItem* dest = new DestinationItem(QRectF(item->rect().x(), item->rect().y(), item->rect().width() / 2, item->rect().height() / 2), (ITrafficParticipantItem*)item);
             dest->setFlag(QGraphicsItem::ItemIsMovable);
 
             BlockingEventQueue::getInstance().push(new TrafficObjectAddedEvent(scene->getDiscreteCoordinates(event->scenePos()), item->getTrafficObjectType()));

@@ -1,4 +1,5 @@
 #include "../model/objectsonmap.h"
+#include <cmath>
 #include <iostream>
 
 ObjectsOnMap::ObjectsOnMap() : board(8)
@@ -33,7 +34,7 @@ void ObjectsOnMap::addTrafficObject(Position location, ObjectType objectType)
         objects.push_back(new Truck(location.first, location.second, speed, location, location));
         break;
     default:
-        throw exception("Wrong type of object");
+        throw exception();
     }
     for (TrafficParticipant* trafficParticipant : objects) {
         std::cout << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
@@ -90,7 +91,7 @@ void ObjectsOnMap::replaceCamera(Coordinates oldCordinates, Coordinates newCordi
     std::list<Camera*>::iterator i = cameras.begin();
     while (i != cameras.end())
     {
-        if (abs(oldCordinates.first - (*i)->x_) + (oldCordinates.second - (*i)->y_) < 0.01) {
+        if (abs(oldCordinates.first - (*i)->x_) + abs(oldCordinates.second - (*i)->y_) < 0.01) {
             (*i)->x_ = newCordinates.first;
             (*i)->y_ = newCordinates.second;
             break;
@@ -108,7 +109,7 @@ void ObjectsOnMap::deleteCamera(Coordinates location, float azimuth, float angle
     std::list<Camera*>::iterator i = cameras.begin();
     while (i != cameras.end())
     {
-        if (abs(location.first - (*i)->x_) + (location.second - (*i)->y_) < 0.01) {
+        if (abs(location.first - (*i)->x_) + abs(location.second - (*i)->y_) < 0.01) {
             cameras.erase(i++);
         }
         else {
