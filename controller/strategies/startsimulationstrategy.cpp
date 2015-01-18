@@ -1,7 +1,7 @@
 #include "startsimulationstrategy.h"
 
 StartSimulationStrategy::StartSimulationStrategy(ObjectsOnMap objectsOnMap):
-    objectsOnMap(objectsOnMap), simulationPreparation(objectsOnMap.getBoard(), objectsOnMap.getObjects())
+    objectsOnMap(objectsOnMap), simulationPreparation(objectsOnMap)
 {
 
 }

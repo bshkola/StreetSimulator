@@ -43,9 +43,54 @@ void Engine::run()
             camerasTime += millisecondsInQuantum;
         }
         
-        
         //TODO repaint()
-        
+        //////////////////////////////////TEST//////WYWALIC////////////
+        //jest zrobione zamiast przerysowanie mapy, repaint w konsoli
+        //test paint map
+        /*
+        for(int i = 0; i < objectsOnMap.getBoard()->size_; i++)
+            std::cout<<i;
+        std::cout<<endl;
+        for(int i = 0; i < objectsOnMap.getBoard()->size_; i++)
+        {
+            std::cout<<i;
+            for(int j = 0; j < objectsOnMap.getBoard()->size_; j++)
+            {
+                bool isObjectHere = false;
+                for(TrafficParticipant* el: *objectsOnMap.getObjects())
+                {
+                    if(el->x == j && el->y == i)
+                        isObjectHere = true;
+                }
+                if(objectsOnMap.getBoard()->boardMap_[i][j] == true)
+                {
+                    if(!isObjectHere)
+                        std::cout<<"+";
+                    else
+                        std::cout<<"*";
+                }
+                else
+                {
+                    if(!isObjectHere)
+                        std::cout<<"#";
+                    else
+                        std::cout<<"*";
+                }
+            }
+            std::cout<<std::endl;
+        }
+        cout<<"Objects" <<endl;
+        for(TrafficParticipant* el: *objectsOnMap.getObjects())
+        {
+            for(std::pair<int, int> obj: el->way)
+                cout<<"way x: " <<obj.first<<" y: "<<obj.second<<endl;
+        }
+        cout<<"Endl objects"<<endl;
+        int i;
+        std::cin>>i;
+        */
+        //end test paint map
+        //////////////////////////////////TEST//////WYWALIC dotad////////////
         //save current time - end of loop
         endTime = std::chrono::duration_cast<std::chrono::milliseconds>
                     (std::chrono::high_resolution_clock::now().time_since_epoch());

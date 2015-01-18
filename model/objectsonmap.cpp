@@ -1,8 +1,8 @@
 #include "../model/objectsonmap.h"
 
-ObjectsOnMap::ObjectsOnMap()
+ObjectsOnMap::ObjectsOnMap(const int sizeOfMap)
 {   //empty
-
+    board = new Board(sizeOfMap);
 }
 
 ObjectsOnMap::~ObjectsOnMap()
@@ -47,9 +47,9 @@ void ObjectsOnMap::deleteCamera(Position location, float azimuth, float angle, f
     //TODO
 }
 
-list<TrafficParticipant*> ObjectsOnMap::getObjects()
+const list<TrafficParticipant*> *ObjectsOnMap::getObjects() const
 {
-      return objects;
+      return &objects;
 }
 
 list<Camera*> ObjectsOnMap::getCameras() const
@@ -57,7 +57,7 @@ list<Camera*> ObjectsOnMap::getCameras() const
     return cameras;
 }
 
-Board *ObjectsOnMap::getBoard()
+Board *ObjectsOnMap::getBoard() const
 {
     return board;
 }
