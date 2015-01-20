@@ -9,3 +9,7 @@ fi
 mkdir bin
 
 mv ZPR-v1 ./bin/.
+
+if [ -f "config" ]; then
+  cp config ./bin/.
+fi
