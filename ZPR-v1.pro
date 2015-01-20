@@ -162,4 +162,4 @@ HEADERS  += controller/icontroller.h \
 FORMS    += mainwindow.ui \
     mainwindow.ui
 
-unix:!macx: LIBS += -lmysqlcppconn
+unix|win32: LIBS += -lmysqlcppconn
