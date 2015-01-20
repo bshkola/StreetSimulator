@@ -10,8 +10,8 @@ struct Camera {
     }
 
     float x_, y_;                     //coordinates of camera placed on the map
-    float azimuth_, angle_, range_;    //atributes of camera
-    int number_;                     //unique number of camera
+    float azimuth_, angle_, range_;   //atributes of camera
+    int number_;                      //unique number of camera
 };
 
 #endif // CAMERA_H
