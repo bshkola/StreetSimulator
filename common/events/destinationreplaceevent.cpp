@@ -1,7 +1,7 @@
 #include "../../common/events/destinationreplaceevent.h"
 
-DestinationReplaceEvent::DestinationReplaceEvent(Coordinates oldCoordinates, Coordinates newCoordinates, Coordinates trafficObjectCoordinates)
-    : IEvent() {
+DestinationReplaceEvent::DestinationReplaceEvent(Coordinates oldCoordinates, Coordinates newCoordinates,
+                                                 Coordinates trafficObjectCoordinates) : IEvent() {
     oldCoordinates_ = oldCoordinates;
     newCoordinates_ = newCoordinates;
     trafficObjectCoordinates_ = trafficObjectCoordinates;

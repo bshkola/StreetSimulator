@@ -7,7 +7,7 @@ class BoardSizeChangedStrategy : public IStrategy
 {
 public:
     BoardSizeChangedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(IEvent* event);
+    void perform(std::shared_ptr<IEvent> event);
     virtual ~BoardSizeChangedStrategy();
 
 private:

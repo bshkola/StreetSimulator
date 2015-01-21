@@ -7,7 +7,7 @@ class ItemClickedStrategy : public IStrategy
 {
 public:
     ItemClickedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(IEvent* event);
+    void perform(std::shared_ptr<IEvent> event);
     virtual ~ItemClickedStrategy();
 
 private:

@@ -23,5 +23,7 @@ int main(int argc, char *argv[])
     shared_ptr<IController> controller = make_shared<ControllerImpl>(model, window);
     QtConcurrent::run(controller.get(), &IController::start);
     cout << "models >> " << model.use_count() << endl;
-    return a.exec();
+    int result = a.exec();
+    //delete window;
+    return result;
 }

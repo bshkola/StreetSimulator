@@ -7,7 +7,7 @@ class StreetFieldRemovedStrategy : public IStrategy
 {
 public:
     StreetFieldRemovedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(IEvent* event);
+    void perform(std::shared_ptr<IEvent> event);
     virtual ~StreetFieldRemovedStrategy();
 
 private:

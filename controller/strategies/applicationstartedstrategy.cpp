@@ -6,7 +6,6 @@ ApplicationStartedStrategy::ApplicationStartedStrategy(std::shared_ptr<IModel> m
 ApplicationStartedStrategy::~ApplicationStartedStrategy() {
 }
 
-void ApplicationStartedStrategy::perform(IEvent *event) {
+void ApplicationStartedStrategy::perform(std::shared_ptr<IEvent> event) {
     view_->showBoard(model_->getBoard());
-    //model_->getBoard();
 }

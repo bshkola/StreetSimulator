@@ -7,7 +7,7 @@ class StartSimulationStrategy : public IStrategy
 {
 public:
     StartSimulationStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(IEvent* event);
+    void perform(std::shared_ptr<IEvent> event);
     virtual ~StartSimulationStrategy();
 
 private:

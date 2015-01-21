@@ -7,7 +7,7 @@ class TrafficObjectAddedStrategy : public IStrategy
 {
 public:
     TrafficObjectAddedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(IEvent* event);
+    void perform(std::shared_ptr<IEvent> event);
     virtual ~TrafficObjectAddedStrategy();
 
 private:

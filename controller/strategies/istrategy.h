@@ -15,7 +15,7 @@ class IStrategy
 public:
     IStrategy();
     virtual ~IStrategy() {}
-    virtual void perform(IEvent* event) = 0; // defines how strategy should react when it is launched
+    virtual void perform(std::shared_ptr<IEvent> event) = 0; // defines how strategy should react when it is launched
 };
 
 #endif // ISTRATEGY_H

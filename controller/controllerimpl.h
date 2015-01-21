@@ -23,7 +23,7 @@ public:
 
 private:
     bool finish_;
-    std::map<std::string, IStrategy*> map; // strategy maps which defines reaction on different events
+    std::map<std::string, std::shared_ptr<IStrategy>> map; // strategy maps which defines reaction on different events
 };
 
 #endif // CONTROLLERIMPL_H

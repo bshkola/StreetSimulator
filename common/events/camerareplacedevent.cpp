@@ -1,8 +1,7 @@
 #include "../../common/events/camerareplacedevent.h"
 
 CameraReplacedEvent::CameraReplacedEvent(Coordinates old_coordinates,
-                                         Coordinates new_coordinates)
-    : IEvent() {
+                                         Coordinates new_coordinates) : IEvent() {
     old_coordinates_ = old_coordinates;
     new_coordinates_ = new_coordinates;
 }

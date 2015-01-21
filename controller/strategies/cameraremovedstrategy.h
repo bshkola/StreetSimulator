@@ -7,7 +7,7 @@ class CameraRemovedStrategy : public IStrategy
 {
 public:
     CameraRemovedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(IEvent* event);
+    void perform(std::shared_ptr<IEvent> event);
     virtual ~CameraRemovedStrategy();
 
 private:
