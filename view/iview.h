@@ -12,6 +12,7 @@ public:
     IView();
     virtual void show() = 0;
     virtual void showBoard(const Board& board) = 0;
+    virtual void createBoard(int boardSize) = 0;
 };
 
 #endif // IVIEW_H

@@ -11,6 +11,17 @@ ModelImpl::~ModelImpl()
 
 Board& ModelImpl::getBoard() { //TODO getBoardSize()!!!!!!!!
     //return objectsOnMap_.getBoard(); //TODO
+
+    return *(new Board(8));
+}
+
+void ModelImpl::setBoardSize(int boardSize) {
+    //TODO remove all objects from the board
+    objectsOnMap_.setBoardSize(boardSize);
+}
+
+int ModelImpl::getBoardSize() {
+    return objectsOnMap_.getBoardSize();
 }
 
 void ModelImpl::addCamera(Coordinates coordinates) {

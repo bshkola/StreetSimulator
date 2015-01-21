@@ -11,7 +11,7 @@
 
 class Dijkstra
 {
-    const int DISTANCE_BETWEEN_VERTECES = 1;
+    const int DISTANCE_BETWEEN_VERTECES;
 public:
     Dijkstra(const Graph *graph); //tworzy dijkstre dla danego grafu
     ~Dijkstra();

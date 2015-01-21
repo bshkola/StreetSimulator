@@ -152,3 +152,11 @@ const Board &ObjectsOnMap::getBoard() const
 {
     return board;
 }
+
+int ObjectsOnMap::getBoardSize() {
+    return board.size_;
+}
+
+void ObjectsOnMap::setBoardSize(int boardSize) {
+    board = Board(boardSize);
+}

@@ -36,6 +36,8 @@ public:
 
     const list<TrafficParticipant*> &getObjects() const;
     list<Camera*> getCameras() const;
+    int getBoardSize();
+    void setBoardSize(int boardSize);
     const Board &getBoard() const;
 private:
     list<TrafficParticipant*> objects;

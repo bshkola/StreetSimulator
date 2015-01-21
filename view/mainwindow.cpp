@@ -51,11 +51,9 @@ void MainWindow::startSimulation() {
 }
 
 void MainWindow::updateBoardSize() {
-    QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "Warning", "Do you want to change the size of the board? All information will be lost",
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Warning", "Do you want to change the size of the board? All information will be lost",
                                 QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
-        boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
         BlockingEventQueue::getInstance().push(new BoardSizeChangedEvent(ui->boardSizeSpinBox->value()));
     }
 }
@@ -85,3 +83,6 @@ void MainWindow::showBoard(const Board& board) {
     boardScene->updateBoardSize(8);
 }
 
+void MainWindow::createBoard(int boardSize) {
+    boardScene->updateBoardSize(boardSize);
+}

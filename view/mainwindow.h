@@ -26,6 +26,7 @@ public:
     void resizeEvent(QResizeEvent *event);
     void closeEvent(QCloseEvent *event);
     void showBoard(const Board& board);
+    void createBoard(int boardSize);
     virtual ~MainWindow();
 
 public slots:

@@ -11,6 +11,8 @@ public:
     virtual ~ModelImpl();
 
     Board& getBoard();
+    int getBoardSize();
+    void setBoardSize(int boardSize);
     void addCamera(Coordinates coordinates);
     void replaceCamera(Coordinates oldCoordinates, Coordinates newCoordinates);
     void removeCamera(Coordinates coordinates);
@@ -22,6 +24,7 @@ public:
     void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates);
 
     void startSimulation();
+
 private:
     ObjectsOnMap objectsOnMap_;
 };

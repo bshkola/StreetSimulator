@@ -1,8 +1,8 @@
 #include "../model/dijkstra.h"
 
-Dijkstra::Dijkstra(const Graph *graph): graph(graph)
+Dijkstra::Dijkstra(const Graph *graph): graph(graph), DISTANCE_BETWEEN_VERTECES(1)
 {
-std::cout<<graph->toString();
+    std::cout<<graph->toString();
 }
 
 Dijkstra::~Dijkstra()
