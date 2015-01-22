@@ -9,15 +9,7 @@
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
 
-<<<<<<< HEAD
-//for test only
-#include "model/objectsonmap.h"
-#include "model/simulationpreparator.h"
-void sokolTest(); //testowanie modelu
-//end test
-=======
 using namespace std;
->>>>>>> master
 
 int main(int argc, char *argv[])
 {
@@ -34,28 +26,6 @@ int main(int argc, char *argv[])
     int result = a.exec();
     //delete window;
     return result;
-}
-
-void sokolTest()
-{
-    ObjectsOnMap objectsOnMap;
-    //objectsOnMap.getBoard().size_ = 50;
-    for(int i = 0; i < 50; i++)
-    {
-        for(int j = 0; j < 50; j++)
-        {   //add test elements on map
-            if( j == 5 || i == 3)
-                objectsOnMap.setCellOnField(i, j, true);
-            else
-                objectsOnMap.setCellOnField(i, j, false);
-        }
-    }
-    //objectsOnMap.addPedestrian(ObjectsOnMap::Cordination(5, 0),
-    //                           ObjectsOnMap::Position(4, 5), ObjectsOnMap::Position(8,5));
-    //objectsOnMap.addPedestrian(ObjectsOnMap::Cordination(5, 0),
-       //                        ObjectsOnMap::Position(4, 5), ObjectsOnMap::Position(25,5));
-    SimulationPreparator simulationPreparator(objectsOnMap);
-    simulationPreparator.run();
 }
 
 
