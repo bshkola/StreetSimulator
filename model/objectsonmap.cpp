@@ -18,6 +18,36 @@ ObjectsOnMap::~ObjectsOnMap()
     }
 }
 
+void ObjectsOnMap::addStreet(Position coordinates) { // TODO check if inside the board
+    board.boardMap_[coordinates.first][coordinates.second] = true;
+
+    for (int i = 0; i < board.size_; i++) {
+        for (int j = 0; j < board.size_; j++) {
+            if (board.boardMap_[i][j]) {
+                std::cout << "x";
+            } else {
+                std::cout << " ";
+            }
+        }
+        std::cout << std::endl;
+    }
+}
+
+void ObjectsOnMap::removeStreet(Position coordinates) {
+    board.boardMap_[coordinates.first][coordinates.second] = false;
+
+    for (int i = 0; i < board.size_; i++) {
+        for (int j = 0; j < board.size_; j++) {
+            if (board.boardMap_[i][j]) {
+                std::cout << "x";
+            } else {
+                std::cout << " ";
+            }
+        }
+        std::cout << std::endl;
+    }
+}
+
 void ObjectsOnMap::addTrafficObject(Position location, ObjectType objectType)
 {
     float speed = 1;
@@ -149,6 +179,11 @@ list<Camera*> ObjectsOnMap::getCameras() const
 }
 
 const Board &ObjectsOnMap::getBoard() const
+{
+    return board;
+}
+
+Board &ObjectsOnMap::getBoard()
 {
     return board;
 }

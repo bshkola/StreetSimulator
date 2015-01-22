@@ -11,8 +11,16 @@ ModelImpl::~ModelImpl()
     std::cout << "~ModelImpl()" << std::endl;
 }
 
-Board& ModelImpl::getBoard() { //TODO getBoardSize()!!!!!!!!
-    //return objectsOnMap_.getBoard(); //TODO
+void ModelImpl::addStreet(Position coordinates) {
+    objectsOnMap_.addStreet(coordinates);
+}
+
+void ModelImpl::removeStreet(Position coordinates) {
+    objectsOnMap_.removeStreet(coordinates);
+}
+
+Board& ModelImpl::getBoard() {
+    return objectsOnMap_.getBoard();
 }
 
 void ModelImpl::addCamera(Coordinates coordinates) {

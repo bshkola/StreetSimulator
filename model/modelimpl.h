@@ -11,6 +11,9 @@ public:
     ModelImpl();
     virtual ~ModelImpl();
 
+    void addStreet(Position coordinates);
+    void removeStreet(Position coordinates);
+
     Board& getBoard();
     void addCamera(Coordinates coordinates);
     void replaceCamera(Coordinates oldCoordinates, Coordinates newCoordinates);
