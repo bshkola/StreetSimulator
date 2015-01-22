@@ -1,6 +1,4 @@
 #include "ievent.h"
 
-IEvent::IEvent(QObject *parent) :
-    QObject(parent)
-{
+IEvent::IEvent(QObject *parent) : QObject(parent) {
 }

@@ -1,7 +1,6 @@
 #include "applicationstartedevent.h"
 
-ApplicationStartedEvent::ApplicationStartedEvent()
-{
+ApplicationStartedEvent::ApplicationStartedEvent() {
 }
 
 std::string ApplicationStartedEvent::getName() {

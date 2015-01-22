@@ -4,10 +4,7 @@
 #ifndef ICONTROLLER_H
 #define ICONTROLLER_H
 
-#include <QObject>
-
-class IController : public QObject
-{
+class IController {
 public:
     IController();
     virtual ~IController();

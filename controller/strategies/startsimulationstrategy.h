@@ -6,11 +6,12 @@
 class StartSimulationStrategy : public IStrategy
 {
 public:
-    StartSimulationStrategy(IModel* model, IView* view);
-    void perform(IEvent* event);
+    StartSimulationStrategy(std::shared_ptr<IModel> model, IView* view);
+    void perform(std::shared_ptr<IEvent> event);
+    virtual ~StartSimulationStrategy();
 
 private:
-    IModel* model_;
+    std::shared_ptr<IModel> model_;
     IView* view_;
 };
 

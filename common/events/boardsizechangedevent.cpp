@@ -1,15 +1,12 @@
 #include "boardsizechangedevent.h"
 
-BoardSizeChangedEvent::BoardSizeChangedEvent(int boardSize) : boardSize_(boardSize)
-{
+BoardSizeChangedEvent::BoardSizeChangedEvent(int boardSize) : boardSize_(boardSize) {
 }
 
-std::string BoardSizeChangedEvent::getName()
-{
+std::string BoardSizeChangedEvent::getName() {
     return "BoardSizeChanged";
 }
 
-int BoardSizeChangedEvent::getBoardSize()
-{
+int BoardSizeChangedEvent::getBoardSize() {
     return boardSize_;
 }

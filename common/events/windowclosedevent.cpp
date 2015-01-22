@@ -1,10 +1,8 @@
 #include "windowclosedevent.h"
 
-WindowClosedEvent::WindowClosedEvent()
-{
+WindowClosedEvent::WindowClosedEvent() {
 }
 
-std::string WindowClosedEvent::getName()
-{
+std::string WindowClosedEvent::getName() {
     return "WindowClosed";
 }

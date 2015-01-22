@@ -1,7 +1,6 @@
 #include "../../common/events/cameraremovedevent.h"
 
-CameraRemovedEvent::CameraRemovedEvent(Coordinates coordinates)
-    : IEvent() {
+CameraRemovedEvent::CameraRemovedEvent(Coordinates coordinates) : IEvent() {
     coordinates_ = coordinates;
 }
 

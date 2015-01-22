@@ -1,5 +1,6 @@
 #include "view/mainwindow.h"
 #include <QApplication>
+#include <memory>
 
 #include "controller/controllerimpl.h"
 #include "model/modelimpl.h"
@@ -8,11 +9,15 @@
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
 
+<<<<<<< HEAD
 //for test only
 #include "model/objectsonmap.h"
 #include "model/simulationpreparator.h"
 void sokolTest(); //testowanie modelu
 //end test
+=======
+using namespace std;
+>>>>>>> master
 
 int main(int argc, char *argv[])
 {
@@ -22,12 +27,13 @@ int main(int argc, char *argv[])
     IView* window = new MainWindow();
     window->show();
 
-    IModel* model = new ModelImpl();
-    IController* controller = new ControllerImpl(model, window);
-
-    QFuture<void> controllerThread = QtConcurrent::run(controller, &IController::start);
-
-    return a.exec();
+    shared_ptr<IModel> model = make_shared<ModelImpl>();
+    shared_ptr<IController> controller = make_shared<ControllerImpl>(model, window);
+    QtConcurrent::run(controller.get(), &IController::start);
+    cout << "models >> " << model.use_count() << endl;
+    int result = a.exec();
+    //delete window;
+    return result;
 }
 
 void sokolTest()

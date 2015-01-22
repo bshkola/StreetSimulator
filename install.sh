@@ -1,3 +1,5 @@
+#!/bin/bash
+
 qmake -o Makefile ZPR-v1.pro
 make
 make clean
@@ -9,3 +11,7 @@ fi
 mkdir bin
 
 mv ZPR-v1 ./bin/.
+
+if [ -f "config" ]; then
+  cp config ./bin/.
+fi

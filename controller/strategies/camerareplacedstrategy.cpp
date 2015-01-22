@@ -1,12 +1,13 @@
 #include "../../controller/strategies/camerareplacedstrategy.h"
 #include "../../common/events/camerareplacedevent.h"
 
-CameraReplacedStrategy::CameraReplacedStrategy(IModel* model, IView* view) : model_(model), view_(view)
-{
+CameraReplacedStrategy::CameraReplacedStrategy(std::shared_ptr<IModel> model, IView* view) : model_(model), view_(view) {
 }
 
-void CameraReplacedStrategy::perform(IEvent* event) {
-    CameraReplacedEvent* cameraReplacedEvent = static_cast<CameraReplacedEvent*>(event);
+CameraReplacedStrategy::~CameraReplacedStrategy() {
+}
+
+void CameraReplacedStrategy::perform(std::shared_ptr<IEvent> event) {
+    CameraReplacedEvent* cameraReplacedEvent = static_cast<CameraReplacedEvent*>(event.get());
     model_->replaceCamera(cameraReplacedEvent->getOldCoordinates(), cameraReplacedEvent->getNewCoordinates());
-    std::cout << "CameraReplacedStrategy" << std::endl;
 }

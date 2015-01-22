@@ -15,37 +15,43 @@
 #include "strategies/destinationreplacedstrategy.h"
 #include "strategies/startsimulationstrategy.h"
 
+
+
+#include "../common/events/windowclosedevent.h"
 #include "../common/events/applicationstartedevent.h"
 
-ControllerImpl::ControllerImpl(IModel* model, IView* view) : finish_(false)
+ControllerImpl::ControllerImpl(std::shared_ptr<IModel> model, IView* view) : finish_(false)
 {
-    map.insert(std::pair<std::string, IStrategy*>("WindowClosed", new CloseWindowStrategy(*this)));
-    map.insert(std::pair<std::string, IStrategy*>("ItemClicked", new ItemClickedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("BoardSizeChanged", new BoardSizeChangedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("StreetFieldAdded", new StreetFieldAddedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("StreetFieldRemoved", new StreetFieldRemovedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("ApplicationStarted", new ApplicationStartedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("CameraAdded", new CameraAddedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("CameraReplaced", new CameraReplacedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("CameraRemoved", new CameraRemovedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("TrafficObjectAdded", new TrafficObjectAddedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("TrafficObjectReplaced", new TrafficObjectReplacedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("TrafficObjectRemoved", new TrafficObjectRemovedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("DestinationReplaced", new DestinationReplacedStrategy(model, view)));
-    map.insert(std::pair<std::string, IStrategy*>("StartSimulation", new StartSimulationStrategy(model, view)));
+    std::cout << "ControllerImpl()" << std::endl;
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("WindowClosed", std::make_shared<CloseWindowStrategy>(*this)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("ItemClicked", std::make_shared<ItemClickedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("BoardSizeChanged", std::make_shared<BoardSizeChangedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("StreetFieldAdded", std::make_shared<StreetFieldAddedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("StreetFieldRemoved", std::make_shared<StreetFieldRemovedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("ApplicationStarted", std::make_shared<ApplicationStartedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("CameraAdded", std::make_shared<CameraAddedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("CameraReplaced", std::make_shared<CameraReplacedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("CameraRemoved", std::make_shared<CameraRemovedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("TrafficObjectAdded", std::make_shared<TrafficObjectAddedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("TrafficObjectReplaced", std::make_shared<TrafficObjectReplacedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("TrafficObjectRemoved", std::make_shared<TrafficObjectRemovedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("DestinationReplaced", std::make_shared<DestinationReplacedStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("StartSimulation", std::make_shared<StartSimulationStrategy>(model, view)));
 
     BlockingEventQueue::getInstance().push(new ApplicationStartedEvent());
+
 }
 
 ControllerImpl::~ControllerImpl()
 {
-    std::cout << "~ControllerImpl" << std::endl;
+    map.erase(map.begin(), map.end());
+    std::cout << "~ControllerImpl()" << std::endl;
 }
 
 void ControllerImpl::start() {
     while (!finish_) {
-        IEvent* event = BlockingEventQueue::getInstance().pop();
-        std::cout << "Got new event" << std::endl;
+        std::shared_ptr<IEvent> event = BlockingEventQueue::getInstance().pop();
+        //std::cout << "Got new event" << std::endl;
         if (map.find(event->getName()) != map.end()) {
             map.at(event->getName())->perform(event);
             std::cout << "Performed" << std::endl;
@@ -54,7 +60,8 @@ void ControllerImpl::start() {
             std::cout << "Event is bad" << std::endl;
         }
     }
-    std::cout << "Finished" << std::endl;
+
+    std::cout << "===Finished===" << std::endl;
 }
 
 void ControllerImpl::finish()

@@ -2,14 +2,14 @@
 #define CLOSEWINDOWSTRATEGY_H
 
 #include "istrategy.h"
-#include <string>
 #include "../../controller/controllerimpl.h"
 
 class CloseWindowStrategy : public IStrategy
 {
 public:
     CloseWindowStrategy(IController& controller);
-    void perform(IEvent* event);
+    void perform(std::shared_ptr<IEvent> event);
+    virtual ~CloseWindowStrategy();
 
 private:
     IController* controller_;

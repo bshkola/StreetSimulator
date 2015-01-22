@@ -1,5 +1,4 @@
 #include "istrategy.h"
 
-IStrategy::IStrategy()
-{
+IStrategy::IStrategy() {
 }

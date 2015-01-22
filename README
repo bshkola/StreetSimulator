@@ -1,9 +1,89 @@
-Kompilacja programu wymaga zainstalowania w systemie biblioteki Qt (wersja 5)
-oraz programu qmake.
+StreetSimulator - README
+--------------------------
+SPIS TREŚCI
+1. WYMAGANIA SYSTEMOWE
+2. KONFIGURACJA
+3. TWORZENIE BAZY DANYCH
+4. KOMPILACJA I INSTALACJA
+5. PRZEGLĄDANIE REKORDÓW W BAZIE
+--------------------------
+
+1. WYMAGANIA SYSTEMOWE
+
+Kompilacja programu wymaga zainstalowania w systemie biblioteki Qt (wersja 5),
+programu qmake oraz biblioteki MySQL Connector/C++.
+Wymagany jest również dostep do serwera bazy danych MySQL.
 
 Aby zainstalować wymagane oprogramowanie w systemie Ubuntu 14.04 LTS
 (lub Linux Mint 17) należy wydać następujące polecenie:
 
-sudo apt-get install qt5-default qttools5-dev qttools5-dev-tools qt5-doc qt5-qmake
+> sudo apt-get install qt5-default qttools5-dev qttools5-dev-tools qt5-doc qt5-qmake libmysqlcppconn-dev
 
-Po zakończonej kompilacji plik binarny zostanie umieszczony w katalogu ./bin/
+Aby zainstalować serwer MySQL należy wydać polecenie:
+
+>sudo apt-get install mysql-server
+
+2. KONFIGURACJA
+
+Plik konfiguracyjny o nazwie config zawiera informacje niezbędne programowi do
+komunikacji z serwerem bazy danych. Należy edytować go przed uruchomieniem
+skryptu instalacyjnego.
+
+Plik składa się w pięciu linii zawierających kolejno:
+- adres serwera bazy danych,
+- nazwę użytkownika,
+- hasło użytkownika,
+- nazwę bazy danych,
+- nazwę tabeli.
+
+Plik konfiguracyjny nie może zawierać żadnych dodatkowych danych!
+W przypadku nieznalezienia przez program pliku konfiguracyjnego, zostanie
+wykorzystana konfiguracja domyślna, podana poniżej.
+
+Przykładowa (domyślna) zawartość pliku config:
+localhost
+root
+toor
+StreetSimulator
+observations
+
+3. TWORZENIE BAZY DANYCH
+
+Program wymaga od użytkownika wcześniejszego utworzenia bazy danych o nazwie
+identycznej jak umieszczona w pliku konfiguracyjnym (linia 4)
+[domyślnie: StreetSimulator].
+
+W systemie Ubuntu 14.04 LTS (lub Linux Mint 17) można to zrobić za pomocą
+następujących poleceń (polecenia należy dostosować do konfiguracji posiadanego
+systemu):
+
+> mysql -h [adres_serwera] -u [nazwa_użytkownika] -p
+
+i podajemy hasło użytkownika. Po podłączeniu do serwera bazy danych tworzymy
+bazę poleceniem:
+
+> CREATE DATABASE IF NOT EXISTS StreetSimulator;
+
+i zamykamy poleceniem:
+
+> QUIT;
+
+4. KOMPILACJA I INSTALACJA
+
+Aby skompilować program i przygotować go do działania należy uruchomić skrypt
+o nazwie install.sh.
+
+Po zakończonej kompilacji plik binarny oraz kopia pliku konfiguracyjnego zostaną
+umieszczone w katalogu ./bin/
+
+5. PRZEGLĄDANIE REKORDÓW W BAZIE
+
+Do przeglądania rekordów w bazie danych służy skrypt records.sh. Wyświetla on
+zadaną liczbę najnowszych rekordów z bazy w kolejności odwrotnie chronologicznej
+(najpierw najnowsze). Skrypt przyjmuje jeden argument - liczbę rekordów do
+wyświetlenia.
+
+Jeżeli nie zostanie podany argument lub podany argument nie jest poprawny
+skrypt wyświetli domyślnie 10 najnowszych rekordów. Dodatkowo, jeżeli podany
+argument jest niepoprawny, skrypt wyświetli ostrzeżenie przed wyświetleniem
+wyników kwerendy.

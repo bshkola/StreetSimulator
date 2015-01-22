@@ -6,11 +6,12 @@
 class StreetFieldAddedStrategy : public IStrategy
 {
 public:
-    StreetFieldAddedStrategy(IModel* model, IView* view);
-    void perform(IEvent* event);
+    StreetFieldAddedStrategy(std::shared_ptr<IModel> model, IView* view);
+    void perform(std::shared_ptr<IEvent> event);
+    virtual ~StreetFieldAddedStrategy();
 
 private:
-    IModel* model_;
+    std::shared_ptr<IModel> model_;
     IView* view_;
 };
 

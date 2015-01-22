@@ -6,12 +6,12 @@
 class ApplicationStartedStrategy : public IStrategy
 {
 public:
-    ApplicationStartedStrategy(IModel* model, IView* view);
-
-    void perform(IEvent* event);
+    ApplicationStartedStrategy(std::shared_ptr<IModel> model, IView* view);
+    void perform(std::shared_ptr<IEvent> event);
+    virtual ~ApplicationStartedStrategy();
 
 private:
-    IModel* model_;
+    std::shared_ptr<IModel> model_;
     IView* view_;
 };
 

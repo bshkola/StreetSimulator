@@ -10,11 +10,12 @@
 #include "strategies/istrategy.h"
 #include "../model/imodel.h"
 #include "../view/iview.h"
+#include <memory>
 
 class ControllerImpl : public IController
 {
 public:
-    ControllerImpl(IModel* model, IView* view);
+    ControllerImpl(std::shared_ptr<IModel> model, IView* view);
     virtual ~ControllerImpl();
 
     void start();
@@ -22,7 +23,7 @@ public:
 
 private:
     bool finish_;
-    std::map<std::string, IStrategy*> map; // strategy maps which defines reaction on different events
+    std::map<std::string, std::shared_ptr<IStrategy>> map; // strategy maps which defines reaction on different events
 };
 
 #endif // CONTROLLERIMPL_H

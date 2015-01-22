@@ -73,7 +73,8 @@ SOURCES += main.cpp\
     common/events/trafficobjectremovedevent.cpp \
     common/events/trafficobjectreplacedevent.cpp \
     controller/strategies/destinationreplacedstrategy.cpp \
-    common/events/destinationreplaceevent.cpp
+    common/events/destinationreplaceevent.cpp \
+    database/databaseconnector.cpp
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
@@ -154,7 +155,10 @@ HEADERS  += controller/icontroller.h \
     common/events/trafficobjectaddedevent.h \
     controller/strategies/trafficobjectaddedstrategy.h \
     controller/strategies/trafficobjectreplacedstrategy.h \
-    controller/strategies/trafficobjectremovedstrategy.h
+    controller/strategies/trafficobjectremovedstrategy.h \
+    database/databaseconnector.h
 
 FORMS    += mainwindow.ui \
     mainwindow.ui
+
+unix|win32: LIBS += -lmysqlcppconn

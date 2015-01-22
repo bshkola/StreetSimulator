@@ -6,11 +6,12 @@
 class TrafficObjectReplacedStrategy : public IStrategy
 {
 public:
-    TrafficObjectReplacedStrategy(IModel* model, IView* view);
-    void perform(IEvent* event);
+    TrafficObjectReplacedStrategy(std::shared_ptr<IModel> model, IView* view);
+    void perform(std::shared_ptr<IEvent> event);
+    virtual ~TrafficObjectReplacedStrategy();
 
 private:
-    IModel* model_;
+    std::shared_ptr<IModel> model_;
     IView* view_;
 };
 

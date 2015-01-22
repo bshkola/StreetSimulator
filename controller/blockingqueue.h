@@ -9,21 +9,23 @@
 #include <condition_variable>
 #include <deque>
 #include <QObject>
+#include "memory"
 
 class BlockingEventQueue : public QObject
 {
     Q_OBJECT
 private:
     BlockingEventQueue();
+    ~BlockingEventQueue();
     BlockingEventQueue(const BlockingEventQueue&);
 
     std::mutex              d_mutex;
     std::condition_variable d_condition;
-    std::deque<IEvent*>       d_queue;
+    std::deque<std::shared_ptr<IEvent>>     d_queue;
 
 public:
     void push(IEvent* const& value); // puts an event to the queue
-    IEvent* pop(); //waits for the new event appears in the queue and gets it
+    const std::shared_ptr<IEvent> pop(); //waits for the new event appears in the queue and gets it
 
     static BlockingEventQueue& getInstance() {
         static BlockingEventQueue pInstance_;

@@ -6,11 +6,12 @@
 class DestinationReplacedStrategy : public IStrategy
 {
 public:
-    DestinationReplacedStrategy(IModel* model, IView* view);
-    void perform(IEvent* event);
+    DestinationReplacedStrategy(std::shared_ptr<IModel> model, IView* view);
+    void perform(std::shared_ptr<IEvent> event);
+    virtual ~DestinationReplacedStrategy();
 
 private:
-    IModel* model_;
+    std::shared_ptr<IModel> model_;
     IView* view_;
 };
 
