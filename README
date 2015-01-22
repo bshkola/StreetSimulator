@@ -40,7 +40,7 @@ W przypadku nieznalezienia przez program pliku konfiguracyjnego, zostanie
 wykorzystana konfiguracja domyślna, podana poniżej.
 
 Przykładowa (domyślna) zawartość pliku config:
-tcp://127.0.0.1:3306
+localhost
 root
 toor
 StreetSimulator
