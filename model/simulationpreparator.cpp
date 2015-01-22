@@ -25,3 +25,8 @@ SimulationPreparator::~SimulationPreparator()
     delete this->dijkstra;
 }
 
+const ObjectsOnMap &SimulationPreparator::getObjectOnMap() const
+{
+    return objectOnMap;
+}
+

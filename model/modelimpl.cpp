@@ -52,4 +52,8 @@ void ModelImpl::replaceDestination(Position oldCoordinates, Position newCoordina
 
 void ModelImpl::startSimulation() {
     //TODO
+    SimulationPreparator simulationPreparator(objectsOnMap_);
+    simulationPreparator.run();
+    Engine engine(simulationPreparator.getObjectOnMap(), NULL);
+    engine.run();
 }

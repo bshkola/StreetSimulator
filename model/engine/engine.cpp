@@ -20,6 +20,14 @@ Engine::~Engine()
 
 void Engine::run()
 {
+    for(const TrafficParticipant *el: objectsOnMap.getObjects())
+    {
+        std::cout<<std::endl<<std::endl<<"Object: "<<std::endl;
+       for(pair<int, int> el1: el->way)
+       {
+           std::cout<<"("<<el1.first<<", "<<el1.second<<")"<<std::endl;
+       }
+    }
     while(!finish_)
     {
         //save current time - start of loop

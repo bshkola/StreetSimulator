@@ -19,6 +19,7 @@ public:
     ~SimulationPreparator();
 
     void run(); //run the SimulationPreparator: calculate the paths and convert map to graph
+    const ObjectsOnMap &getObjectOnMap() const;
 private:
     Convert convert;    //converter from map to graph
     const list<TrafficParticipant*> &objects; //list of the move objects on the map
