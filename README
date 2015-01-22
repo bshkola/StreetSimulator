@@ -70,7 +70,7 @@ i zamykamy poleceniem:
 4. KOMPILACJA I INSTALACJA
 
 Aby skompilować program i przygotować go do działania należy uruchomić skrypt
-o nazwie install.
+o nazwie install.sh.
 
 Po zakończonej kompilacji plik binarny oraz kopia pliku konfiguracyjnego zostaną
 umieszczone w katalogu ./bin/
