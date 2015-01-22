@@ -22,6 +22,9 @@ public:
     ObjectsOnMap();
     ~ObjectsOnMap();
 
+    void addStreet(Position coordinates);
+    void removeStreet(Position coordinates);
+
     //void addPedestrian(Position location, Position source, Position destination, float speed = 1);
     void addTrafficObject(Position location, ObjectType objectType);
     //void addTruck(Position location, Position source, Position destination, float speed = 1);

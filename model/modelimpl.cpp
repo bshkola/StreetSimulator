@@ -11,6 +11,14 @@ ModelImpl::~ModelImpl()
     std::cout << "~ModelImpl()" << std::endl;
 }
 
+void ModelImpl::addStreet(Position coordinates) {
+    objectsOnMap_.addStreet(coordinates);
+}
+
+void ModelImpl::removeStreet(Position coordinates) {
+    objectsOnMap_.removeStreet(coordinates);
+}
+
 Board& ModelImpl::getBoard() {
     return objectsOnMap_.getBoard();
 }

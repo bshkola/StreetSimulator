@@ -9,6 +9,10 @@ class IModel
 public:
     IModel();
     virtual Board& getBoard() = 0;
+
+    virtual void addStreet(Position coordinates) = 0;
+    virtual void removeStreet(Position coordinates) = 0;
+
     virtual void addCamera(Coordinates coordinates) = 0;
     virtual void replaceCamera(Coordinates oldCoordinates, Coordinates newCoordinates) = 0;
     virtual void removeCamera(Coordinates coordinates) = 0;
