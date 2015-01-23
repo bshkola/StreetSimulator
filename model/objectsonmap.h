@@ -30,15 +30,17 @@ public:
     //void addTruck(Position location, Position source, Position destination, float speed = 1);
     void addCamera(Coordinates location, float azimuth, float angle, float range);
     void setCellOnField(int i, int j, bool isStreet);    //set cell on the field (true - it's street, false -it isn't street)
+
     void replaceObject(Position oldLocation, Position newLocation);
     void deleteObject(Position location, Position source, Position destinatios, float speed = 1); //erease object which has this arguments from list
     void replaceCamera(Coordinates oldCordinates, Coordinates newCordinates); //erase camera which has this argument from list
     void deleteCamera(Coordinates location, float azimuth, float angle, float range); //erase camera which has this argument from list
     void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates);
 
-    list<TrafficParticipant*> getObjects();
-    list<Camera*> getCameras();
-    Board& getBoard();
+    const list<TrafficParticipant*> &getObjects() const;
+    list<Camera*> getCameras() const;
+    const Board &getBoard() const;
+    Board &getBoard();
 private:
     list<TrafficParticipant*> objects;
     list<Camera*> cameras;

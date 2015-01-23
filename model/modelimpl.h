@@ -3,6 +3,7 @@
 
 #include "imodel.h"
 #include "objectsonmap.h"
+#include "simulationpreparator.h"
 
 class ModelImpl : public IModel
 {

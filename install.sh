@@ -1,3 +1,5 @@
+#!/bin/bash
+
 qmake -o Makefile ZPR-v1.pro
 make
 make clean

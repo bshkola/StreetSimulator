@@ -47,6 +47,8 @@ SOURCES += main.cpp\
     controller/strategies/startsimulationstrategy.cpp \
     detection/cameradetectionimpl.cpp \
     detection/cameranoiseimpl.cpp \
+    model/engine/engine.cpp \
+    model/engine/objectspositionupdater.cpp \
     view/items/truckcaritem.cpp \
     view/items/imovableitem.cpp \
     view/items/passengercaritem.cpp \
@@ -74,9 +76,6 @@ SOURCES += main.cpp\
     database/databaseconnector.cpp \
     view/isimulatorview.cpp \
     view/simulatorwindow.cpp
-
-
-
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
@@ -131,6 +130,8 @@ HEADERS  += controller/icontroller.h \
     detection/cameraobservation.h \
     detection/icameradetection.h \
     detection/icameranoise.h \
+    model/engine/engine.h \
+    model/engine/objectspositionupdater.h \
     view/items/truckcaritem.h \
     view/items/imovableitem.h \
     view/items/passengercaritem.h \
@@ -159,8 +160,6 @@ HEADERS  += controller/icontroller.h \
     database/databaseconnector.h \
     view/isimulatorview.h \
     view/simulatorwindow.h
-
-
 
 FORMS    += mainwindow.ui \
     simulationwindow.ui

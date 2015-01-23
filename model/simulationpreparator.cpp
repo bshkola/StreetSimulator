@@ -1,24 +1,32 @@
 #include "../model/simulationpreparator.h"
 
-SimulationPreparator::SimulationPreparator(const Board &board, list<TrafficParticipant*> objects):
-    convert(board)
+SimulationPreparator::SimulationPreparator(const ObjectsOnMap &objectOnMap):
+    convert(objectOnMap.getBoard()), objectOnMap(objectOnMap), objects(objectOnMap.getObjects())
 {
     this->dijkstra = new Dijkstra(this->convert.generateGraph());   //generate graph and put in dijkstra
-    this->objects = objects;
 }
 
 
 void SimulationPreparator::run()
-{
-    for(TrafficParticipant *obj: objects)
+{    
+    for(TrafficParticipant *obj: *(&objects))
     {
-        dijkstra->calculateWay(obj);
+        waysObjects.push_back(dijkstra->calculateWay(obj));
     }
+    //test
+        //Engine engine(this->objectOnMap, NULL);
+       // engine.run();
+    //end test
 }
 
 SimulationPreparator::~SimulationPreparator()
 {
     //destroy the objects created by constructor
     delete this->dijkstra;
+}
+
+const ObjectsOnMap &SimulationPreparator::getObjectOnMap() const
+{
+    return objectOnMap;
 }
 

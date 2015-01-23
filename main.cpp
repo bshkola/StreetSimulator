@@ -25,3 +25,6 @@ int main(int argc, char *argv[])
     QtConcurrent::run(controller.get(), &IController::start);
     return a.exec();
 }
+
+
+

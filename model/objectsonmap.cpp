@@ -3,8 +3,7 @@
 #include <iostream>
 
 ObjectsOnMap::ObjectsOnMap() : board(8)
-{   //empty
-
+{   
 }
 
 ObjectsOnMap::~ObjectsOnMap()
@@ -169,17 +168,22 @@ void ObjectsOnMap::replaceDestination(Position oldCoordinates, Position newCoord
     //TODO
 }
 
-list<TrafficParticipant*> ObjectsOnMap::getObjects()
+const list<TrafficParticipant*> &ObjectsOnMap::getObjects() const
 {
     return objects;
 }
 
-list<Camera*> ObjectsOnMap::getCameras()
+list<Camera*> ObjectsOnMap::getCameras() const
 {
     return cameras;
 }
 
-Board& ObjectsOnMap::getBoard()
+const Board &ObjectsOnMap::getBoard() const
+{
+    return board;
+}
+
+Board &ObjectsOnMap::getBoard()
 {
     return board;
 }

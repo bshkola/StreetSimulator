@@ -5,6 +5,7 @@ SPIS TREŚCI
 2. KONFIGURACJA
 3. TWORZENIE BAZY DANYCH
 4. KOMPILACJA I INSTALACJA
+5. PRZEGLĄDANIE REKORDÓW W BAZIE
 --------------------------
 
 1. WYMAGANIA SYSTEMOWE
@@ -40,7 +41,7 @@ W przypadku nieznalezienia przez program pliku konfiguracyjnego, zostanie
 wykorzystana konfiguracja domyślna, podana poniżej.
 
 Przykładowa (domyślna) zawartość pliku config:
-tcp://127.0.0.1:3306
+localhost
 root
 toor
 StreetSimulator
@@ -70,7 +71,19 @@ i zamykamy poleceniem:
 4. KOMPILACJA I INSTALACJA
 
 Aby skompilować program i przygotować go do działania należy uruchomić skrypt
-o nazwie install.
+o nazwie install.sh.
 
 Po zakończonej kompilacji plik binarny oraz kopia pliku konfiguracyjnego zostaną
 umieszczone w katalogu ./bin/
+
+5. PRZEGLĄDANIE REKORDÓW W BAZIE
+
+Do przeglądania rekordów w bazie danych służy skrypt records.sh. Wyświetla on
+zadaną liczbę najnowszych rekordów z bazy w kolejności odwrotnie chronologicznej
+(najpierw najnowsze). Skrypt przyjmuje jeden argument - liczbę rekordów do
+wyświetlenia.
+
+Jeżeli nie zostanie podany argument lub podany argument nie jest poprawny
+skrypt wyświetli domyślnie 10 najnowszych rekordów. Dodatkowo, jeżeli podany
+argument jest niepoprawny, skrypt wyświetli ostrzeżenie przed wyświetleniem
+wyników kwerendy.
