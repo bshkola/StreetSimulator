@@ -1,13 +1,13 @@
 #include "streetfieldaddedevent.h"
 
-StreetFieldAddedEvent::StreetFieldAddedEvent(Coordinates coordinates) : coordinates_(coordinates) {
+StreetFieldAddedEvent::StreetFieldAddedEvent(Position coordinates) : coordinates_(coordinates) {
 }
 
 std::string StreetFieldAddedEvent::getName() {
     return "StreetFieldAdded";
 }
 
-Coordinates StreetFieldAddedEvent::getCoordinates() {
+Position StreetFieldAddedEvent::getCoordinates() {
     return coordinates_;
 }
 

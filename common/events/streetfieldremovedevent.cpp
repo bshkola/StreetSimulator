@@ -1,12 +1,12 @@
 #include "streetfieldremovedevent.h"
 
-StreetFieldRemovedEvent::StreetFieldRemovedEvent(Coordinates coordinates) : coordinates_(coordinates) {
+StreetFieldRemovedEvent::StreetFieldRemovedEvent(Position coordinates) : coordinates_(coordinates) {
 }
 
 std::string StreetFieldRemovedEvent::getName() {
     return "StreetFieldRemoved";
 }
 
-Coordinates StreetFieldRemovedEvent::getCoordinates() {
+Position StreetFieldRemovedEvent::getCoordinates() {
     return coordinates_;
 }

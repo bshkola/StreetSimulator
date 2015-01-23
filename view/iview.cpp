@@ -1,4 +1,4 @@
-#include "iview.h"
+#include "../view/iview.h"
 
 IView::IView()
 {

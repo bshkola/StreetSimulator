@@ -9,7 +9,7 @@
 #include <QGraphicsScene>
 #include "iview.h"
 #include "boardscene.h"
-
+#include "simulatorwindow.h"
 
 namespace Ui {
     class MainWindow;
@@ -22,11 +22,14 @@ class MainWindow : public QMainWindow, public IView
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    void show();
+    virtual ~MainWindow();
     void resizeEvent(QResizeEvent *event);
     void closeEvent(QCloseEvent *event);
     void showBoard(const Board& board);
-    virtual ~MainWindow();
+
+signals:
+    void showSimulationWindow();
+    void showSimulationBoard(const Board& board);
 
 public slots:
     void updateButtons();
@@ -37,10 +40,9 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-    BoardScene* boardScene;
-
+    std::shared_ptr<BoardScene> boardScene;
     QVector<QPushButton*> buttons;
-
+    SimulatorWindow* simulationWindow_;
 };
 
 #endif // MAINWINDOW_H

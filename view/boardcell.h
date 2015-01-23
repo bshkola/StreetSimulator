@@ -16,7 +16,7 @@ public:
     void setChecked(bool checked); //sets the flag, changing the color of the cell
     bool isChecked();
     void setCoordinates(int x, int y); //sets coordinates metadata to the cell
-    Coordinates getCoordinates();
+    Position getCoordinates();
 
 signals:
 
@@ -24,7 +24,7 @@ public slots:
 
 private:
     bool checked;
-    Coordinates coordinates;
+    Position coordinates;
     Qt::GlobalColor checkedStreetColor;
     Qt::GlobalColor nonCheckedStreetColor;
 };

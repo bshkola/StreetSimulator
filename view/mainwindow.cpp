@@ -6,17 +6,18 @@
 #include "../common/events/windowclosedevent.h"
 #include "../common/events/boardsizechangedevent.h"
 #include "../common/events/startsimulationevent.h"
+#include "../view/simulatorwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), IView(), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    boardScene = new BoardScene();
-    ui->graphicsView->setScene(boardScene);
+    boardScene = std::make_shared<BoardScene>();
+    ui->graphicsView->setScene(boardScene.get());
     this->setWindowTitle("Editor");
     this->showMaximized();
 
-    //boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
+    simulationWindow_ = new SimulatorWindow(this);
 
     // initialize signals-slots
     buttons.append(ui->streetButton);
@@ -33,17 +34,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->cameraButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
 
     connect(ui->simmulationButton, SIGNAL(pressed()), this, SLOT(startSimulation()));
+
+    qRegisterMetaType<Board>("Board");
+    connect(this, SIGNAL(showSimulationWindow()), simulationWindow_, SLOT(show()));
+    connect(this, SIGNAL(showSimulationBoard(Board)), simulationWindow_, SLOT(showBoard(Board)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
     std::cout << "~MainWindow" << std::endl;
-}
-
-void MainWindow::show()
-{
-    QMainWindow::show();
 }
 
 void MainWindow::startSimulation() {
@@ -84,4 +84,9 @@ void MainWindow::showBoard(const Board& board) {
     ui->boardSizeSpinBox->setValue(board.size_);
     boardScene->updateBoardSize(board.size_);
 }
+
+//void MainWindow::createSimulationWindow() {
+    //simulationWindow_->show();
+    //return simulationWindow_;
+//}
 

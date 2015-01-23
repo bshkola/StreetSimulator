@@ -15,7 +15,7 @@ DestinationItem::DestinationItem(const QRectF& rect, ITrafficParticipantItem* pa
     parentItem_->setDestination(this);
 }
 
-void DestinationItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
+void DestinationItem::paint(QPainter* painter, const QStyleOptionGraphicsItem*, QWidget*) {
     painter->setBrush(QBrush(color_));
     painter->drawRect(this->rect());
 }

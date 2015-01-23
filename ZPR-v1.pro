@@ -12,7 +12,6 @@ TARGET = ZPR-v1
 TEMPLATE = app
 CONFIG += c++11
 
-
 SOURCES += main.cpp\
     controller/icontroller.cpp \
     controller/controllerimpl.cpp \
@@ -72,7 +71,9 @@ SOURCES += main.cpp\
     common/events/trafficobjectreplacedevent.cpp \
     controller/strategies/destinationreplacedstrategy.cpp \
     common/events/destinationreplaceevent.cpp \
-    database/databaseconnector.cpp
+    database/databaseconnector.cpp \
+    view/isimulatorview.cpp \
+    view/simulatorwindow.cpp
 
 
 
@@ -155,11 +156,14 @@ HEADERS  += controller/icontroller.h \
     controller/strategies/trafficobjectaddedstrategy.h \
     controller/strategies/trafficobjectreplacedstrategy.h \
     controller/strategies/trafficobjectremovedstrategy.h \
-    database/databaseconnector.h
+    database/databaseconnector.h \
+    view/isimulatorview.h \
+    view/simulatorwindow.h
 
 
 
 FORMS    += mainwindow.ui \
-    mainwindow.ui
+    simulationwindow.ui
 
 unix|win32: LIBS += -lmysqlcppconn
+

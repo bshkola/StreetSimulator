@@ -8,4 +8,6 @@ StartSimulationStrategy::~StartSimulationStrategy() {
 
 void StartSimulationStrategy::perform(std::shared_ptr<IEvent> event) {
     model_->startSimulation();
+    view_->showSimulationWindow();
+    view_->showSimulationBoard(model_->getBoard());
 }

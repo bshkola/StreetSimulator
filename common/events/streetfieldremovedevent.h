@@ -7,11 +7,11 @@
 class StreetFieldRemovedEvent : public IEvent
 {
 public:
-    StreetFieldRemovedEvent(Coordinates coordinates);
+    StreetFieldRemovedEvent(Position coordinates);
     std::string getName();
-    Coordinates getCoordinates();
+    Position getCoordinates();
 private:
-    Coordinates coordinates_;
+    Position coordinates_;
 };
 
 #endif // STREETFIELDREMOVEDEVENT_H

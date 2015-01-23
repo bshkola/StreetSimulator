@@ -33,6 +33,6 @@ void BoardCell::setCoordinates(int x, int y) {
     coordinates.second = y;
 }
 
-Coordinates BoardCell::getCoordinates() {
+Position BoardCell::getCoordinates() {
     return coordinates;
 }

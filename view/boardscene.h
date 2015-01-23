@@ -15,7 +15,7 @@ class BoardScene : public QGraphicsScene
     Q_OBJECT
 public:
     explicit BoardScene();
-
+    virtual ~BoardScene();
     void updateBoardSize(int size); //updates the resolution of the square board
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);

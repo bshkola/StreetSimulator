@@ -5,14 +5,17 @@
 #define IVIEW_H
 
 #include "../common/board.h"
+#include "isimulatorview.h"
 
 class IView
 {
 public:
     IView();
-    virtual void show() = 0;
-    virtual void showBoard(const Board& board) = 0;
     virtual ~IView() {}
+    virtual void showBoard(const Board& board) = 0;
+
+    virtual void showSimulationWindow() = 0;
+    virtual void showSimulationBoard(const Board& board) = 0;
 };
 
 #endif // IVIEW_H

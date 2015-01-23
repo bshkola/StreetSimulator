@@ -8,7 +8,7 @@ CameraMouseEventHandler::CameraMouseEventHandler()
 {
 }
 
-void CameraMouseEventHandler::handlePress(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item) {
+void CameraMouseEventHandler::handlePress(QGraphicsSceneMouseEvent*, BoardScene*, IMovableItem*) {
 
 }
 

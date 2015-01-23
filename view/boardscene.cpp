@@ -10,16 +10,20 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QPainter>
 #include <QWidget>
-#include <QPropertyAnimation>
 #include "../controller/blockingqueue.h"
 #include "../common/events/streetfieldaddedevent.h"
 #include "../common/events/streetfieldremovedevent.h"
 
 BoardScene::BoardScene() : QGraphicsScene()
 {
+    std::cout << "BoardScene()" << std::endl;
     boardSizeInPixels = 300;
     activeMenuItem_ = NULL;
     lastSelectedItem_ = NULL;
+}
+
+BoardScene::~BoardScene() {
+    std::cout << "~BoardScene()" << std::endl;
 }
 
 void BoardScene::updateBoardSize(int size) {
