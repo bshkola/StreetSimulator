@@ -9,7 +9,7 @@ SimulationPreparator::SimulationPreparator(const ObjectsOnMap &objectOnMap):
 
 void SimulationPreparator::run()
 {    
-    for(TrafficParticipant *obj: *(&objects))
+    for(TrafficParticipant *obj: objects)
     {
         waysObjects.push_back(dijkstra->calculateWay(obj));
     }

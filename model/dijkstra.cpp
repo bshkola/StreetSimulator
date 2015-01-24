@@ -1,6 +1,6 @@
 #include "../model/dijkstra.h"
 
-Dijkstra::Dijkstra(const Graph *graph): graph(graph)
+Dijkstra::Dijkstra(const Graph *graph): graph(graph), DISTANCE_BETWEEN_VERTECES(1)
 {
 std::cout<<graph->toString();
 }
@@ -14,6 +14,13 @@ TrafficParticipant *Dijkstra::calculateWay(TrafficParticipant *object)
 {
     list<pair<Vertex*, Vertex_str>> avaibleVertex; //vertex which we can visite
     NameOfVertex source = object -> startPoint_, dest = object -> targetPoint_;   //get source & destination of point
+    if(!(graph->isExist(source)))
+    {
+        std::stringstream ss;
+        ss << "Not way between (" << source.first << ", " <<source.second << ") and ("
+           << dest.first << ", " << dest.second <<") the object or destination is not on the street";
+        throw NotWayBetweenSourceAndDestinationTargetPointExceptions(ss.str());
+    }
     Vertex* tmpVertex = graph->getVertex(source);
     Vertex* destVertex = graph->getVertex(dest);  //finding a destination vertex
     avaibleVertex.push_back(make_pair(tmpVertex, Vertex_str(0, false, NULL))); //inicializate the algorithm
@@ -24,6 +31,13 @@ TrafficParticipant *Dijkstra::calculateWay(TrafficParticipant *object)
         list<pair<Vertex*, Vertex_str>>::iterator it = find(avaibleVertex.begin(), avaibleVertex.end(), tmp);
         it -> second.visited = true; //mark visited vertex
         tmp = selectLeastVertix(avaibleVertex);
+        if(tmp.second.visited)
+        {
+            std::stringstream ss;
+            ss << "Not way between (" << source.first << ", " <<source.second << ") and ("
+               << dest.first << ", " << dest.second <<") the object or destination is not on the street";
+            throw NotWayBetweenSourceAndDestinationTargetPointExceptions(ss.str());
+        }
     }
     pair<Vertex*, Vertex_str> *tmpPoint = &tmp;
     while(tmpPoint != NULL)

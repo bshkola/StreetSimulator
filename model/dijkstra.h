@@ -5,13 +5,16 @@
 
 #include <deque>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 #include "graph.h"
 #include "../common/traffic/trafficparticipant.h"
+#include "../common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h"
 
 class Dijkstra
 {
-    const int DISTANCE_BETWEEN_VERTECES = 1;
+    const int DISTANCE_BETWEEN_VERTECES;
 public:
     Dijkstra(const Graph *graph); //tworzy dijkstre dla danego grafu
     ~Dijkstra();

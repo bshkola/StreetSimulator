@@ -74,7 +74,8 @@ SOURCES += main.cpp\
     common/events/trafficobjectreplacedevent.cpp \
     controller/strategies/destinationreplacedstrategy.cpp \
     common/events/destinationreplaceevent.cpp \
-    database/databaseconnector.cpp
+    database/databaseconnector.cpp \
+    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.cpp
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
@@ -156,7 +157,8 @@ HEADERS  += controller/icontroller.h \
     controller/strategies/trafficobjectaddedstrategy.h \
     controller/strategies/trafficobjectreplacedstrategy.h \
     controller/strategies/trafficobjectremovedstrategy.h \
-    database/databaseconnector.h
+    database/databaseconnector.h \
+    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h
 
 FORMS    += mainwindow.ui \
     mainwindow.ui

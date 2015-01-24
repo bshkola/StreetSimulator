@@ -13,10 +13,10 @@ using namespace std;
 class ObjectsPositionUpdater
 {
 public:
-    ObjectsPositionUpdater();
+    ObjectsPositionUpdater(list<TrafficParticipant*> trafficParticipants);
     ~ObjectsPositionUpdater();
 
-    void update(); //do next step's position's objects
+    bool update(); //do next step's position's objects
     list<TrafficParticipant*> &getTrafficParticipants();
     list<NameOfVertex> getPresentPositionObjects();
 private:
