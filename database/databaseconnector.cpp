@@ -1,7 +1,7 @@
 //Author: Wojciech Ceret
 //Implementation of methods for connecting to database
 //and inserting observations into it.
-
+/*
 #include "databaseconnector.h"
 
 //    Example of possible message:
@@ -104,7 +104,7 @@ void DatabaseConnector::insertObservations(const std::list<CameraObservation*>& 
         stmt->execute("START TRANSACTION;");
 
         //prepare statement
-        /* '?' is the supported placeholder syntax */
+        // '?' is the supported placeholder syntax
         pstmt = con->prepareStatement("INSERT INTO " + db_table_ +
                                       " ( " +
                                           "cam_nr, " +
@@ -152,3 +152,4 @@ void DatabaseConnector::insertObservations(const std::list<CameraObservation*>& 
         std::cout << "# Error in database connection in DatabaseConnector::insertObservations(const std::list<CameraObservation*>&)" << std::endl;
     }
 }
+*/

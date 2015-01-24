@@ -18,7 +18,7 @@ public:
 
     bool update(); //do next step's position's objects
     list<TrafficParticipant*> &getTrafficParticipants();
-    list<NameOfVertex> getPresentPositionObjects();
+    list<NameOfVertex> getPresentPositionObjects(); //TODO where is implementation
 private:
     list<TrafficParticipant*> trafficParticipants;
 };

@@ -58,13 +58,16 @@ void ModelImpl::replaceDestination(Position oldCoordinates, Position newCoordina
 //    std::cout << "Parent     " << trafficObjectCoordinates.first << " " << trafficObjectCoordinates.second << std::endl;
 }
 
-void ModelImpl::startSimulation() {
+void ModelImpl::startSimulation(SimulatorWindow* simulationWindow) {
     //TODO
+    std::cout << "Started" << std::endl;
+    simulationWindow->showSignal();
+    //simulationWindow->showBoardSignal(getBoard());
     SimulationPreparator simulationPreparator(objectsOnMap_);
     try
     {
         simulationPreparator.run();
-        Engine engine(simulationPreparator.getObjectOnMap(), NULL);
+        Engine engine(simulationPreparator.getObjectOnMap(), NULL, simulationWindow);\
         engine.run();
     }
     catch(NotWayBetweenSourceAndDestinationTargetPointExceptions ex)

@@ -166,5 +166,5 @@ HEADERS  += controller/icontroller.h \
 FORMS    += mainwindow.ui \
     simulationwindow.ui
 
-unix|win32: LIBS += -lmysqlcppconn
+
 

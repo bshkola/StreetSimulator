@@ -47,7 +47,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::startSimulation() {
-    BlockingEventQueue::getInstance().push(new StartSimulationEvent());
+    BlockingEventQueue::getInstance().push(new StartSimulationEvent(simulationWindow_));
 }
 
 void MainWindow::updateBoardSize() {

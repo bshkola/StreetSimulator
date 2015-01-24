@@ -25,7 +25,7 @@ public:
 
     void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates);
 
-    void startSimulation();
+    void startSimulation(SimulatorWindow* simulationWindow);
 private:
     ObjectsOnMap objectsOnMap_;
 };

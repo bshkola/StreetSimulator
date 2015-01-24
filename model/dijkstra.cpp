@@ -25,7 +25,7 @@ TrafficParticipant *Dijkstra::calculateWay(TrafficParticipant *object)
     Vertex* destVertex = graph->getVertex(dest);  //finding a destination vertex
     avaibleVertex.push_back(make_pair(tmpVertex, Vertex_str(0, false, NULL))); //inicializate the algorithm
     pair<Vertex*, Vertex_str> tmp = avaibleVertex.back();
-    while(tmp.first != destVertex && tmp.first != graph->end())
+    while(tmp.first != destVertex)
     {   //run dijkstrax
         calculateWeightForEdge(tmp.first, avaibleVertex);
         list<pair<Vertex*, Vertex_str>>::iterator it = find(avaibleVertex.begin(), avaibleVertex.end(), tmp);

@@ -6,14 +6,17 @@
 #include "../objectsonmap.h"
 #include "../../detection/cameranoiseimpl.h"
 #include "../database/database.h"
+#include "../../view/simulatorwindow.h"
 #include <chrono>
 #include <thread>
 #include <iostream>
 
+class SimulatorWindow;
+
 class Engine
 {
 public:
-    Engine(const ObjectsOnMap &ObjectsOnMap, ICameraNoise *iCameraNoise);
+    Engine(const ObjectsOnMap &ObjectsOnMap, ICameraNoise *iCameraNoise, SimulatorWindow* simulationWindow);
     ~Engine();
     
     void finish();//set stop flag
@@ -24,6 +27,7 @@ private:
     ICameraDetection *iCameraDetection; //manager cameras
     const ObjectsOnMap &objectsOnMap; //cameras on the map
     Database database; //database
+    SimulatorWindow* simulationWindow_;
     //TODO referencja na widok
     
     bool finish_; //if true then stop calculations

@@ -1,17 +1,21 @@
 #include "engine.h"
 
-Engine::Engine(const ObjectsOnMap &objectsOnMap, ICameraNoise *iCameraNoise)
+
+Engine::Engine(const ObjectsOnMap &objectsOnMap, ICameraNoise *iCameraNoise, SimulatorWindow* simulationWindow)
     : objectsOnMap(objectsOnMap), objectsPositionUpdater(objectsOnMap.getObjects())
 {
     iCameraDetection = new CameraDetectionImpl(iCameraNoise);
     //this -> objectsOnMap = objectsOnMap;
-    
+    simulationWindow_ = simulationWindow;
+    simulationWindow_->initCloseWindowHandler(this);
     finish_ = false;
     //how often Objects should be updated (milliseconds)
-    millisecondsInQuantum = std::chrono::duration<int, std::milli> (100);
+    millisecondsInQuantum = std::chrono::duration<int, std::milli> (1000);
     //how often Cameras should make observations (milliseconds)
     camerasTrigger = std::chrono::duration<int, std::milli> (3000);
     camerasTime = std::chrono::duration<int, std::milli> (0);
+
+    simulationWindow_->showBoardSignal(objectsOnMap.getBoard());
 }
 
 Engine::~Engine()
@@ -21,6 +25,7 @@ Engine::~Engine()
 
 void Engine::run()
 {
+
     for(const TrafficParticipant *el: objectsOnMap.getObjects())
     {
        std::cout<<std::endl<<std::endl<<"Object: "<<std::endl;
@@ -29,6 +34,9 @@ void Engine::run()
            std::cout<<"("<<el1.first<<", "<<el1.second<<")"<<std::endl;
        }
     }
+
+    simulationWindow_->showTrafficSignal(objectsOnMap.getObjects());
+
     while(!finish_)
     {
         //save current time - start of loop
@@ -37,7 +45,12 @@ void Engine::run()
 
         //update positions of TrafficParticipants in simulation
         objectsPositionUpdater.update();
-        
+
+        for (TrafficParticipant* trafficParticipant : objectsPositionUpdater.getTrafficParticipants()) {
+            std::cout << "Part: " << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
+        }
+        simulationWindow_->updateViewSignal(objectsPositionUpdater.getTrafficParticipants());
+
         if(camerasTime >= camerasTrigger)
         {
             iCameraDetection -> calculate( objectsOnMap.getCameras(),

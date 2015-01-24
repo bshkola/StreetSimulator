@@ -3,6 +3,7 @@
 
 #include "../common/board.h"
 #include "../common/types.h"
+#include "../view/simulatorwindow.h"
 
 class IModel
 {
@@ -23,7 +24,7 @@ public:
 
     virtual void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates) = 0;
 
-    virtual void startSimulation() = 0;
+    virtual void startSimulation(SimulatorWindow* simulationWindow) = 0;
 
 };
 
