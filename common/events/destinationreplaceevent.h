@@ -6,16 +6,15 @@
 class DestinationReplaceEvent : public IEvent
 {
 public:
-    DestinationReplaceEvent(Coordinates oldCoordinates, Coordinates newCoordinates, Coordinates trafficObjectCoordinates);
+    DestinationReplaceEvent(int trafficObjectId_, Coordinates newCoordinates);
     std::string getName();
-    Coordinates getOldCoordinates();
+    int getTrafficObjectId();
     Coordinates getNewCoordinates();
-    Coordinates getTrafficObjectCoordinates();
+
 
 private:
-    Coordinates oldCoordinates_;
+    const int trafficObjectId_;
     Coordinates newCoordinates_;
-    Coordinates trafficObjectCoordinates_;
 };
 
 #endif // DESTINATIONREPLACEEVENT_H

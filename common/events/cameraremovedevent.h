@@ -6,12 +6,12 @@
 class CameraRemovedEvent : public IEvent
 {
 public:
-    CameraRemovedEvent(Coordinates coordinates);
+    CameraRemovedEvent(int id);
     std::string getName();
-    Coordinates getCoordinates();
+    int getId();
 
 private:
-    Coordinates coordinates_;
+    const int id_;
 };
 
 #endif // CAMERAREMOVEDEVENT_H

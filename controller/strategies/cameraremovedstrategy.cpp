@@ -9,5 +9,5 @@ CameraRemovedStrategy::~CameraRemovedStrategy() {
 
 void CameraRemovedStrategy::perform(std::shared_ptr<IEvent> event) {
     CameraRemovedEvent* cameraRemovedEvent = static_cast<CameraRemovedEvent*>(event.get());
-    model_->removeCamera(cameraRemovedEvent->getCoordinates());
+    model_->removeCamera(cameraRemovedEvent->getId());
 }

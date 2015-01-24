@@ -1,13 +1,12 @@
 #include "../../common/events/cameraremovedevent.h"
 
-CameraRemovedEvent::CameraRemovedEvent(Coordinates coordinates) : IEvent() {
-    coordinates_ = coordinates;
+CameraRemovedEvent::CameraRemovedEvent(int id) : IEvent(), id_(id) {
 }
 
 std::string CameraRemovedEvent::getName() {
     return "CameraRemoved";
 }
 
-Coordinates CameraRemovedEvent::getCoordinates() {
-    return coordinates_;
+int CameraRemovedEvent::getId() {
+    return id_;
 }

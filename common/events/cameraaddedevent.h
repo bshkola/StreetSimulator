@@ -6,11 +6,13 @@
 class CameraAddedEvent : public IEvent
 {
 public:
-    CameraAddedEvent(Coordinates coordinates);
+    CameraAddedEvent(int id, Coordinates coordinates);
     std::string getName();
+    int getId();
     Coordinates getCoordinates();
 
 private:
+    const int id_;
     Coordinates coordinates_;
 };
 

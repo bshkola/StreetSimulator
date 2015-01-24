@@ -8,6 +8,6 @@ TrafficObjectAddedStrategy::~TrafficObjectAddedStrategy() {
 }
 
 void TrafficObjectAddedStrategy::perform(std::shared_ptr<IEvent> event) {
-    TrafficObjectAddedEvent* carAddedEvent = static_cast<TrafficObjectAddedEvent*>(event.get());
-    model_->addTrafficObject(carAddedEvent->getCoordinates(), carAddedEvent->getObjectType());
+    TrafficObjectAddedEvent* trafficObjectAddedEvent = static_cast<TrafficObjectAddedEvent*>(event.get());
+    model_->addTrafficObject(trafficObjectAddedEvent->getId(), trafficObjectAddedEvent->getCoordinates(), trafficObjectAddedEvent->getObjectType());
 }

@@ -8,6 +8,6 @@ TrafficObjectRemovedStrategy::~TrafficObjectRemovedStrategy() {
 }
 
 void TrafficObjectRemovedStrategy::perform(std::shared_ptr<IEvent> event) {
-    TrafficObjectRemovedEvent* carRemovedEvent = static_cast<TrafficObjectRemovedEvent*>(event.get());
-    model_->removeTrafficObject(carRemovedEvent->getCoordinates());
+    TrafficObjectRemovedEvent* trafficObjectRemovedEvent = static_cast<TrafficObjectRemovedEvent*>(event.get());
+    model_->removeTrafficObject(trafficObjectRemovedEvent->getId());
 }

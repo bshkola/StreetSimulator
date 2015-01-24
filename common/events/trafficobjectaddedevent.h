@@ -6,12 +6,14 @@
 class TrafficObjectAddedEvent : public IEvent
 {
 public:
-    TrafficObjectAddedEvent(Position coordinates, ObjectType objectType);
+    TrafficObjectAddedEvent(int id, Position coordinates, ObjectType objectType);
     std::string getName();
+    int getId();
     Position getCoordinates();
     ObjectType getObjectType();
 
 private:
+    int id_;
     Position coordinates_;
     ObjectType objectType_;
 };

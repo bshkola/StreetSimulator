@@ -63,3 +63,11 @@ void CameraItem::setSelected(bool isSelected) {
     }
     update();
 }
+
+int CameraItem::getId() {
+    return id_;
+}
+
+void CameraItem::setId(int id) {
+    id_ = id;
+}

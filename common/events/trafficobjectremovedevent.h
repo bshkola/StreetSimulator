@@ -7,12 +7,12 @@
 class TrafficObjectRemovedEvent : public IEvent
 {
 public:
-    TrafficObjectRemovedEvent(Position coordinates);
+    TrafficObjectRemovedEvent(int id);
     std::string getName();
-    Position getCoordinates();
+    int getId();
 
 private:
-    Position coordinates_;
+    int id_;
 };
 
 #endif // CARREMOVEDEVENT_H

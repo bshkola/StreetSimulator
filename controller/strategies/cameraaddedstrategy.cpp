@@ -9,5 +9,5 @@ CameraAddedStrategy::~CameraAddedStrategy() {
 
 void CameraAddedStrategy::perform(std::shared_ptr<IEvent> event) {
     CameraAddedEvent* cameraAddedEvent = static_cast<CameraAddedEvent*>(event.get());
-    model_->addCamera(cameraAddedEvent->getCoordinates());
+    model_->addCamera(cameraAddedEvent->getId(), cameraAddedEvent->getCoordinates());
 }

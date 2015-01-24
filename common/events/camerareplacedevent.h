@@ -6,13 +6,13 @@
 class CameraReplacedEvent : public IEvent
 {
 public:
-    CameraReplacedEvent(Coordinates old_coordinates, Coordinates new_coordinates);
+    CameraReplacedEvent(int id, Coordinates new_coordinates);
     std::string getName();
-    Coordinates getOldCoordinates();
+    int getId();
     Coordinates getNewCoordinates();
 
 private:
-    Coordinates old_coordinates_;
+    const int id_;
     Coordinates new_coordinates_;
 };
 
