@@ -12,6 +12,7 @@
 #include "../common/traffic/vehicle.h"
 #include "../common/camera.h"
 #include "../common/types.h"
+#include "../common/cameraoptions.h"
 
 using namespace std;
 
@@ -27,6 +28,9 @@ public:
     void addCamera(int id, Coordinates location, float azimuth, float angle, float range);
     void replaceCamera(int id, Coordinates newCordinates); //erase camera which has this argument from list
     void deleteCamera(int id); //erase camera which has this argument from list
+
+    void changeCameraOptions(int cameraId, const CameraOptions& cameraOptions);
+    CameraOptions getCameraOptions(int cameraId);
 
     void addTrafficObject(int id, Position location, ObjectType objectType);
     void replaceTrafficObject(int id, Position newLocation);

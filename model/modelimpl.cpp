@@ -35,6 +35,14 @@ void ModelImpl::removeCamera(int id) {
     objectsOnMap_.deleteCamera(id);
 }
 
+void ModelImpl::changeCameraOptions(int cameraId, const CameraOptions& cameraOptions) {
+    objectsOnMap_.changeCameraOptions(cameraId, cameraOptions);
+}
+
+CameraOptions ModelImpl::getCameraOptions(int cameraId) {
+    return objectsOnMap_.getCameraOptions(cameraId);
+}
+
 void ModelImpl::addTrafficObject(int id, Position coordinates, ObjectType objectType) {
     objectsOnMap_.addTrafficObject(id, coordinates, objectType);
 }

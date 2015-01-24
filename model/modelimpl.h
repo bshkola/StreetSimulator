@@ -19,6 +19,9 @@ public:
     void replaceCamera(int id, Coordinates newCoordinates);
     void removeCamera(int id);
 
+    void changeCameraOptions(int cameraId, const CameraOptions& cameraOptions);
+    CameraOptions getCameraOptions(int cameraId);
+
     void addTrafficObject(int id, Position coordinates, ObjectType objectType);
     void replaceTrafficObject(int id, Position newCoordinates);
     void removeTrafficObject(int id);

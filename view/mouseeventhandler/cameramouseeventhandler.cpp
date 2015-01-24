@@ -23,7 +23,6 @@ void CameraMouseEventHandler::handleMove(QGraphicsSceneMouseEvent* event, BoardS
 
 void CameraMouseEventHandler::handleRelease(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item) {
     CameraItem* cameraItem = static_cast<CameraItem*>(item);
-
     if (!scene->isInsideBoard(event->scenePos())) {
         scene->removeItem(item);
         BlockingEventQueue::getInstance().push(new CameraRemovedEvent(cameraItem->getId()));
@@ -34,7 +33,7 @@ void CameraMouseEventHandler::handleRelease(QGraphicsSceneMouseEvent* event, Boa
                         new CameraReplacedEvent(cameraItem->getId(), Coordinates(event->scenePos().x() / scene->width(), event->scenePos().y() / scene->height())));
         } else {
             cameraItem->setId(indexCounter);
-            BlockingEventQueue::getInstance().push(new CameraAddedEvent(indexCounter++, Coordinates(event->scenePos().x() / scene->width(), event->scenePos().y() / scene->height())));
+            BlockingEventQueue::getInstance().push(new CameraAddedEvent(indexCounter++, Coordinates(event->scenePos().x() / scene->width(), event->scenePos().y() / scene->height()))); //adds camera with only default parameters
         }
     }
 }

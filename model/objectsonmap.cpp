@@ -102,12 +102,20 @@ void ObjectsOnMap::addCamera(int id, Coordinates location, float azimuth, float 
 }
 
 void ObjectsOnMap::replaceCamera(int id, Coordinates newCordinates) {
-
     for (Camera* camera : cameras) {
         if (camera->id_ == id) {
             camera->x_ = newCordinates.first;
             camera->y_ = newCordinates.second;
             return;
+        }
+    }
+    throw std::exception("wrong id"); //TODO add exception
+}
+
+CameraOptions ObjectsOnMap::getCameraOptions(int cameraId) {
+    for (Camera* camera : cameras) {
+        if (camera->id_ == cameraId) {
+            return CameraOptions(camera->angle_, camera->azimuth_, camera->range_);
         }
     }
     throw std::exception("wrong id"); //TODO add exception
@@ -124,6 +132,19 @@ void ObjectsOnMap::deleteCamera(int id)
     }
     throw std::exception("wrong id"); //TODO add exception
 }
+
+void ObjectsOnMap::changeCameraOptions(int cameraId, const CameraOptions& cameraOptions) {
+    for (Camera* camera : cameras) {
+        if (camera->id_ == cameraId) {
+            camera->angle_ = cameraOptions.getAngle();
+            camera->azimuth_ = cameraOptions.getDirection();
+            camera->range_ = cameraOptions.getRange();
+            return;
+        }
+    }
+    throw std::exception("wrong id"); //TODO add exception
+}
+
 
 void ObjectsOnMap::replaceDestination(int trafficObjectId, Position newCoordinates)
 {
