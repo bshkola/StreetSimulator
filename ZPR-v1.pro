@@ -76,6 +76,7 @@ SOURCES += main.cpp\
     database/databaseconnector.cpp \
     view/isimulatorview.cpp \
     view/simulatorwindow.cpp
+    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.cpp
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
@@ -160,6 +161,7 @@ HEADERS  += controller/icontroller.h \
     database/databaseconnector.h \
     view/isimulatorview.h \
     view/simulatorwindow.h
+    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h
 
 FORMS    += mainwindow.ui \
     simulationwindow.ui
