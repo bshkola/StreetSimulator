@@ -11,13 +11,13 @@ void ITrafficParticipantItem::setDestination(DestinationItem* destinationItem) {
 }
 
 void ITrafficParticipantItem::setSelected(bool isSelected) {
-    if (isSelected || destinationItem_->isSelected()) {
-        color_ = selectedColor_;
-        destinationItem_->setVisible(true);
-    } else {
-        color_ = unselectedColor_;
-        destinationItem_->setVisible(false);
-    }
+    IMovableItem::setSelected(isSelected);
+//    if (isSelected || destinationItem_->isSelected()) {
+//        destinationItem_->setVisible(true);
+//    } else {
+//        destinationItem_->setVisible(false);
+//    }
+    destinationItem_->setVisible(isSelected);
     update();
 }
 

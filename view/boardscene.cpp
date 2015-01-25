@@ -28,6 +28,7 @@ BoardScene::~BoardScene() {
 }
 
 void BoardScene::updateBoardSize(int size) {
+    lastSelectedItem_ = NULL;
     this->clear();
     this->boardSize = size;
     QPen noPen(Qt::NoPen);
@@ -62,25 +63,28 @@ void BoardScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     QGraphicsItem *item = this->itemAt(event->scenePos(), QTransform());
     if (item) {
         if(item->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
-            if (isInsideBoard(event->scenePos())) {
-                activeMenuItem_ = (IMovableItem*)item;
-            } else {
-                activeMenuItem_ = ((IMovableItem*)item)->clone();
-                this->addItem(activeMenuItem_);
-                activeMenuItem_->setPos(QPointF(boardSizeInPixels, shiftSize * activeMenuItem_->getTrafficObjectType()));
-                activeMenuItem_->setFlag(QGraphicsItem::ItemIsMovable);
-                std::cout << "Created" << std::endl;
-            }
-        }
-        else {
             if (event->button() == Qt::LeftButton) {
-                ((BoardCell*)item)->setChecked(true);
-                BlockingEventQueue::getInstance().push(new StreetFieldAddedEvent(((BoardCell*)item)->getCoordinates()));
-            } else {
-                ((BoardCell*)item)->setChecked(false);
-                BlockingEventQueue::getInstance().push(new StreetFieldRemovedEvent(((BoardCell*)item)->getCoordinates()));
+                if (isInsideBoard(event->scenePos())) {
+                    activeMenuItem_ = (IMovableItem*)item;
+                } else {
+                    activeMenuItem_ = ((IMovableItem*)item)->clone();
+                    this->addItem(activeMenuItem_);
+                    activeMenuItem_->setPos(QPointF(boardSizeInPixels, shiftSize * activeMenuItem_->getTrafficObjectType()));
+                    activeMenuItem_->setFlag(QGraphicsItem::ItemIsMovable);
+                }
             }
-            item->update();
+        } else {
+            BoardCell* cell = dynamic_cast<BoardCell*>(item);
+            if (cell) {
+                if (event->button() == Qt::LeftButton) {
+                    cell->setChecked(true);
+                    BlockingEventQueue::getInstance().push(new StreetFieldAddedEvent(((BoardCell*)item)->getCoordinates()));
+                } else {
+                    cell->setChecked(false);
+                    BlockingEventQueue::getInstance().push(new StreetFieldRemovedEvent(((BoardCell*)item)->getCoordinates()));
+                }
+                item->update();
+            }
         }
     }
 }
@@ -95,22 +99,22 @@ void BoardScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event) {
     if (activeMenuItem_ && activeMenuItem_->flags().testFlag(QGraphicsItem::ItemIsMovable)) {
         activeMenuItem_->getMouseEventHandler()->handleRelease(event, this, activeMenuItem_); //TODO check for left/right click
         if (isInsideBoard(event->scenePos())) {
-            activeMenuItem_->setSelected(true);
-            if (activeMenuItem_ != lastSelectedItem_) {
+            if (!activeMenuItem_->isSelected()) {
                 if (lastSelectedItem_ != NULL) {
                     lastSelectedItem_->setSelected(false);
                 }
+                activeMenuItem_->setSelected(true);
             }
+            lastSelectedItem_ = activeMenuItem_;
         } else {
             if (lastSelectedItem_ != NULL) {
                 lastSelectedItem_->setSelected(false);
             }
+            lastSelectedItem_ = NULL;
         }
-        lastSelectedItem_ = activeMenuItem_;
         activeMenuItem_ = NULL;
     }
 }
-
 
 bool BoardScene::isInsideBoard(const QPointF& pos) {
     if (pos.x() >= 0 && pos.x() < boardSizeInPixels && pos.y() >= 0 && pos.y() < boardSizeInPixels) {

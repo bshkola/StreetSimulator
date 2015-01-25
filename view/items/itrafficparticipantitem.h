@@ -3,6 +3,8 @@
 
 #include "imovableitem.h"
 #include "destinationitem.h"
+#include "../../common/types.h"
+#include <QPainter>
 
 class DestinationItem;
 
@@ -12,29 +14,18 @@ class ITrafficParticipantItem : public QObject, public IMovableItem
     Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 public:
     ITrafficParticipantItem(const QRectF& rect, QGraphicsItem* parent = 0);
-
-    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) = 0;
-    //virtual void setCoordinates(int x, int y) = 0; //sets coordinates metadata to the cell
-    bool isOnBoard() = 0;
     ObjectType getTrafficObjectType() = 0;
-    bool canBeRemoved() = 0;
-    bool hasDiscretePosition() = 0;
     MouseEventHandler* getMouseEventHandler() = 0;
-
+    IMovableItem* clone() = 0;
     void setSelected(bool isSelected);
+
     void setDestination(DestinationItem* destinationItem);
     void resetDestinationPosition();
-
-    IMovableItem* clone() = 0;
-
     int getId();
     void setId(int id);
+
 protected:
     int id_;
-    Qt::GlobalColor color_;
-
-    Qt::GlobalColor selectedColor_;
-    Qt::GlobalColor unselectedColor_;
 
 private:
     DestinationItem* destinationItem_;

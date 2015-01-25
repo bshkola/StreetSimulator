@@ -2,6 +2,7 @@
 #define IMOVABLEITEM_H
 
 #include <QGraphicsRectItem>
+#include <QPainter>
 #include <iostream>
 #include "../mouseeventhandler/mouseeventhandler.h"
 #include "../../common/types.h"
@@ -13,17 +14,19 @@ class IMovableItem : public QGraphicsRectItem
 public:
     IMovableItem(const QRectF& rect, QGraphicsItem* parent = 0);
 
-    virtual void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) = 0;
-    //virtual void setCoordinates(int x, int y) = 0; //sets coordinates metadata to the cell
-    virtual bool isOnBoard() = 0;
+    virtual void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
     virtual ObjectType getTrafficObjectType() = 0;
-    virtual bool canBeRemoved() = 0;
-    virtual bool hasDiscretePosition() = 0;
     virtual MouseEventHandler* getMouseEventHandler() = 0;
-    virtual void setSelected(bool isSelected) = 0;
-
-
     virtual IMovableItem* clone() = 0;
+    virtual void setSelected(bool isSelected);
+    virtual bool isSelected();
+
+
+protected:
+    bool selected_;
+
+    Qt::GlobalColor selectedColor_;
+    Qt::GlobalColor unselectedColor_;
 };
 
 #endif // IMOVABLEITEM_H

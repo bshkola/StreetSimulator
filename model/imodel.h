@@ -30,7 +30,6 @@ public:
     virtual void replaceDestination(int trafficObjectId, Position newCoordinates) = 0;
 
     virtual void startSimulation(SimulatorWindow* simulationWindow) = 0;
-
 };
 
 #endif // IMODEL_H

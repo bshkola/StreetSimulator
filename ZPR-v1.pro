@@ -170,7 +170,8 @@ HEADERS  += controller/icontroller.h \
     common/cameraoptions.h \
     common/events/cameraoptionschangedevent.h \
     controller/strategies/cameraoptionschangedstrategy.h \
-    common/exceptions/wrongidobjectexception.h
+    common/exceptions/wrongidobjectexception.h \
+    view/items/pedestrianitem.h
 
 FORMS    += mainwindow.ui \
     simulationwindow.ui

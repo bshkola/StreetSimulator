@@ -6,49 +6,16 @@
 TruckCarItem::TruckCarItem(const QRectF& rect, QGraphicsItem* parent) :
     ITrafficParticipantItem(rect, parent) {
 
-    selectedColor_ = Qt::blue;
-    unselectedColor_ = Qt::darkBlue;
-    color_ = unselectedColor_;
-
-    coordinates_.first = -1;
-    coordinates_.second = -1;
-}
-
-void TruckCarItem::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
-    painter->setBrush(QBrush(color_));
-    painter->drawRect(this->rect());
-}
-
-void TruckCarItem::setCoordinates(int x, int y) {
-    coordinates_.first = x;
-    coordinates_.second = y;
-}
-
-Coordinates TruckCarItem::getCoordinates() {
-    return coordinates_;
-}
-
-bool TruckCarItem::isOnBoard() {
-    if (coordinates_.first == -1 && coordinates_.second == -1) {
-        return false;
-    }
-    return true;
+    selectedColor_ = Qt::cyan;
+    unselectedColor_ = Qt::darkCyan;
 }
 
 ObjectType TruckCarItem::getTrafficObjectType() {
     return trafficObjectType_;
 }
 
-bool TruckCarItem::canBeRemoved() {
-    return true;
-}
-
 IMovableItem* TruckCarItem::clone() {
     return new TruckCarItem(this->rect());
-}
-
-bool TruckCarItem::hasDiscretePosition() {
-    return true;
 }
 
 MouseEventHandler* TruckCarItem::getMouseEventHandler() {
