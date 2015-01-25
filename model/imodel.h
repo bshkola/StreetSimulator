@@ -11,7 +11,7 @@ class IModel
 public:
     IModel();
     virtual Board& getBoard() = 0;
-    citrual void resizeBoard() = 0;
+    virtual void resizeBoard(int newSize) = 0;
 
     virtual void addStreet(Position coordinates) = 0;
     virtual void removeStreet(Position coordinates) = 0;

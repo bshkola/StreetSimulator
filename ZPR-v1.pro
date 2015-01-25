@@ -80,7 +80,8 @@ SOURCES += main.cpp\
     common/cameraoptions.cpp \
     common/events/cameraoptionschangedevent.cpp \
     controller/strategies/cameraoptionschangedstrategy.cpp \
-    common/exceptions/wrongidobjectexception.cpp
+    common/exceptions/wrongidobjectexception.cpp \
+    view/items/pedestrianitem.cpp
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \

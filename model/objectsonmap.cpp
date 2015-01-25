@@ -21,6 +21,7 @@ ObjectsOnMap::~ObjectsOnMap()
 void ObjectsOnMap::resizeBoard(int newSize) {
     objects.clear();
     cameras.clear();
+    board = Board(newSize);
 }
 
 void ObjectsOnMap::addStreet(Position coordinates) { // TODO check if inside the board
