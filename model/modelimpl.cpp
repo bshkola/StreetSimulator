@@ -60,15 +60,13 @@ void ModelImpl::replaceDestination(int trafficObjectId, Position newCoordinates)
 }
 
 void ModelImpl::startSimulation(SimulatorWindow* simulationWindow) {
-    //TODO
-    std::cout << "Started" << std::endl;
-    simulationWindow->showSignal();
-    //simulationWindow->showBoardSignal(getBoard());
-    SimulationPreparator simulationPreparator(objectsOnMap_);
     try
     {
+        simulationWindow->showSignal();
+        ICameraNoise* cameraNoise = new CameraNoiseImpl();
+        SimulationPreparator simulationPreparator(objectsOnMap_);
         simulationPreparator.run();
-        Engine engine(simulationPreparator.getObjectOnMap(), NULL, simulationWindow);\
+        Engine engine(simulationPreparator.getObjectOnMap(), cameraNoise, simulationWindow);\
         engine.run();
     }
     catch(NotWayBetweenSourceAndDestinationTargetPointExceptions ex)

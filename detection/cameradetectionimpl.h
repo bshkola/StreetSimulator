@@ -18,8 +18,11 @@ public:
                             std::list<CameraObservation*>&);
 
     float distance(const std::pair<float, float>, const std::pair<float, float>);
+    float distance(const float, const float);
     float azimuth(const std::pair<float, float>, const std::pair<float, float>);
     bool withinTheAngle(float, float, float);
+    void normalizeAzimuth(float&);
+    void normalizeAngle(float&);
 };
 
 #endif // CAMERADETECTIONIMPL_H

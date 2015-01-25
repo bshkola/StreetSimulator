@@ -12,7 +12,7 @@
 class ICameraDetection{
 public:
     ICameraDetection(ICameraNoise *NoiseGenerator): NoiseGenerator(NoiseGenerator) {};
-    virtual ~ICameraDetection() { delete NoiseGenerator; };
+    virtual ~ICameraDetection() {};
     
     ICameraNoise *NoiseGenerator;
 

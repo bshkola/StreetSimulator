@@ -4,6 +4,7 @@
 #include "imodel.h"
 #include "objectsonmap.h"
 #include "simulationpreparator.h"
+#include "../detection/cameranoiseimpl.h"
 
 class ModelImpl : public IModel
 {

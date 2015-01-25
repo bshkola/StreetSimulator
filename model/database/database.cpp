@@ -12,12 +12,12 @@ void Database::addCamerasToDatabase()
 
 void Database::saveMeasurent()
 {
-    //TODO
+    databaseConnector_.insertObservations(cameraObservations_);
 }
 
 list<CameraObservation*> &Database::getCameraObservation()
 {
-    return cameraObservations;
+    return cameraObservations_;
 }
 
 Database::~Database()

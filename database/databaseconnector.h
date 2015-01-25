@@ -1,7 +1,7 @@
 //Author: Wojciech Ceret
 //Object providing methods for connecting to database
 //and inserting observations into it.
-/*
+
 #ifndef DATABASECONNECTOR_H
 #define DATABASECONNECTOR_H
 
@@ -31,4 +31,4 @@ public:
 };
 
 #endif // DATABASECONNECTOR_H
-*/
+

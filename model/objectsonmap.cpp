@@ -57,7 +57,7 @@ void ObjectsOnMap::replaceTrafficObject(int id, Position newLocation)
             return;
         }
     }
-    throw std::exception("wrong id"); //TODO add exception
+    throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
 void ObjectsOnMap::deleteTrafficObject(int id)
@@ -68,7 +68,7 @@ void ObjectsOnMap::deleteTrafficObject(int id)
             return;
         }
     }
-    throw std::exception("wrong id"); //TODO add exception
+    throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
 void ObjectsOnMap::addCamera(int id, Coordinates location, float azimuth, float angle, float range)
@@ -87,7 +87,7 @@ void ObjectsOnMap::replaceCamera(int id, Coordinates newCordinates) {
             return;
         }
     }
-    throw std::exception("wrong id"); //TODO add exception
+    throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
 CameraOptions ObjectsOnMap::getCameraOptions(int cameraId) {
@@ -96,7 +96,7 @@ CameraOptions ObjectsOnMap::getCameraOptions(int cameraId) {
             return CameraOptions(camera->angle_, camera->azimuth_, camera->range_);
         }
     }
-    throw std::exception("wrong id"); //TODO add exception
+    throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
 
@@ -108,7 +108,7 @@ void ObjectsOnMap::deleteCamera(int id)
             return;
         }
     }
-    throw std::exception("wrong id"); //TODO add exception
+    throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
 void ObjectsOnMap::changeCameraOptions(int cameraId, const CameraOptions& cameraOptions) {
@@ -120,7 +120,7 @@ void ObjectsOnMap::changeCameraOptions(int cameraId, const CameraOptions& camera
             return;
         }
     }
-    throw std::exception("wrong id"); //TODO add exception
+    throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
 
@@ -132,7 +132,7 @@ void ObjectsOnMap::replaceDestination(int trafficObjectId, Position newCoordinat
             return;
         }
     }
-    throw std::exception("wrong id"); //TODO add exception
+    throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
 const list<TrafficParticipant*> &ObjectsOnMap::getObjects() const

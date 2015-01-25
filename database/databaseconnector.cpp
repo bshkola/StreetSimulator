@@ -1,7 +1,7 @@
 //Author: Wojciech Ceret
 //Implementation of methods for connecting to database
 //and inserting observations into it.
-/*
+
 #include "databaseconnector.h"
 
 //    Example of possible message:
@@ -149,7 +149,6 @@ void DatabaseConnector::insertObservations(const std::list<CameraObservation*>& 
         //disconnect from database
         delete con;
     } catch (sql::SQLException &e) {
-        std::cout << "# Error in database connection in DatabaseConnector::insertObservations(const std::list<CameraObservation*>&)" << std::endl;
+        std::cout << "# Error in database connection in DatabaseConnector::insertObservations(const std::list<CameraObservation*>&)" << e.what() << db_user_ << db_passwd_ << std::endl;
     }
 }
-*/

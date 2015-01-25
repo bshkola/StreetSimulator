@@ -1,3 +1,3 @@
 #include "notwaybetweensourceanddestinationtargetpointexceptions.h"
- //empty
+ //empty into header
 

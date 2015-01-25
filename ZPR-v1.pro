@@ -79,7 +79,8 @@ SOURCES += main.cpp\
     common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.cpp \
     common/cameraoptions.cpp \
     common/events/cameraoptionschangedevent.cpp \
-    controller/strategies/cameraoptionschangedstrategy.cpp
+    controller/strategies/cameraoptionschangedstrategy.cpp \
+    common/exceptions/wrongidobjectexception.cpp
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
@@ -167,10 +168,11 @@ HEADERS  += controller/icontroller.h \
     common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h \
     common/cameraoptions.h \
     common/events/cameraoptionschangedevent.h \
-    controller/strategies/cameraoptionschangedstrategy.h
+    controller/strategies/cameraoptionschangedstrategy.h \
+    common/exceptions/wrongidobjectexception.h
 
 FORMS    += mainwindow.ui \
     simulationwindow.ui
 
-
+unix|win32: LIBS += -lmysqlcppconn
 

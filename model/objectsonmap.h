@@ -13,6 +13,7 @@
 #include "../common/camera.h"
 #include "../common/types.h"
 #include "../common/cameraoptions.h"
+#include "../common/exceptions/wrongidobjectexception.h"
 
 using namespace std;
 
