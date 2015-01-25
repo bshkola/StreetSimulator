@@ -1,3 +1,6 @@
+//Author: Andrzej Chmielowski, Bogdan Shkola, Wojciech Ceret
+//Representing engine of simulation, move object on a window where are moving objects
+
 #ifndef ENGINE_H
 #define ENGINE_H
 

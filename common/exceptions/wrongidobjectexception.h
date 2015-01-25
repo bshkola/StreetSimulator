@@ -1,3 +1,6 @@
+//Author: Andrzej Chmielowski
+//Representing exception when model can't find object with id
+
 #ifndef WRONGIDOBJECT_H
 #define WRONGIDOBJECT_H
 
