@@ -2,7 +2,7 @@
 
 
 Engine::Engine(const ObjectsOnMap &objectsOnMap, ICameraNoise *iCameraNoise, SimulatorWindow* simulationWindow)
-    : objectsOnMap(objectsOnMap), objectsPositionUpdater(objectsOnMap.getObjects())
+    : objectsOnMap(objectsOnMap), objectsPositionUpdater(objectsOnMap.getObjects()), database(objectsOnMap.getBoard().size_)
 {
     iCameraDetection = new CameraDetectionImpl(iCameraNoise);
     //this -> objectsOnMap = objectsOnMap;

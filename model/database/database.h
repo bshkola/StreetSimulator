@@ -11,7 +11,7 @@ using namespace std;
 class Database
 {
 public:
-    Database();
+    Database(const int size);
     ~Database();
 
     void addCamerasToDatabase();  //add cameras to database, insert information will push suite of camera
@@ -19,7 +19,8 @@ public:
     list<CameraObservation*> &getCameraObservation();   //get information from database paramerts - about which camera we would get information
 private:
     list<CameraObservation*> cameraObservations_; //list of result measured by camera
-    //DatabaseConnector databaseConnector_; //connect to database
+    DatabaseConnector databaseConnector_; //connect to database
+    const int size_;
 };
 
 #endif // DATABASE_H
