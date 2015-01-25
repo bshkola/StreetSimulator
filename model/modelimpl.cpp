@@ -60,12 +60,12 @@ void ModelImpl::replaceDestination(int trafficObjectId, Position newCoordinates)
 }
 
 void ModelImpl::startSimulation() {
-    //TODO
+    CameraNoiseImpl cameraNoiseImpl;
     SimulationPreparator simulationPreparator(objectsOnMap_);
     try
     {
         simulationPreparator.run();
-        Engine engine(simulationPreparator.getObjectOnMap(), NULL);
+        Engine engine(simulationPreparator.getObjectOnMap(), &cameraNoiseImpl);
         engine.run();
     }
     catch(NotWayBetweenSourceAndDestinationTargetPointExceptions ex)
