@@ -3,6 +3,7 @@
 #include "cameradetectionimpl.h"
 #include "icameranoise.h"
 #include <cmath>
+#include <iostream>
 
 void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
                                         const std::list<TrafficParticipant*>& tp_list,
@@ -10,9 +11,9 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
                                    )
 {
 
-    std::pair<float, float> cam_coordinates (0.0, 0.0);
-    std::pair<float, float>  tp_coordinates (0.0, 0.0);
-    std::pair<float, float>  tp_coordinates_noised (0.0, 0.0);
+    std::pair<float, float> cam_coordinates = std::pair<float, float> (0.0, 0.0);
+    std::pair<float, float>  tp_coordinates = std::pair<float, float> (0.0, 0.0);
+    std::pair<float, float>  tp_coordinates_noised = std::pair<float, float> (0.0, 0.0);
     float distance, noised_distance, azimuth, noised_azimuth;
     CameraObservation* observation_ptr;
 
@@ -64,46 +65,62 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
 
     }
 
-};
+}
 
 float CameraDetectionImpl::distance(const std::pair<float, float> A,
                                     const std::pair<float, float> B
                                    )
 {
     return hypot((A.first - B.first), (A.second - B.second));
-};
+}
+
+float CameraDetectionImpl::distance(const float a_, const float b_)
+{
+    return hypot(a_, b_);
+}
 
 float CameraDetectionImpl::azimuth(const std::pair<float, float> A,
                                    const std::pair<float, float> B
                                   )
 {
-    const float PI = acos(-1.0);
-    float distance = this->distance(A, B);
+    const float PI = acos((float)-1.0);
     float delta_x = B.first - A.first;
     float delta_y = B.second - A.second;
+    float distance = this->distance(delta_x, delta_y);
 
-    if(delta_x == 0.0 && delta_y == 0.0)
+    if((delta_x == 0.0 && delta_y == 0.0) || distance == 0.0)
         return 0.0;
     if(delta_x >= 0.0 && delta_y >= 0.0)//1st quarter
-        return 90.0 - (180.0 / PI * acos(delta_x / distance));
-    if(delta_x < 0.0 && delta_y > 0.0)  //2nd quarter
-        return 450.0 - (180.0 / PI * acos(delta_x / distance));
-    if(delta_y <= 0.0)                  //3rd & 4th quarter
-        return 90.0 + (180.0 / PI * acos(delta_x / distance));
+        return 90.0 - (acos(delta_x / distance) * 180.0 / PI);
+    if(delta_x < 0.0 && delta_y >= 0.0)  //2nd quarter
+        return 450.0 - (acos(delta_x / distance) * 180.0 / PI);
+    if(delta_y < 0.0)                  //3rd & 4th quarter
+        return 90.0 + (acos(delta_x / distance) * 180.0 / PI);
 
     return 0.0;
-};
+}
 
 bool CameraDetectionImpl::withinTheAngle(float cam_azimuth,
                                          float cam_angle,
                                          float tp_azimuth
                                         )
 {
-    float max_azimuth = cam_azimuth + cam_angle / 2.0;
-    float mim_azimuth = cam_azimuth - cam_angle / 2.0;
-    
-    if(max_azimuth < 360.0){
-        if(mim_azimuth <= tp_azimuth && tp_azimuth <= max_azimuth){
+    float cam_azimuth_ = cam_azimuth;
+    float cam_angle_ = cam_angle;
+    float tp_azimuth_ = tp_azimuth;
+
+    normalizeAzimuth(cam_azimuth_);
+    normalizeAngle(cam_angle_);
+    normalizeAzimuth(tp_azimuth_);
+
+    float max_azimuth_ = cam_azimuth_ + cam_angle_ / 2.0;
+    float min_azimuth_ = cam_azimuth_ - cam_angle_ / 2.0;
+
+    normalizeAzimuth(max_azimuth_);
+    normalizeAzimuth(min_azimuth_);
+
+    if(min_azimuth_ <= max_azimuth_){
+        if(min_azimuth_ <= tp_azimuth_ && tp_azimuth_ <= max_azimuth_){
             return true;
         }
         else {
@@ -111,12 +128,31 @@ bool CameraDetectionImpl::withinTheAngle(float cam_azimuth,
         }
     }
     else {
-        if(mim_azimuth <= tp_azimuth && tp_azimuth < 360.0){
-            return true;
-        }
-        if(0.0 <= tp_azimuth && tp_azimuth <= max_azimuth - 360.0){
+        if(min_azimuth_ <= tp_azimuth_ || tp_azimuth_ <= max_azimuth_){
             return true;
         }
         return false;
     }
-};
+}
+
+void CameraDetectionImpl::normalizeAzimuth(float& azimuth_)
+{
+    /* Makes azimuth a value in [0.0, 360.0) degrees without changing it's meaning (direction). */
+    while(azimuth_ < 0.0){
+        azimuth_ += 360.0;
+    }
+    while(azimuth_ >= 360.0){
+        azimuth_ -= 360.0;
+    }
+}
+
+void CameraDetectionImpl::normalizeAngle(float& angle_)
+{
+    /* Forces angle be a value in [0.0, 360.0] degrees. */
+    if(angle_ > 360.0){
+        angle_ = 360.0;
+    }
+    if(angle_ < 0.0){
+        angle_ = 0.0;
+    }
+}
