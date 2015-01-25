@@ -7,7 +7,8 @@
 
 void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
                                         const std::list<TrafficParticipant*>& tp_list,
-                                              std::list<CameraObservation*>& observation_list
+                                              std::list<CameraObservation*>& observation_list,
+                                        const int board_size
                                    )
 {
 
@@ -28,20 +29,20 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
             ++tp_it){
 
             //set coordinates of camera
-            cam_coordinates.first  = (*cam_it)->x_;
-            cam_coordinates.second = (*cam_it)->y_;
+            cam_coordinates.first  = (*cam_it)->x_ * board_size;
+            cam_coordinates.second = (*cam_it)->y_ * board_size;
             //set coordinates of traffic participant
             tp_coordinates.first  = (*tp_it)->x_;
             tp_coordinates.second = (*tp_it)->y_;
             //calculate real distance
-            distance = this->distance(cam_coordinates, tp_coordinates);
+            distance = this->pair_distance(cam_coordinates, tp_coordinates);
             //decision if traffic participant within camera's range
-            if(distance > (*cam_it)->range_)
+            if(distance > ((*cam_it)->range_ * board_size))
                 continue;   //if out of range then skip
             //calculate real azimuth
             azimuth = this->azimuth(cam_coordinates, tp_coordinates);
             //decision if traffic participant within camera's angle
-            if(!withinTheAngle((*cam_it)->azimuth_, (*cam_it)->angle_, azimuth))
+            if(!this->withinTheAngle((*cam_it)->azimuth_, (*cam_it)->angle_, azimuth))
                 continue;   //if out of angle then skip
             //introduce noise
             tp_coordinates_noised =
@@ -50,7 +51,7 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
                                                        distance,
                                                        10);
             //calculate noised distance
-            noised_distance = this->distance(cam_coordinates, tp_coordinates_noised);
+            noised_distance = this->pair_distance(cam_coordinates, tp_coordinates_noised);
             //calculate noised azimuth
             noised_azimuth = this->azimuth(cam_coordinates, tp_coordinates_noised);
             //create new observation
@@ -67,7 +68,7 @@ void CameraDetectionImpl::calculate(    const std::list<Camera*>& camera_list,
 
 }
 
-float CameraDetectionImpl::distance(const std::pair<float, float> A,
+float CameraDetectionImpl::pair_distance(const std::pair<float, float> A,
                                     const std::pair<float, float> B
                                    )
 {
