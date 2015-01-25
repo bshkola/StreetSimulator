@@ -1,3 +1,6 @@
+//Author: Andrzej Chmielowski
+//Representing exception when no way between start point and target point
+
 #ifndef NOTWAYBETWEENSOURCEANDDESTINATIONTARGETPOINTEXCEPTIONS_H
 #define NOTWAYBETWEENSOURCEANDDESTINATIONTARGETPOINTEXCEPTIONS_H
 

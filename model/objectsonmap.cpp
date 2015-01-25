@@ -59,6 +59,10 @@ void ObjectsOnMap::replaceTrafficObject(int id, Position newLocation)
         if (trafficParticipant->id_ == id) {
             trafficParticipant->x_ = newLocation.first;
             trafficParticipant->y_ = newLocation.second;
+            //resert target and start points
+            trafficParticipant->targetPoint_.first +=  newLocation.first - trafficParticipant->startPoint_.first ;
+            trafficParticipant->targetPoint_.second += newLocation.second - trafficParticipant->startPoint_.second;
+            trafficParticipant->startPoint_ = newLocation; //resert start point
             return;
         }
     }

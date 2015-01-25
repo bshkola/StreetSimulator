@@ -38,7 +38,7 @@ DatabaseConnector::DatabaseConnector()
         getline (config_file, db_table_);
     } else {
         //default configuration
-        db_host_ = "tcp://127.0.0.1:3306";
+        db_host_ = "localhost";
         db_user_ = "root";
         db_passwd_ = "toor";
         db_dbname_ = "StreetSimulator";

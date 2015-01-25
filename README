@@ -73,8 +73,28 @@ i zamykamy poleceniem:
 Aby skompilować program i przygotować go do działania należy uruchomić skrypt
 o nazwie install.sh.
 
-Po zakończonej kompilacji plik binarny oraz kopia pliku konfiguracyjnego zostaną
-umieszczone w katalogu ./bin/
+> ./install.sh [clean] [debug]
+
+Skrypt install.sh przyjmuje do dwóch argumentów:
+--clean
+  clean
+ -c
+    przełącza skrypt w tryb czyszczenia - usuwane są wszystkie pliki
+    powstające w procesie kompilacji i instalacji, W TYM katalog ./bin
+    z całą zawartością (m.in. plikiem wykonywalnym programu)
+
+--debug
+  debug
+  -d
+    przełącza skrypt w tryb debugowania - wyjście z poleceń 'make' oraz
+    'make clean' będzie wyświetlane (domyślnie nie jest)
+
+Oba argumenty mogę być używane jednocześnie. Kombinacje '-cd' lub '-dc' również
+są akceptowane.
+
+Po zakończonej kompilacji plik binarny, kopia pliku konfiguracyjnego oraz kopia
+skryptu do przeglądania wyników z bazy danych (patrz: Rozdział 5. PRZEGLĄDANIE
+REKORDÓW W BAZIE) zostaną umieszczone w katalogu ./bin/
 
 5. PRZEGLĄDANIE REKORDÓW W BAZIE
 
