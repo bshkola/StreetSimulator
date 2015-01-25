@@ -1,24 +1,17 @@
 #include "../../common/events/destinationreplaceevent.h"
 
-DestinationReplaceEvent::DestinationReplaceEvent(Coordinates oldCoordinates, Coordinates newCoordinates,
-                                                 Coordinates trafficObjectCoordinates) : IEvent() {
-    oldCoordinates_ = oldCoordinates;
-    newCoordinates_ = newCoordinates;
-    trafficObjectCoordinates_ = trafficObjectCoordinates;
+DestinationReplaceEvent::DestinationReplaceEvent(int trafficObjectId, Coordinates newCoordinates)
+    : IEvent(), trafficObjectId_(trafficObjectId), newCoordinates_(newCoordinates) {
 }
 
 std::string DestinationReplaceEvent::getName() {
     return "DestinationReplaced";
 }
 
-Coordinates DestinationReplaceEvent::getOldCoordinates() {
-    return oldCoordinates_;
-}
-
 Coordinates DestinationReplaceEvent::getNewCoordinates() {
     return newCoordinates_;
 }
 
-Coordinates DestinationReplaceEvent::getTrafficObjectCoordinates() {
-    return trafficObjectCoordinates_;
+int DestinationReplaceEvent::getTrafficObjectId() {
+    return trafficObjectId_;
 }

@@ -22,27 +22,30 @@ class MainWindow : public QMainWindow, public IView
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-    virtual ~MainWindow();
     void resizeEvent(QResizeEvent *event);
     void closeEvent(QCloseEvent *event);
     void showBoard(const Board& board);
+    void show();
+    void setCameraOptions(const CameraOptions& cameraOptions);
+    virtual ~MainWindow();
+
 
 signals:
     void showSimulationWindow();
     void showSimulationBoard(const Board& board);
 
+
 public slots:
-    void updateButtons();
     void updateBoardSize();
     void startSimulation();
+    void changeCameraOptionsPressed();
 
 protected:
 
 private:
     Ui::MainWindow *ui;
-    std::shared_ptr<BoardScene> boardScene;
-    QVector<QPushButton*> buttons;
     SimulatorWindow* simulationWindow_;
+    std::shared_ptr<BoardScene> boardScene;
 };
 
 #endif // MAINWINDOW_H

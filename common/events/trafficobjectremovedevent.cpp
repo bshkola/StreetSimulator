@@ -1,13 +1,14 @@
 #include "../../common/events/trafficobjectremovedevent.h"
 
-TrafficObjectRemovedEvent::TrafficObjectRemovedEvent(Position coordinates)
-    : coordinates_(coordinates) {
+TrafficObjectRemovedEvent::TrafficObjectRemovedEvent(int id)
+    : id_(id) {
 }
 
 std::string TrafficObjectRemovedEvent::getName() {
     return "TrafficObjectRemoved";
 }
 
-Position TrafficObjectRemovedEvent::getCoordinates() {
-    return coordinates_;
+int TrafficObjectRemovedEvent::getId() {
+    return id_;
 }
+

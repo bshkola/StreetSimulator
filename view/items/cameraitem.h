@@ -20,7 +20,11 @@ public:
     MouseEventHandler* getMouseEventHandler();
     void setSelected(bool isSelected);
 
+    int getId();
+    void setId(int id);
+
 private:
+    int id_;
     Coordinates coordinates_;
     Qt::GlobalColor color_;
 

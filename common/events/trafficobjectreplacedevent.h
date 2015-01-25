@@ -6,13 +6,13 @@
 class TrafficObjectReplacedEvent : public IEvent
 {
 public:
-    TrafficObjectReplacedEvent(Position oldCoordinates, Position newCoordinates);
+    TrafficObjectReplacedEvent(int id, Position newCoordinates);
     std::string getName();
-    Position getOldCoordinates();
+    int getId();
     Position getNewCoordinates();
 
 private:
-    Position oldCoordinates_;
+    int id_;
     Position newCoordinates_;
 };
 

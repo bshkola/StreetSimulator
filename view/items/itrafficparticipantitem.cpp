@@ -24,3 +24,11 @@ void ITrafficParticipantItem::setSelected(bool isSelected) {
 void ITrafficParticipantItem::resetDestinationPosition() {
     destinationItem_->setPos(0, 0);
 }
+
+int ITrafficParticipantItem::getId() {
+    return id_;
+}
+
+void ITrafficParticipantItem::setId(int id) {
+    id_ = id;
+}

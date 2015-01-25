@@ -75,8 +75,11 @@ SOURCES += main.cpp\
     common/events/destinationreplaceevent.cpp \
     database/databaseconnector.cpp \
     view/isimulatorview.cpp \
-    view/simulatorwindow.cpp
-    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.cpp
+    view/simulatorwindow.cpp \
+    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.cpp \
+    common/cameraoptions.cpp \
+    common/events/cameraoptionschangedevent.cpp \
+    controller/strategies/cameraoptionschangedstrategy.cpp
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
@@ -160,8 +163,11 @@ HEADERS  += controller/icontroller.h \
     controller/strategies/trafficobjectremovedstrategy.h \
     database/databaseconnector.h \
     view/isimulatorview.h \
-    view/simulatorwindow.h
-    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h
+    view/simulatorwindow.h \
+    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h \
+    common/cameraoptions.h \
+    common/events/cameraoptionschangedevent.h \
+    controller/strategies/cameraoptionschangedstrategy.h
 
 FORMS    += mainwindow.ui \
     simulationwindow.ui

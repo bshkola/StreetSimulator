@@ -7,6 +7,8 @@
 #include "../common/events/boardsizechangedevent.h"
 #include "../common/events/startsimulationevent.h"
 #include "../view/simulatorwindow.h"
+#include "../common/events/cameraoptionschangedevent.h"
+#include "../common/cameraoptions.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), IView(), ui(new Ui::MainWindow)
@@ -20,19 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     simulationWindow_ = new SimulatorWindow(this);
 
     // initialize signals-slots
-    buttons.append(ui->streetButton);
-    buttons.append(ui->removeStreetButton);
-    buttons.append(ui->movableObjectButton);
-    buttons.append(ui->cameraButton);
-
-    connect(ui->sizeButton, SIGNAL(clicked()), this, SLOT(updateButtons()));
     connect(ui->sizeButton, SIGNAL(pressed()), this, SLOT(updateBoardSize()));
-
-    connect(ui->streetButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
-    connect(ui->removeStreetButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
-    connect(ui->movableObjectButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
-    connect(ui->cameraButton, SIGNAL(pressed()), this, SLOT(updateButtons()));
-
+    connect(ui->cameraButton, SIGNAL(pressed()), this, SLOT(changeCameraOptionsPressed()));
     connect(ui->simmulationButton, SIGNAL(pressed()), this, SLOT(startSimulation()));
 
     qRegisterMetaType<Board>("Board");
@@ -46,6 +37,25 @@ MainWindow::~MainWindow()
     std::cout << "~MainWindow" << std::endl;
 }
 
+void MainWindow::show() {
+    QMainWindow::show();
+}
+
+void MainWindow::setCameraOptions(const CameraOptions& cameraOptions) {
+    ui->cameraAngleSpinBox->setValue(cameraOptions.getAngle());
+    ui->cameraDirectionSpinBox->setValue(cameraOptions.getDirection());
+    ui->cameraRangeSpinBox->setValue(cameraOptions.getRange());
+}
+
+void MainWindow::changeCameraOptionsPressed() {
+    int cameraId = boardScene->getActiveCameraId();
+    if (cameraId != -1) {
+        BlockingEventQueue::getInstance().push(
+                    new CameraOptionsChangedEvent(cameraId, CameraOptions(ui->cameraAngleSpinBox->value(),
+                          ui->cameraDirectionSpinBox->value(), ui->cameraRangeSpinBox->value())));
+    }
+}
+
 void MainWindow::startSimulation() {
     BlockingEventQueue::getInstance().push(new StartSimulationEvent(simulationWindow_));
 }
@@ -57,12 +67,6 @@ void MainWindow::updateBoardSize() {
     if (reply == QMessageBox::Yes) {
         boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
         BlockingEventQueue::getInstance().push(new BoardSizeChangedEvent(ui->boardSizeSpinBox->value()));
-    }
-}
-
-void MainWindow::updateButtons() {
-    for (QPushButton* button : buttons) {
-        button->setChecked(false);
     }
 }
 
@@ -84,9 +88,3 @@ void MainWindow::showBoard(const Board& board) {
     ui->boardSizeSpinBox->setValue(8);
     boardScene->updateBoardSize(8);
 }
-
-//void MainWindow::createSimulationWindow() {
-    //simulationWindow_->show();
-    //return simulationWindow_;
-//}
-

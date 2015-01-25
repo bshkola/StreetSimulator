@@ -26,19 +26,19 @@ void ObjectsOnMap::removeStreet(Position coordinates) {
     board.boardMap_[coordinates.first][coordinates.second] = false;
 }
 
-void ObjectsOnMap::addTrafficObject(Position location, ObjectType objectType)
+void ObjectsOnMap::addTrafficObject(int id, Position location, ObjectType objectType)
 {
     float speed = 1;
 
     switch (objectType) {
     case PEDESTRIAN:
-        objects.push_back(new Pedestrian(location.first, location.second, speed, location, location));
+        objects.push_back(new Pedestrian(id, location.first, location.second, speed, location, location));
         break;
     case CAR:
-        objects.push_back(new Car(location.first, location.second, speed, location, location));
+        objects.push_back(new Car(id, location.first, location.second, speed, location, location));
         break;
     case TRUCK:
-        objects.push_back(new Truck(location.first, location.second, speed, location, location));
+        objects.push_back(new Truck(id, location.first, location.second, speed, location, location));
         break;
     default:
         throw exception();
@@ -48,102 +48,91 @@ void ObjectsOnMap::addTrafficObject(Position location, ObjectType objectType)
     }
 }
 
-void ObjectsOnMap::addCamera(Coordinates location, float azimuth, float angle, float range)
+void ObjectsOnMap::replaceTrafficObject(int id, Position newLocation)
 {
-    cameras.push_back(new Camera(location.first, location.second, azimuth, angle, range));
-    for (Camera* camera : cameras) {
-        std::cout << camera->x_ << " " << camera->y_ << " " << camera->angle_ << std::endl;
-    }
-}
-
-void ObjectsOnMap::setCellOnField(int i, int j, bool isStreet)
-{
-    board.boardMap_[i][j] = isStreet;
-}
-
-void ObjectsOnMap::replaceObject(Position oldLocation, Position newLocation)
-{
-    std::list<TrafficParticipant*>::iterator i = objects.begin();
-    while (i != objects.end())
-    {
-        if ((oldLocation.first == (*i)->x_) && (oldLocation.second == (*i)->y_)) {
-            (*i)->x_ = newLocation.first;
-            (*i)->y_ = newLocation.second;
-            break;
-        }
-        i++;
-    }
     for (TrafficParticipant* trafficParticipant : objects) {
-        std::cout << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
+        if (trafficParticipant->id_ == id) {
+            trafficParticipant->x_ = newLocation.first;
+            trafficParticipant->y_ = newLocation.second;
+            return;
+        }
     }
+    throw std::exception("wrong id"); //TODO add exception
 }
 
-void ObjectsOnMap::deleteObject(Position location, Position source, Position destinatios, float speed)
+void ObjectsOnMap::deleteTrafficObject(int id)
 {
-    std::list<TrafficParticipant*>::iterator i = objects.begin();
-    while (i != objects.end())
-    {
-        if ((location.first == (*i)->x_) && (location.second == (*i)->y_)) {
-            objects.erase(i);
-            break;
-        }
-        i++;
-    }
     for (TrafficParticipant* trafficParticipant : objects) {
-        std::cout << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
+        if (trafficParticipant->id_ == id) {
+            objects.remove(trafficParticipant);
+            return;
+        }
     }
+    throw std::exception("wrong id"); //TODO add exception
 }
 
-void ObjectsOnMap::replaceCamera(Coordinates oldCordinates, Coordinates newCordinates) {
-    std::list<Camera*>::iterator i = cameras.begin();
-    while (i != cameras.end())
-    {
-        if (abs(oldCordinates.first - (*i)->x_) + abs(oldCordinates.second - (*i)->y_) < 0.01) {
-            (*i)->x_ = newCordinates.first;
-            (*i)->y_ = newCordinates.second;
-            break;
-        }
-        i++;
-    }
+void ObjectsOnMap::addCamera(int id, Coordinates location, float azimuth, float angle, float range)
+{
+    cameras.push_back(new Camera(id, location.first, location.second, azimuth, angle, range));
     for (Camera* camera : cameras) {
         std::cout << camera->x_ << " " << camera->y_ << " " << camera->angle_ << std::endl;
     }
 }
 
-
-void ObjectsOnMap::deleteCamera(Coordinates location, float azimuth, float angle, float range)
-{
-    std::list<Camera*>::iterator i = cameras.begin();
-    while (i != cameras.end())
-    {
-        if (abs(location.first - (*i)->x_) + abs(location.second - (*i)->y_) < 0.01) {
-            cameras.erase(i++);
-        }
-        else {
-            i++;
-        }
-    }
+void ObjectsOnMap::replaceCamera(int id, Coordinates newCordinates) {
     for (Camera* camera : cameras) {
-        std::cout << camera->x_ << " " << camera->y_ << " " << camera->angle_ << std::endl;
+        if (camera->id_ == id) {
+            camera->x_ = newCordinates.first;
+            camera->y_ = newCordinates.second;
+            return;
+        }
     }
+    throw std::exception("wrong id"); //TODO add exception
 }
 
-void ObjectsOnMap::replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates)
-{
-    std::list<TrafficParticipant*>::iterator i = objects.begin();
-    while (i != objects.end())
-    {
-        if ((trafficObjectCoordinates.first == (*i)->x_) && (trafficObjectCoordinates.second == (*i)->y_)) {
-            (*i)->targetPoint_ = newCoordinates;
-            break;
+CameraOptions ObjectsOnMap::getCameraOptions(int cameraId) {
+    for (Camera* camera : cameras) {
+        if (camera->id_ == cameraId) {
+            return CameraOptions(camera->angle_, camera->azimuth_, camera->range_);
         }
-        i++;
     }
-//    for (TrafficParticipant* trafficParticipant : objects) {
-//        std::cout << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
-//    }
+    throw std::exception("wrong id"); //TODO add exception
+}
 
-    //TODO
+
+void ObjectsOnMap::deleteCamera(int id)
+{
+    for (Camera* camera : cameras) {
+        if (camera->id_ == id) {
+            cameras.remove(camera);
+            return;
+        }
+    }
+    throw std::exception("wrong id"); //TODO add exception
+}
+
+void ObjectsOnMap::changeCameraOptions(int cameraId, const CameraOptions& cameraOptions) {
+    for (Camera* camera : cameras) {
+        if (camera->id_ == cameraId) {
+            camera->angle_ = cameraOptions.getAngle();
+            camera->azimuth_ = cameraOptions.getDirection();
+            camera->range_ = cameraOptions.getRange();
+            return;
+        }
+    }
+    throw std::exception("wrong id"); //TODO add exception
+}
+
+
+void ObjectsOnMap::replaceDestination(int trafficObjectId, Position newCoordinates)
+{
+    for (TrafficParticipant* trafficParticipant : objects) {
+        if (trafficParticipant->id_ == trafficObjectId) {
+            trafficParticipant->targetPoint_ = newCoordinates;
+            return;
+        }
+    }
+    throw std::exception("wrong id"); //TODO add exception
 }
 
 const list<TrafficParticipant*> &ObjectsOnMap::getObjects() const

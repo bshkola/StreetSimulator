@@ -1,5 +1,6 @@
 #include "../../view/mouseeventhandler/destinationmouseeventhandler.h"
-#include "../items/destinationitem.h"
+#include "../../view/items/destinationitem.h"
+#include "../../view/items/itrafficparticipantitem.h"
 #include "../../common/events/destinationreplaceevent.h"
 
 DestinationMouseEventHandler::DestinationMouseEventHandler()
@@ -20,9 +21,9 @@ void DestinationMouseEventHandler::handleRelease(QGraphicsSceneMouseEvent* event
     if (scene->isInsideBoard(event->scenePos())) {
         QPointF position = scene->getDiscretePosition(event->scenePos());
         item->setPos(position  - ((DestinationItem*)item)->parentItem()->pos());
-        BlockingEventQueue::getInstance().push(new DestinationReplaceEvent(scene->getDiscreteCoordinates(event->buttonDownScenePos(Qt::LeftButton)),
-                                                                           scene->getDiscreteCoordinates(event->scenePos()),
-                                                                           scene->getDiscreteCoordinates(item->parentItem()->scenePos())));
+        ITrafficParticipantItem* parentItem = static_cast<ITrafficParticipantItem*>(item->parentItem());
+        BlockingEventQueue::getInstance().push(
+                    new DestinationReplaceEvent(parentItem->getId(), scene->getDiscreteCoordinates(event->scenePos())));
     } else {
         item->setPos(0, 0);
     }

@@ -11,6 +11,9 @@ public:
     void handlePress(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
     void handleMove(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
     void handleRelease(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
+
+private:
+    static int indexCounter;
 };
 
 #endif // CAMERAMOUSEEVENTHANDLER_H

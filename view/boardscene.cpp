@@ -135,4 +135,10 @@ Position BoardScene::getDiscreteCoordinates(const QPointF& point) {
     return Position(point.x() / shiftSize, point.y() / shiftSize);
 }
 
-
+int BoardScene::getActiveCameraId() {
+    CameraItem* selectedCamera = dynamic_cast<CameraItem*>(lastSelectedItem_);
+    if (selectedCamera != NULL) {
+        return selectedCamera->getId();
+    }
+    return -1;
+}

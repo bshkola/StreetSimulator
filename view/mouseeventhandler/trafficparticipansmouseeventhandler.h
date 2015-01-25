@@ -12,6 +12,8 @@ public:
     void handleMove(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
     void handleRelease(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
 
+private:
+    static int indexCounter;
 };
 
 #endif // TRAFFICPARTICIPANSMOUSEEVENTHANDLER_H

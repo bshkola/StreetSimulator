@@ -14,10 +14,8 @@
 #include "strategies/trafficobjectremovedstrategy.h"
 #include "strategies/destinationreplacedstrategy.h"
 #include "strategies/startsimulationstrategy.h"
+#include "strategies/cameraoptionschangedstrategy.h"
 
-
-
-#include "../common/events/windowclosedevent.h"
 #include "../common/events/applicationstartedevent.h"
 
 ControllerImpl::ControllerImpl(std::shared_ptr<IModel> model, IView* view) : finish_(false)
@@ -37,6 +35,7 @@ ControllerImpl::ControllerImpl(std::shared_ptr<IModel> model, IView* view) : fin
     map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("TrafficObjectRemoved", std::make_shared<TrafficObjectRemovedStrategy>(model, view)));
     map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("DestinationReplaced", std::make_shared<DestinationReplacedStrategy>(model, view)));
     map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("StartSimulation", std::make_shared<StartSimulationStrategy>(model, view)));
+    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("CameraOptionsChanged", std::make_shared<CameraOptionsChangedStrategy>(model, view)));
 
     BlockingEventQueue::getInstance().push(new ApplicationStartedEvent());
 
