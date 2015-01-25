@@ -16,8 +16,8 @@ struct TrafficParticipant {
     Position startPoint_, targetPoint_;  //begin & end of path
     std::deque<std::pair<int, int>> way; //way where is ride object
 protected:
-    TrafficParticipant(int id, int x, int y, float speed, Position startPoint, Position targetPoint):
-        id_(id), x_(x), y_(y), speed_(speed), startPoint_(startPoint), targetPoint_(targetPoint)
+    TrafficParticipant(int id, float speed, Position startPoint, Position targetPoint):
+        id_(id), x_(startPoint.first), y_(startPoint.second), speed_(speed), startPoint_(startPoint), targetPoint_(targetPoint)
     {}
 
 public:

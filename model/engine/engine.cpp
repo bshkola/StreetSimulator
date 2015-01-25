@@ -10,7 +10,7 @@ Engine::Engine(const ObjectsOnMap &objectsOnMap, ICameraNoise *iCameraNoise, Sim
     simulationWindow_->initCloseWindowHandler(this);
     finish_ = false;
     //how often Objects should be updated (milliseconds)
-    millisecondsInQuantum = std::chrono::duration<int, std::milli> (1000);
+    millisecondsInQuantum = std::chrono::duration<int, std::milli> (1500);
     //how often Cameras should make observations (milliseconds)
     camerasTrigger = std::chrono::duration<int, std::milli> (3000);
     camerasTime = std::chrono::duration<int, std::milli> (0);

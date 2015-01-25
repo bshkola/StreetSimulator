@@ -7,8 +7,8 @@
 //#include "../../view/items/pede"
 
 struct Pedestrian : public TrafficParticipant {
-    Pedestrian(int id, float x, float y, float speed, std::pair<int, int> start_point, std::pair<int, int> target_point):
-        TrafficParticipant(id, x, y, speed, start_point, target_point)
+    Pedestrian(int id, float speed, std::pair<int, int> start_point, std::pair<int, int> target_point):
+        TrafficParticipant(id, speed, start_point, target_point)
     {}
 
     ITrafficParticipantItem* createItem(const QRectF& rect) {

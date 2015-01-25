@@ -2,6 +2,7 @@
 #include <iostream>
 #include <QGraphicsPixmapItem>
 #include "items/itrafficparticipantitem.h"
+#include <QPropertyAnimation>
 
 SimulatorWindow::SimulatorWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::SimulationWindow) {
     ui->setupUi(this);
@@ -25,6 +26,8 @@ void SimulatorWindow::initCloseWindowHandler(Engine* engine) {
 
 void SimulatorWindow::closeEvent(QCloseEvent* event) {
     QMainWindow::closeEvent(event);
+    ui->graphicsView->scene()->clear();
+    items.clear();
     engine_->finish();
 }
 
@@ -48,31 +51,31 @@ void SimulatorWindow::showBoard(const Board& board) {
             }
         }
     }
-
-    /*PassengerCarItem* item = new PassengerCarItem(QRectF(2 * shiftSize_, 2 * shiftSize_, shiftSize_ / 2, shiftSize_ / 2));
-    ui->graphicsView->scene()->addItem(item);
-    std::vector<TrafficParticipant*> participants;
-    //participants.push_back(new TrafficParticipant(2, 5, 1, Position(0, 0)), Position(0, 0))});
-    */
 }
 
 void SimulatorWindow::showTraffic(TrafficParticipants trafficParticipants) {
     for (TrafficParticipant* trafficParticipant : trafficParticipants) {
-        ITrafficParticipantItem* item = trafficParticipant->createItem(QRectF(trafficParticipant->x_ * shiftSize_, trafficParticipant->y_ * shiftSize_, shiftSize_ / 2, shiftSize_ / 2));
+        ITrafficParticipantItem* item = trafficParticipant->createItem(QRectF(trafficParticipant->x_ * shiftSize_ + shiftSize_ / 4, trafficParticipant->y_ * shiftSize_ + shiftSize_ / 4, shiftSize_ / 2, shiftSize_ / 2));
+        item->setId(trafficParticipant->id_);
         ui->graphicsView->scene()->addItem(item);
+        items.push_back(item);
     }
-    std::cout << "elements added" << std::endl;
 }
 
 void SimulatorWindow::updateTraffic(TrafficParticipants trafficParticipants) {
-    std::cout << "updating" << std::endl;
-
-    /*//ui->graphicsView->scene()->clear();
     for (TrafficParticipant* trafficParticipant : trafficParticipants) {
-        //std::cout << "Part: " << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
-        PassengerCarItem* item = new PassengerCarItem(QRectF(trafficParticipant->x_ * shiftSize_, trafficParticipant->y_ * shiftSize_, shiftSize_ / 2, shiftSize_ / 2));
-        ui->graphicsView->scene()->addItem(item);
-    }*/
+        for (ITrafficParticipantItem* item : items) {
+            if (item->getId() == trafficParticipant->id_) {
+                QPropertyAnimation* anim = new QPropertyAnimation(item, "pos");
+                anim->setDuration(1500);
 
-
+                anim->setStartValue(QPointF(item->pos()));
+                anim->setEndValue(QPointF(item->pos().x() + (trafficParticipant->x_ - trafficParticipant->xBefore_) * shiftSize_,
+                                          item->pos().y()+ (trafficParticipant->y_ - trafficParticipant->yBefore_) * shiftSize_));
+                anim->start(QAbstractAnimation::DeleteWhenStopped);
+                break;
+            }
+        }
+    }
 }
+

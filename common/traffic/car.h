@@ -7,8 +7,8 @@
 #include "../../view/items/passengercaritem.h"
 
 struct Car : public Vehicle {
-    Car(int id, float x, float y, float speed, std::pair<int, int> start_point, std::pair<int, int> target_point):
-       Vehicle(id, x, y, speed, start_point, target_point) {
+    Car(int id, float speed, std::pair<int, int> start_point, std::pair<int, int> target_point):
+       Vehicle(id, speed, start_point, target_point) {
     }
     ITrafficParticipantItem* createItem(const QRectF& rect) {
         return new PassengerCarItem(rect);

@@ -6,8 +6,10 @@
 
 class DestinationItem;
 
-class ITrafficParticipantItem : public IMovableItem
+class ITrafficParticipantItem : public QObject, public IMovableItem
 {
+    Q_OBJECT
+    Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 public:
     ITrafficParticipantItem(const QRectF& rect, QGraphicsItem* parent = 0);
 

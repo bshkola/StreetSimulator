@@ -32,13 +32,13 @@ void ObjectsOnMap::addTrafficObject(int id, Position location, ObjectType object
 
     switch (objectType) {
     case PEDESTRIAN:
-        objects.push_back(new Pedestrian(id, location.first, location.second, speed, location, location));
+        objects.push_back(new Pedestrian(id, speed, location, location));
         break;
     case CAR:
-        objects.push_back(new Car(id, location.first, location.second, speed, location, location));
+        objects.push_back(new Car(id, speed, location, location));
         break;
     case TRUCK:
-        objects.push_back(new Truck(id, location.first, location.second, speed, location, location));
+        objects.push_back(new Truck(id, speed, location, location));
         break;
     default:
         throw exception();

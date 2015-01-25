@@ -4,8 +4,10 @@
 #include "../../common/types.h"
 #include "itrafficparticipantitem.h"
 
-class TruckCarItem : public ITrafficParticipantItem
+class TruckCarItem : public QObject, public ITrafficParticipantItem
 {
+    Q_OBJECT
+    Q_PROPERTY(QPointF pos READ pos WRITE setPos)
 public:
     //TruckCarItem(int itemIndex, qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
     TruckCarItem(const QRectF& rect, QGraphicsItem* parent = 0);
