@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of CameraAddedStrategy class
 #include "../../controller/strategies/cameraaddedstrategy.h"
 #include "../../common/events/cameraaddedevent.h"
 

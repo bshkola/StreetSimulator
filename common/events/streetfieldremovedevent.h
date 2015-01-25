@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when street field is removed
 #ifndef STREETFIELDREMOVEDEVENT_H
 #define STREETFIELDREMOVEDEVENT_H
 

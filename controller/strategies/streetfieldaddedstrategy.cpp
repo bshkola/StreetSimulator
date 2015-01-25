@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of StreetFieldAddedStrategy class
 #include "../../controller/strategies/streetfieldaddedstrategy.h"
 #include "../../common/events/streetfieldaddedevent.h"
 

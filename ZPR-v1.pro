@@ -13,15 +13,12 @@ TEMPLATE = app
 CONFIG += c++11
 
 SOURCES += main.cpp\
-    controller/icontroller.cpp \
     controller/controllerimpl.cpp \
-    model/imodel.cpp \
     model/modelimpl.cpp \
     view/boardscene.cpp \
     view/boardcell.cpp \
     view/mainwindow.cpp \
     controller/blockingqueue.cpp \
-    view/iview.cpp \
     model/convert.cpp \
     model/dijkstra.cpp \
     model/graph.cpp \
@@ -29,7 +26,6 @@ SOURCES += main.cpp\
     common/events/applicationstartedevent.cpp \
     common/events/boardsizechangedevent.cpp \
     common/events/ievent.cpp \
-    common/events/itemclickedevent.cpp \
     common/events/streetfieldaddedevent.cpp \
     common/events/streetfieldremovedevent.cpp \
     common/events/windowclosedevent.cpp \
@@ -37,8 +33,6 @@ SOURCES += main.cpp\
     controller/strategies/applicationstartedstrategy.cpp \
     controller/strategies/boardsizechangedstrategy.cpp \
     controller/strategies/closewindowstrategy.cpp \
-    controller/strategies/istrategy.cpp \
-    controller/strategies/itemclickedstrategy.cpp \
     controller/strategies/streetfieldaddedstrategy.cpp \
     controller/strategies/streetfieldremovedstrategy.cpp \
     model/database/database.cpp \
@@ -54,7 +48,6 @@ SOURCES += main.cpp\
     view/items/passengercaritem.cpp \
     view/items/destinationitem.cpp \
     view/items/cameraitem.cpp \
-    view/mouseeventhandler/mouseeventhandler.cpp \
     view/mouseeventhandler/cameramouseeventhandler.cpp \
     view/mouseeventhandler/trafficparticipansmouseeventhandler.cpp \
     view/mouseeventhandler/destinationmouseeventhandler.cpp \
@@ -99,7 +92,6 @@ HEADERS  += controller/icontroller.h \
     common/events/applicationstartedevent.h \
     common/events/boardsizechangedevent.h \
     common/events/ievent.h \
-    common/events/itemclickedevent.h \
     common/events/streetfieldaddedevent.h \
     common/events/streetfieldremovedevent.h \
     common/events/windowclosedevent.h \
@@ -108,7 +100,6 @@ HEADERS  += controller/icontroller.h \
     controller/strategies/boardsizechangedstrategy.h \
     controller/strategies/closewindowstrategy.h \
     controller/strategies/istrategy.h \
-    controller/strategies/itemclickedstrategy.h \
     controller/strategies/streetfieldaddedstrategy.h \
     controller/strategies/streetfieldremovedstrategy.h \
     common/field/field.h \

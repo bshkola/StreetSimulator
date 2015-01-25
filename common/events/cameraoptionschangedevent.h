@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when camera options are changed
 #ifndef CAMERAOPTIONSCHANGEDEVENT_H
 #define CAMERAOPTIONSCHANGEDEVENT_H
 

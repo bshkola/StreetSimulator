@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Scene item representing passenger car
 #ifndef PASSENGERCARITEM_H
 #define PASSENGERCARITEM_H
 
@@ -7,7 +9,7 @@ class PassengerCarItem : public ITrafficParticipantItem
 {
 public:
     PassengerCarItem(const QRectF& rect, QGraphicsItem* parent = 0);
-
+    //Inherited methods
     ObjectType getTrafficObjectType();
     IMovableItem* clone();
     MouseEventHandler* getMouseEventHandler();

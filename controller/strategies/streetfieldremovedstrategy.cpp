@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of StreetFieldRemovedStrategy class
 #include "../../controller/strategies/streetfieldremovedstrategy.h"
 #include "../../common/events/streetfieldremovedevent.h"
 

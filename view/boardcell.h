@@ -11,22 +11,26 @@ class BoardCell : public QGraphicsRectItem
 {
 public:
     BoardCell(qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent = 0);
-
+    //Paints the cell
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
-    void setChecked(bool checked); //sets the flag, changing the color of the cell
+    //Sets the flag, changing the color of the cell
+    void setChecked(bool checked_);
+    //Checks the flag, changing the color of the cell
     bool isChecked();
-    void setCoordinates(int x, int y); //sets coordinates metadata to the cell
+    //Sets coordinates metadata to the cell
+    void setCoordinates(int x, int y);
+    //Gets coordinates metadata of the cell
     Position getCoordinates();
 
-signals:
-
-public slots:
-
 private:
-    bool checked;
-    Position coordinates;
-    Qt::GlobalColor checkedStreetColor;
-    Qt::GlobalColor nonCheckedStreetColor;
+    //Checked flag
+    bool checked_;
+    //Coordinates flag
+    Position coordinates_;
+    //Color of the checked cell
+    Qt::GlobalColor checkedStreetColor_;
+    //Color of the unchecked cell
+    Qt::GlobalColor unheckedStreetColor_;
 };
 
 #endif // BOARDCELL_H

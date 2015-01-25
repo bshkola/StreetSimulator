@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of DestinationReplacedStrategy class
 #include "../../controller/strategies/destinationreplacedstrategy.h"
 #include "../../common/events/destinationreplaceevent.h"
 

@@ -1,18 +1,18 @@
+//Author: Bogdan Shkola
+//Implementation of CameraMouseEventhandler class
+
 #include "../../view/mouseeventhandler/cameramouseeventhandler.h"
 #include "../../view/items/cameraitem.h"
 #include "../../common/events/cameraaddedevent.h"
 #include "../../common/events/camerareplacedevent.h"
 #include "../../common/events/cameraremovedevent.h"
-#include <iostream>
 
 int CameraMouseEventHandler::indexCounter = 0;
 
-CameraMouseEventHandler::CameraMouseEventHandler()
-{
+CameraMouseEventHandler::CameraMouseEventHandler() {
 }
 
 void CameraMouseEventHandler::handlePress(QGraphicsSceneMouseEvent*, BoardScene*, IMovableItem*) {
-
 }
 
 void CameraMouseEventHandler::handleMove(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item) {

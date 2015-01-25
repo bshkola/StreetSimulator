@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of WindowClosedEvent class
 #include "windowclosedevent.h"
 
 WindowClosedEvent::WindowClosedEvent() {

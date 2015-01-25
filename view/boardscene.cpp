@@ -1,30 +1,27 @@
+//Author: Bogdan Shkola
+//Implementation of BoardScene class
 #include "../view/boardscene.h"
-#include "boardcell.h"
-#include "items/pedestrianitem.h"
-#include "items/truckcaritem.h"
-#include "items/passengercaritem.h"
-#include "items/destinationitem.h"
-#include "items/cameraitem.h"
-#include <iostream>
+
 #include <vector>
 #include <QGraphicsRectItem>
 #include <QGraphicsSceneMouseEvent>
-#include <QPainter>
-#include <QWidget>
+#include "../view/boardcell.h"
+#include "../view/items/pedestrianitem.h"
+#include "../view/items/truckcaritem.h"
+#include "../view/items/passengercaritem.h"
+#include "../view/items/destinationitem.h"
+#include "../view/items/cameraitem.h"
 #include "../controller/blockingqueue.h"
 #include "../common/events/streetfieldaddedevent.h"
 #include "../common/events/streetfieldremovedevent.h"
 
-BoardScene::BoardScene() : QGraphicsScene()
-{
-    std::cout << "BoardScene()" << std::endl;
+BoardScene::BoardScene() : QGraphicsScene() {
     boardSizeInPixels = 300;
     activeMenuItem_ = NULL;
     lastSelectedItem_ = NULL;
 }
 
 BoardScene::~BoardScene() {
-    std::cout << "~BoardScene()" << std::endl;
 }
 
 void BoardScene::updateBoardSize(int size) {

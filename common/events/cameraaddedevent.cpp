@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of CameraAddedEvent class
 #include "../../common/events/cameraaddedevent.h"
 
 CameraAddedEvent::CameraAddedEvent(int id, Coordinates coordinates) : IEvent(), id_(id) {

@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of BlockingEventQueue class
 #include "blockingqueue.h"
 
 BlockingEventQueue::BlockingEventQueue() {

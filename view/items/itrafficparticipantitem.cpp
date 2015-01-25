@@ -1,8 +1,9 @@
+//Author: Bogdan Shkola
+//Implementation of ITrafficParticipantItem class
 #include "../../view/items/itrafficparticipantitem.h"
 
 ITrafficParticipantItem::ITrafficParticipantItem(const QRectF& rect, QGraphicsItem* parent) :
-    IMovableItem(rect, parent)
-{
+    IMovableItem(rect, parent) {
     destinationItem_ = NULL;
 }
 
@@ -12,11 +13,6 @@ void ITrafficParticipantItem::setDestination(DestinationItem* destinationItem) {
 
 void ITrafficParticipantItem::setSelected(bool isSelected) {
     IMovableItem::setSelected(isSelected);
-//    if (isSelected || destinationItem_->isSelected()) {
-//        destinationItem_->setVisible(true);
-//    } else {
-//        destinationItem_->setVisible(false);
-//    }
     destinationItem_->setVisible(isSelected);
     update();
 }

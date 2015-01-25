@@ -1,17 +1,14 @@
-#include "view/mainwindow.h"
-#include "view/simulatorwindow.h"
+//Author: Bogdan Shkola
+//Main class
 
 #include <QApplication>
 #include <memory>
-
-#include "controller/controllerimpl.h"
-#include "model/modelimpl.h"
-#include <iostream>
-
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
 
-using namespace std;
+#include "view/mainwindow.h"
+#include "model/modelimpl.h"
+#include "controller/controllerimpl.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,12 +16,8 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     IView* window = new MainWindow();
-
     shared_ptr<IModel> model = make_shared<ModelImpl>();
     shared_ptr<IController> controller = make_shared<ControllerImpl>(model, window);
     QtConcurrent::run(controller.get(), &IController::start);
     return a.exec();
 }
-
-
-

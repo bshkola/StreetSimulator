@@ -1,13 +1,14 @@
+//Author: Bogdan Shkola
+//Implementation of DestinationMouseEventhandler class
 #include "../../view/mouseeventhandler/destinationmouseeventhandler.h"
 #include "../../view/items/destinationitem.h"
 #include "../../view/items/itrafficparticipantitem.h"
 #include "../../common/events/destinationreplaceevent.h"
 
-DestinationMouseEventHandler::DestinationMouseEventHandler()
-{
+DestinationMouseEventHandler::DestinationMouseEventHandler() {
 }
 
-void DestinationMouseEventHandler::handlePress(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item) {
+void DestinationMouseEventHandler::handlePress(QGraphicsSceneMouseEvent*, BoardScene*, IMovableItem*) {
 
 }
 

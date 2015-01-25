@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when window is closed
 #ifndef WINDOWCLOSEDEVENT_H
 #define WINDOWCLOSEDEVENT_H
 

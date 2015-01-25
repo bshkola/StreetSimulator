@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of StartSimulationStrategy class
 #include "../../controller/strategies/startsimulationstrategy.h"
 #include "../../common/events/startsimulationevent.h"
 #include "../../common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h"

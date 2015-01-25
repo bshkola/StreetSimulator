@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of BoardSizeChangedStrategy class
 #include "../../controller/strategies/boardsizechangedstrategy.h"
 #include "../../common/events/boardsizechangedevent.h"
 

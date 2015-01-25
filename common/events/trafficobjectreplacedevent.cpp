@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of TrafficObjectReplacedEvent class
 #include "../../common/events/trafficobjectreplacedevent.h"
 
 TrafficObjectReplacedEvent::TrafficObjectReplacedEvent(int id, Position newCoordinates)

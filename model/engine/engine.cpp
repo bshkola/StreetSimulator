@@ -7,7 +7,7 @@ Engine::Engine(const ObjectsOnMap &objectsOnMap, ICameraNoise *iCameraNoise, Sim
     iCameraDetection = new CameraDetectionImpl(iCameraNoise);
     //this -> objectsOnMap = objectsOnMap;
     simulationWindow_ = simulationWindow;
-    simulationWindow_->initCloseWindowHandler(this);
+    simulationWindow_->setEngine(this);
     finish_ = false;
     //how often Objects should be updated (milliseconds)
     millisecondsInQuantum = std::chrono::duration<int, std::milli> (1500);

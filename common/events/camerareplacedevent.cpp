@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of CameraReplacedEvent class
 #include "../../common/events/camerareplacedevent.h"
 
 CameraReplacedEvent::CameraReplacedEvent(int id, Coordinates new_coordinates) : IEvent(), id_(id), new_coordinates_(new_coordinates) {

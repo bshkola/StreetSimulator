@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of TrafficObjectAddedEvent class
 #include "../../common/events/trafficobjectaddedevent.h"
 
 TrafficObjectAddedEvent::TrafficObjectAddedEvent(int id, Position coordinates, ObjectType objectType)

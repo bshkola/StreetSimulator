@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of CameraOptionsChangedStrategy class
 #include "../../controller/strategies/cameraoptionschangedstrategy.h"
 #include "../../common/events/cameraoptionschangedevent.h"
 

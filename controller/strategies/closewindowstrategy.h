@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Strategy handling closing the window
 #ifndef CLOSEWINDOWSTRATEGY_H
 #define CLOSEWINDOWSTRATEGY_H
 
@@ -8,9 +10,10 @@ class CloseWindowStrategy : public IStrategy
 {
 public:
     CloseWindowStrategy(IController& controller);
-    void perform(std::shared_ptr<IEvent> event);
     virtual ~CloseWindowStrategy();
 
+    //Inherited method
+    void perform(std::shared_ptr<IEvent> event);
 private:
     IController* controller_;
 };

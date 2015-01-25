@@ -1,6 +1,6 @@
+//Author: Bogdan Shkola
+//Implementation of CameraItem class
 #include "../../view/items/cameraitem.h"
-
-#include <QPainter>
 #include "../mouseeventhandler/cameramouseeventhandler.h"
 
 CameraItem::CameraItem(const QRectF& rect, QGraphicsItem* parent) :

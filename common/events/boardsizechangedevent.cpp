@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of BoardSizeChangedEvent class
 #include "boardsizechangedevent.h"
 
 BoardSizeChangedEvent::BoardSizeChangedEvent(int boardSize) : boardSize_(boardSize) {

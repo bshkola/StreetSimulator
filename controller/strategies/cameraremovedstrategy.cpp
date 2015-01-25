@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of CameraRemovedStrategy class
 #include "../../controller/strategies/cameraremovedstrategy.h"
 #include "../../common/events/cameraremovedevent.h"
 

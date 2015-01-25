@@ -1,7 +1,7 @@
+//Author: Bogdan Shkola
+//Implementation of PedestrianItem class
 #include "../../view/items/pedestrianitem.h"
 #include "../mouseeventhandler/trafficparticipansmouseeventhandler.h"
-#include "itrafficparticipantitem.h"
-#include <QPainter>
 
 PedestrianItem::PedestrianItem(const QRectF& rect, QGraphicsItem* parent) :
     ITrafficParticipantItem(rect, parent) {

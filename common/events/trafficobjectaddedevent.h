@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when traffic object is added
 #ifndef CARADDEDEVENT_H
 #define CARADDEDEVENT_H
 

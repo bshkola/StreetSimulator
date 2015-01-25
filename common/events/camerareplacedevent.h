@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when camera is replaced
 #ifndef CAMERAREPLACEDEVENT_H
 #define CAMERAREPLACEDEVENT_H
 

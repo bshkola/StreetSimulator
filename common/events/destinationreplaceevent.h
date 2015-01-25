@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event interface
 #ifndef DESTINATIONREPLACEEVENT_H
 #define DESTINATIONREPLACEEVENT_H
 

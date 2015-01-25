@@ -1,14 +1,11 @@
+//Author: Bogdan Shkola
+//Implementation of ModelImpl class
 #include "../model/modelimpl.h"
-#include <iostream>
 
-ModelImpl::ModelImpl()
-{
-    std::cout << "ModelImpl()" << std::endl;
+ModelImpl::ModelImpl() {
 }
 
-ModelImpl::~ModelImpl()
-{
-    std::cout << "~ModelImpl()" << std::endl;
+ModelImpl::~ModelImpl() {
 }
 
 void ModelImpl::resizeBoard(int newSize) {

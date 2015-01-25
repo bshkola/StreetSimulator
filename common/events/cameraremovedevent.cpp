@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of CameraRemovedEvent class
 #include "../../common/events/cameraremovedevent.h"
 
 CameraRemovedEvent::CameraRemovedEvent(int id) : IEvent(), id_(id) {

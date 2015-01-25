@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when application is started
 #ifndef APPLICATIONSTARTEDEVENT_H
 #define APPLICATIONSTARTEDEVENT_H
 

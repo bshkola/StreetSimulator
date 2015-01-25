@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when traffic object is removed
 #ifndef CARREMOVEDEVENT_H
 #define CARREMOVEDEVENT_H
 

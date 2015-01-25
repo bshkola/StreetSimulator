@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of DestinationReplaceEvent class
 #include "../../common/events/destinationreplaceevent.h"
 
 DestinationReplaceEvent::DestinationReplaceEvent(int trafficObjectId, Coordinates newCoordinates)

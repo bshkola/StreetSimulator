@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when simulation is started
 #ifndef STARTSIMULATIONEVENT_H
 #define STARTSIMULATIONEVENT_H
 

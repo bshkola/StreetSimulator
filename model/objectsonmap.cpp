@@ -1,13 +1,12 @@
+//Author: Bogdan Shkola
+//Implementation of ObjectsOnMap class
 #include "../model/objectsonmap.h"
 #include <cmath>
-#include <iostream>
 
-ObjectsOnMap::ObjectsOnMap() : board(8)
-{   
+ObjectsOnMap::ObjectsOnMap() : board(8) {
 }
 
-ObjectsOnMap::~ObjectsOnMap()
-{
+ObjectsOnMap::~ObjectsOnMap() {
     for(TrafficParticipant *obj: objects)
     {
         delete obj;
@@ -24,7 +23,7 @@ void ObjectsOnMap::resizeBoard(int newSize) {
     board = Board(newSize);
 }
 
-void ObjectsOnMap::addStreet(Position coordinates) { // TODO check if inside the board
+void ObjectsOnMap::addStreet(Position coordinates) {
     board.boardMap_[coordinates.first][coordinates.second] = true;
 }
 
@@ -32,8 +31,7 @@ void ObjectsOnMap::removeStreet(Position coordinates) {
     board.boardMap_[coordinates.first][coordinates.second] = false;
 }
 
-void ObjectsOnMap::addTrafficObject(int id, Position location, ObjectType objectType)
-{
+void ObjectsOnMap::addTrafficObject(int id, Position location, ObjectType objectType) {
     float speed = 1;
 
     switch (objectType) {
@@ -47,15 +45,11 @@ void ObjectsOnMap::addTrafficObject(int id, Position location, ObjectType object
         objects.push_back(new Truck(id, speed, location, location));
         break;
     default:
-        throw exception();
-    }
-    for (TrafficParticipant* trafficParticipant : objects) {
-        std::cout << trafficParticipant->x_ << " " << trafficParticipant->y_ << std::endl;
+        throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
     }
 }
 
-void ObjectsOnMap::replaceTrafficObject(int id, Position newLocation)
-{
+void ObjectsOnMap::replaceTrafficObject(int id, Position newLocation) {
     for (TrafficParticipant* trafficParticipant : objects) {
         if (trafficParticipant->id_ == id) {
             trafficParticipant->x_ = newLocation.first;
@@ -70,8 +64,7 @@ void ObjectsOnMap::replaceTrafficObject(int id, Position newLocation)
     throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
-void ObjectsOnMap::deleteTrafficObject(int id)
-{
+void ObjectsOnMap::deleteTrafficObject(int id) {
     for (TrafficParticipant* trafficParticipant : objects) {
         if (trafficParticipant->id_ == id) {
             objects.remove(trafficParticipant);
@@ -81,12 +74,8 @@ void ObjectsOnMap::deleteTrafficObject(int id)
     throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
-void ObjectsOnMap::addCamera(int id, Coordinates location)
-{
+void ObjectsOnMap::addCamera(int id, Coordinates location) {
     cameras.push_back(new Camera(id, location.first, location.second, 0.0, 30.0, 1.0));
-    for (Camera* camera : cameras) {
-        std::cout << camera->x_ << " " << camera->y_ << " " << camera->angle_ << std::endl;
-    }
 }
 
 void ObjectsOnMap::replaceCamera(int id, Coordinates newCordinates) {
@@ -110,8 +99,7 @@ CameraOptions ObjectsOnMap::getCameraOptions(int cameraId) {
 }
 
 
-void ObjectsOnMap::deleteCamera(int id)
-{
+void ObjectsOnMap::deleteCamera(int id) {
     for (Camera* camera : cameras) {
         if (camera->id_ == id) {
             cameras.remove(camera);
@@ -134,8 +122,7 @@ void ObjectsOnMap::changeCameraOptions(int cameraId, const CameraOptions& camera
 }
 
 
-void ObjectsOnMap::replaceDestination(int trafficObjectId, Position newCoordinates)
-{
+void ObjectsOnMap::replaceDestination(int trafficObjectId, Position newCoordinates) {
     for (TrafficParticipant* trafficParticipant : objects) {
         if (trafficParticipant->id_ == trafficObjectId) {
             trafficParticipant->targetPoint_ = newCoordinates;
@@ -145,22 +132,18 @@ void ObjectsOnMap::replaceDestination(int trafficObjectId, Position newCoordinat
     throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
-const list<TrafficParticipant*> &ObjectsOnMap::getObjects() const
-{
+const std::list<TrafficParticipant*> &ObjectsOnMap::getObjects() const {
     return objects;
 }
 
-list<Camera*> ObjectsOnMap::getCameras() const
-{
+std::list<Camera*> ObjectsOnMap::getCameras() const {
     return cameras;
 }
 
-const Board &ObjectsOnMap::getBoard() const
-{
+const Board &ObjectsOnMap::getBoard() const {
     return board;
 }
 
-Board &ObjectsOnMap::getBoard()
-{
+Board &ObjectsOnMap::getBoard() {
     return board;
 }

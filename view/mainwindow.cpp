@@ -1,21 +1,20 @@
+//Author: Bogdan Shkola
+//Implementation of MainWindow class
 #include "mainwindow.h"
+
+#include <QMessageBox>
 #include "ui_mainwindow.h"
-#include <iostream>
-#include "QMessageBox"
 #include "../controller/blockingqueue.h"
 #include "../common/events/windowclosedevent.h"
 #include "../common/events/boardsizechangedevent.h"
 #include "../common/events/startsimulationevent.h"
-#include "../view/simulatorwindow.h"
 #include "../common/events/cameraoptionschangedevent.h"
-#include "../common/cameraoptions.h"
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent), IView(), ui(new Ui::MainWindow)
-{
+    QMainWindow(parent), IView(), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    boardScene = std::make_shared<BoardScene>();
-    ui->graphicsView->setScene(boardScene.get());
+    boardScene_ = std::make_shared<BoardScene>();
+    ui->graphicsView->setScene(boardScene_.get());
     this->setWindowTitle("Editor");
     this->showMaximized();
 
@@ -32,10 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, SIGNAL(showSimulationWindow()), simulationWindow_, SLOT(show()));
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
-    std::cout << "~MainWindow" << std::endl;
 }
 
 void MainWindow::show() {
@@ -49,7 +46,7 @@ void MainWindow::setCameraOptions(const CameraOptions& cameraOptions) {
 }
 
 void MainWindow::changeCameraOptionsPressed() {
-    int cameraId = boardScene->getActiveCameraId();
+    int cameraId = boardScene_->getActiveCameraId();
     if (cameraId != -1) {
         BlockingEventQueue::getInstance().push(
                     new CameraOptionsChangedEvent(cameraId, CameraOptions(ui->cameraAngleSpinBox->value(),
@@ -66,7 +63,7 @@ void MainWindow::updateBoardSize() {
     reply = QMessageBox::question(this, "Warning", "Do you want to change the size of the board? All information will be lost",
                                 QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::Yes) {
-        boardScene->updateBoardSize(ui->boardSizeSpinBox->value());
+        boardScene_->updateBoardSize(ui->boardSizeSpinBox->value());
         BlockingEventQueue::getInstance().push(new BoardSizeChangedEvent(ui->boardSizeSpinBox->value()));
     }
 }
@@ -74,25 +71,22 @@ void MainWindow::updateBoardSize() {
 void MainWindow::resizeEvent(QResizeEvent *event) {
     QMainWindow::resizeEvent(event);
 
-    boardScene->setSceneRect(boardScene->sceneRect());
-    ui->graphicsView->fitInView(boardScene->sceneRect(), Qt::KeepAspectRatio);
+    boardScene_->setSceneRect(boardScene_->sceneRect());
+    ui->graphicsView->fitInView(boardScene_->sceneRect(), Qt::KeepAspectRatio);
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
-{
+void MainWindow::closeEvent(QCloseEvent *event) {
     QMainWindow::closeEvent(event);
     BlockingEventQueue::getInstance().push(new WindowClosedEvent());
 }
 
 void MainWindow::showBoard(const Board& board) {
     ui->boardSizeSpinBox->setValue(board.size_);
-    boardScene->updateBoardSize(board.size_);
+    boardScene_->updateBoardSize(board.size_);
 }
 
 void MainWindow::showMessage(std::string message) {
     QMessageBox messageBox;
     messageBox.setText(message.c_str());
     messageBox.exec();
-//    messageBox = QMessageBox::(this, "Warning", "Do you want to change the size of the board? All information will be lost",
-//                                QMessageBox::Yes|QMessageBox::No);
 }

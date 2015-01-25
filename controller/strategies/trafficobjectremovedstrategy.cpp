@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of TrafficObjectRemovedStrategy class
 #include "../../controller/strategies/trafficobjectremovedstrategy.h"
 #include "../../common/events/trafficobjectremovedevent.h"
 

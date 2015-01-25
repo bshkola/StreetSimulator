@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of TrafficParticipantMouseEventhandler class
 #include "../../view/mouseeventhandler/trafficparticipansmouseeventhandler.h"
 #include "../items/destinationitem.h"
 #include "../items/itrafficparticipantitem.h"
@@ -5,13 +7,12 @@
 #include "../../common/events/trafficobjectreplacedevent.h"
 #include "../../common/events/trafficobjectremovedevent.h"
 
-int TrafficParticipansMouseEventHandler::indexCounter = 0;
+int TrafficParticipansMouseEventHandler::indexCounter_ = 0;
 
-TrafficParticipansMouseEventHandler::TrafficParticipansMouseEventHandler()
-{
+TrafficParticipansMouseEventHandler::TrafficParticipansMouseEventHandler() {
 }
 
-void TrafficParticipansMouseEventHandler::handlePress(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item) {
+void TrafficParticipansMouseEventHandler::handlePress(QGraphicsSceneMouseEvent*, BoardScene*, IMovableItem*) {
 
 }
 
@@ -31,8 +32,8 @@ void TrafficParticipansMouseEventHandler::handleRelease(QGraphicsSceneMouseEvent
             DestinationItem* dest = new DestinationItem(QRectF(item->rect().x(), item->rect().y(), item->rect().width() / 2, item->rect().height() / 2), (ITrafficParticipantItem*)item);
             dest->setFlag(QGraphicsItem::ItemIsMovable);
 
-            trafficParticipantItem->setId(indexCounter);
-            BlockingEventQueue::getInstance().push(new TrafficObjectAddedEvent(indexCounter++, scene->getDiscreteCoordinates(event->scenePos()), item->getTrafficObjectType()));
+            trafficParticipantItem->setId(indexCounter_);
+            BlockingEventQueue::getInstance().push(new TrafficObjectAddedEvent(indexCounter_++, scene->getDiscreteCoordinates(event->scenePos()), item->getTrafficObjectType()));
         } else {
             BlockingEventQueue::getInstance().push(
                         new TrafficObjectReplacedEvent(trafficParticipantItem->getId(), scene->getDiscreteCoordinates(event->scenePos())));

@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Strategy handling traffic object removing
 #ifndef CARREMOVEDSTRATEGY_H
 #define CARREMOVEDSTRATEGY_H
 
@@ -7,9 +9,10 @@ class TrafficObjectRemovedStrategy : public IStrategy
 {
 public:
     TrafficObjectRemovedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(std::shared_ptr<IEvent> event);
     virtual ~TrafficObjectRemovedStrategy();
 
+    //Inherited method
+    void perform(std::shared_ptr<IEvent> event);
 private:
     std::shared_ptr<IModel> model_;
     IView* view_;

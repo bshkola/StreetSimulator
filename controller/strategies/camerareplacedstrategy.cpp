@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of CameraReplacedStrategy class
 #include "../../controller/strategies/camerareplacedstrategy.h"
 #include "../../common/events/camerareplacedevent.h"
 

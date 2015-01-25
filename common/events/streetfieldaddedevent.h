@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when street field is added
 #ifndef STREETFIELDADDEDEVENT_H
 #define STREETFIELDADDEDEVENT_H
 

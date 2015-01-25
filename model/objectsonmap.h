@@ -1,5 +1,5 @@
-//Author: Andrzej Chmielowski
-//Remember object put on the map in View
+//Author: Andrzej Chmielowski, Bogdan Shkola
+//Class containing metadata of the board
 #ifndef OBJECTSONMAP_H
 #define OBJECTSONMAP_H
 
@@ -15,40 +15,51 @@
 #include "../common/cameraoptions.h"
 #include "../common/exceptions/wrongidobjectexception.h"
 
-using namespace std;
-
-class ObjectsOnMap
-{
+class ObjectsOnMap {
 public:
     ObjectsOnMap();
     ~ObjectsOnMap();
 
+    //Sets new sieze of the board
     void resizeBoard(int newSize);
 
+    //Adds/removes the street to/from the selected coordinate
     void addStreet(Position coordinates);
     void removeStreet(Position coordinates);
 
+    //Adds/replaces/removes the camera based on id identifier
     void addCamera(int id, Coordinates location);
     void replaceCamera(int id, Coordinates newCordinates); //erase camera which has this argument from list
     void deleteCamera(int id); //erase camera which has this argument from list
 
+    //Change camera options (characteristics)
     void changeCameraOptions(int cameraId, const CameraOptions& cameraOptions);
+
+    //Gets camera options (characteristics)
     CameraOptions getCameraOptions(int cameraId);
 
+    //Adds/replaces/removes the traffic objecct based on id identifier
     void addTrafficObject(int id, Position location, ObjectType objectType);
     void replaceTrafficObject(int id, Position newLocation);
     void deleteTrafficObject(int id); //erease object which has this arguments from list
 
+    //Replaces destination based on id identifier of the traffic object
     void replaceDestination(int trafficObjectId, Position newCoordinates);
 
-    const list<TrafficParticipant*> &getObjects() const;
-    list<Camera*> getCameras() const;
+    //Gets traffic objects on the board
+    const std::list<TrafficParticipant*> &getObjects() const;
+
+    //Gets cameras on the board
+    std::list<Camera*> getCameras() const;
+
+    //Gets the board object
     const Board &getBoard() const;
     Board &getBoard();
 private:
-    list<TrafficParticipant*> objects;
-    list<Camera*> cameras;
-    Board board;   //field of simulation
+    //Metadata of the board
+    std::list<TrafficParticipant*> objects;
+    std::list<Camera*> cameras;
+    Board board;
 };
 
 #endif // OBJECTSONMAP_H

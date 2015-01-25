@@ -1,11 +1,10 @@
+//Author: Bogdan Shkola
+//Implementation of PassengerCarItem class
 #include "../../view/items/passengercaritem.h"
 #include "../mouseeventhandler/trafficparticipansmouseeventhandler.h"
-#include "itrafficparticipantitem.h"
-#include <QPainter>
 
 PassengerCarItem::PassengerCarItem(const QRectF& rect, QGraphicsItem* parent) :
     ITrafficParticipantItem(rect, parent) {
-
     selectedColor_ = Qt::red;
     unselectedColor_ = Qt::darkRed;
 }

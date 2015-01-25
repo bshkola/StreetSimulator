@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when camera is added
 #ifndef CAMERAADDEDEVENT_H
 #define CAMERAADDEDEVENT_H
 

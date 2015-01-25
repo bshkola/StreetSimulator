@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of TrafficObjectReplacedStrategy class
 #include "../../controller/strategies/trafficobjectreplacedstrategy.h"
 #include "../../common/events/trafficobjectreplacedevent.h"
 

@@ -19,7 +19,7 @@ public:
     list<CameraObservation*> &getCameraObservation();   //get information from database paramerts - about which camera we would get information
 private:
     list<CameraObservation*> cameraObservations_; //list of result measured by camera
-    DatabaseConnector databaseConnector_; //connect to database
+    //DatabaseConnector databaseConnector_; //connect to database
 };
 
 #endif // DATABASE_H

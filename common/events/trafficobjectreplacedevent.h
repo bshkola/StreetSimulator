@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when trafficobject is replaced
 #ifndef CARREPLACEDEVENT_H
 #define CARREPLACEDEVENT_H
 

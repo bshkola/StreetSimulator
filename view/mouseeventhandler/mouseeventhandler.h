@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Interface for handling mouse pressing on the graphics items
 #ifndef MOUSEEVENTHANDLER_H
 #define MOUSEEVENTHANDLER_H
 
@@ -11,12 +13,12 @@ class IMovableItem;
 class MouseEventHandler
 {
 public:
-    MouseEventHandler();
+    MouseEventHandler() {}
 
+    //Handles mouse pressing on the graphics items
     virtual void handlePress(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item) = 0;
     virtual void handleMove(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item) = 0;
     virtual void handleRelease(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item) = 0;
-
 };
 
 #endif // MOUSEEVENTHANDLER_H

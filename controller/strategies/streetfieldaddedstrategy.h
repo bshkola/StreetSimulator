@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Strategy handling street field adding
 #ifndef STREETFIELDADDEDSTRATEGY_H
 #define STREETFIELDADDEDSTRATEGY_H
 
@@ -7,9 +9,10 @@ class StreetFieldAddedStrategy : public IStrategy
 {
 public:
     StreetFieldAddedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(std::shared_ptr<IEvent> event);
     virtual ~StreetFieldAddedStrategy();
 
+    //Inherited method
+    void perform(std::shared_ptr<IEvent> event);
 private:
     std::shared_ptr<IModel> model_;
     IView* view_;

@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when board size is changed
 #ifndef BOARDSIZECHANGEDEVENT_H
 #define BOARDSIZECHANGEDEVENT_H
 

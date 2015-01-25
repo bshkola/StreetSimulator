@@ -1,11 +1,10 @@
+//Author: Bogdan Shkola
+//Implementation of TruckCarItem class
 #include "../../view/items/truckcaritem.h"
 #include "../mouseeventhandler/trafficparticipansmouseeventhandler.h"
-#include "itrafficparticipantitem.h"
-#include <QPainter>
 
 TruckCarItem::TruckCarItem(const QRectF& rect, QGraphicsItem* parent) :
     ITrafficParticipantItem(rect, parent) {
-
     selectedColor_ = Qt::cyan;
     unselectedColor_ = Qt::darkCyan;
 }

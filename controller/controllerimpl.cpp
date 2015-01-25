@@ -1,7 +1,7 @@
+//Author: Bogdan Shkola
+//Implementation of ControllerImpl class
 #include "controllerimpl.h"
-#include <iostream>
 #include "strategies/closewindowstrategy.h"
-#include "strategies/itemclickedstrategy.h"
 #include "strategies/boardsizechangedstrategy.h"
 #include "strategies/streetfieldaddedstrategy.h"
 #include "strategies/streetfieldremovedstrategy.h"
@@ -18,11 +18,8 @@
 
 #include "../common/events/applicationstartedevent.h"
 
-ControllerImpl::ControllerImpl(std::shared_ptr<IModel> model, IView* view) : finish_(false)
-{
-    std::cout << "ControllerImpl()" << std::endl;
+ControllerImpl::ControllerImpl(std::shared_ptr<IModel> model, IView* view) : finish_(false) {
     map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("WindowClosed", std::make_shared<CloseWindowStrategy>(*this)));
-    map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("ItemClicked", std::make_shared<ItemClickedStrategy>(model, view)));
     map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("BoardSizeChanged", std::make_shared<BoardSizeChangedStrategy>(model, view)));
     map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("StreetFieldAdded", std::make_shared<StreetFieldAddedStrategy>(model, view)));
     map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("StreetFieldRemoved", std::make_shared<StreetFieldRemovedStrategy>(model, view)));
@@ -38,32 +35,21 @@ ControllerImpl::ControllerImpl(std::shared_ptr<IModel> model, IView* view) : fin
     map.insert(std::pair<std::string, std::shared_ptr<IStrategy>>("CameraOptionsChanged", std::make_shared<CameraOptionsChangedStrategy>(model, view)));
 
     BlockingEventQueue::getInstance().push(new ApplicationStartedEvent());
-
 }
 
-ControllerImpl::~ControllerImpl()
-{
+ControllerImpl::~ControllerImpl() {
     map.erase(map.begin(), map.end());
-    std::cout << "~ControllerImpl()" << std::endl;
 }
 
 void ControllerImpl::start() {
     while (!finish_) {
         std::shared_ptr<IEvent> event = BlockingEventQueue::getInstance().pop();
-        //std::cout << "Got new event" << std::endl;
         if (map.find(event->getName()) != map.end()) {
             map.at(event->getName())->perform(event);
-            std::cout << "Performed" << std::endl;
-        }
-        else {
-            std::cout << "Event is bad" << std::endl;
         }
     }
-
-    std::cout << "===Finished===" << std::endl;
 }
 
-void ControllerImpl::finish()
-{
+void ControllerImpl::finish() {
     finish_ = true;
 }

@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Event got when camera is removed
 #ifndef CAMERAREMOVEDEVENT_H
 #define CAMERAREMOVEDEVENT_H
 

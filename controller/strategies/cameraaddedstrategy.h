@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Strategy handling camera adding
 #ifndef CAMERAADDEDSTRATEGY_H
 #define CAMERAADDEDSTRATEGY_H
 
@@ -7,9 +9,10 @@ class CameraAddedStrategy : public IStrategy
 {
 public:
     CameraAddedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(std::shared_ptr<IEvent> event);
     virtual ~CameraAddedStrategy();
 
+    //Inherited method
+    void perform(std::shared_ptr<IEvent> event);
 private:
     std::shared_ptr<IModel> model_;
     IView* view_;

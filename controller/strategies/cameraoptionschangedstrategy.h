@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Strategy handling camera options chenging
 #ifndef CAMERAOPTIONSCHANGEDSTRATEGY_H
 #define CAMERAOPTIONSCHANGEDSTRATEGY_H
 
@@ -7,9 +9,10 @@ class CameraOptionsChangedStrategy : public IStrategy
 {
 public:
     CameraOptionsChangedStrategy(std::shared_ptr<IModel> model, IView* view);
-    void perform(std::shared_ptr<IEvent> event);
     virtual ~CameraOptionsChangedStrategy();
 
+    //Inherited method
+    void perform(std::shared_ptr<IEvent> event);
 private:
     std::shared_ptr<IModel> model_;
     IView* view_;

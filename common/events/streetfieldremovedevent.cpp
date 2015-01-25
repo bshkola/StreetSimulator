@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of StreetFieldRemovedEvent class
 #include "streetfieldremovedevent.h"
 
 StreetFieldRemovedEvent::StreetFieldRemovedEvent(Position coordinates) : coordinates_(coordinates) {

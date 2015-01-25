@@ -1,15 +1,17 @@
+//Author: Bogdan Shkola
+//Implementation of SimulatorWindow class
 #include "../view/simulatorwindow.h"
-#include <iostream>
-#include <QGraphicsPixmapItem>
-#include "items/itrafficparticipantitem.h"
+
 #include <QPropertyAnimation>
+#include "../view/items/itrafficparticipantitem.h"
 
 SimulatorWindow::SimulatorWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::SimulationWindow) {
     ui->setupUi(this);
     setWindowModality(Qt::WindowModal);
+    this->setWindowTitle("Simulator");
 
+    //initialize signals/slots
     qRegisterMetaType<TrafficParticipants>("TrafficParticipants");
-
     connect(this, SIGNAL(showSignal()), this, SLOT(show()));
     connect(this, SIGNAL(showBoardSignal(Board)), this, SLOT(showBoard(Board)));
     connect(this, SIGNAL(updateViewSignal(TrafficParticipants)), this, SLOT(updateTraffic(TrafficParticipants)));
@@ -17,10 +19,9 @@ SimulatorWindow::SimulatorWindow(QWidget *parent) : QMainWindow(parent), ui(new 
 }
 
 SimulatorWindow::~SimulatorWindow() {
-    std::cout << "~SimulatorWindow()" << std::endl;
 }
 
-void SimulatorWindow::initCloseWindowHandler(Engine* engine) {
+void SimulatorWindow::setEngine(Engine* engine) {
     engine_ = engine;
 }
 
@@ -35,7 +36,7 @@ void SimulatorWindow::showBoard(const Board& board) {
     QGraphicsScene* scene = new QGraphicsScene(0, 0, 600, 600);
     ui->graphicsView->setScene(scene);
 
-    shiftSize_ = std::min(width(), height()) / board.size_;
+    shiftSize_ = std::min(scene->width(), scene->height()) / board.size_;
 
     QPen blackPen(Qt::black);
     QBrush grayBrush(Qt::gray);
@@ -78,4 +79,3 @@ void SimulatorWindow::updateTraffic(TrafficParticipants trafficParticipants) {
         }
     }
 }
-

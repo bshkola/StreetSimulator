@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of TrafficObjectAddedStrategy class
 #include "../../controller/strategies/trafficobjectaddedstrategy.h"
 #include "../../common/events/trafficobjectaddedevent.h"
 

@@ -1,3 +1,5 @@
+//Author: Bogdan Shkola
+//Implementation of CameraOptionsChangedEvent class
 #include "../../common/events/cameraoptionschangedevent.h"
 
 CameraOptionsChangedEvent::CameraOptionsChangedEvent(int cameraId, CameraOptions cameraOptions)
