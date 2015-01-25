@@ -27,7 +27,7 @@ class DatabaseConnector
 
 public:
     DatabaseConnector();
-    void insertObservations(const std::list<CameraObservation*>&);
+    void insertObservations(const std::list<CameraObservation*>&, const int);
 };
 
 #endif // DATABASECONNECTOR_H

@@ -40,7 +40,7 @@ DatabaseConnector::DatabaseConnector()
         //default configuration
         db_host_ = "localhost";
         db_user_ = "root";
-        db_passwd_ = "23530";
+        db_passwd_ = "toor";
         db_dbname_ = "StreetSimulator";
         db_table_ = "observations";
     }
@@ -85,7 +85,7 @@ DatabaseConnector::DatabaseConnector()
     }
 }
 
-void DatabaseConnector::insertObservations(const std::list<CameraObservation*>& observation_list)
+void DatabaseConnector::insertObservations(const std::list<CameraObservation*>& observation_list, const int board_size)
 {
     try {
         sql::Driver *driver;
@@ -128,11 +128,11 @@ void DatabaseConnector::insertObservations(const std::list<CameraObservation*>& 
         {
             //extract data from list and set prepared statement's fields
             pstmt->setInt(1, ((*obs_it)->camera).number_);
-            pstmt->setDouble(2, ((*obs_it)->camera).x_);
-            pstmt->setDouble(3, ((*obs_it)->camera).y_);
+            pstmt->setDouble(2, ((*obs_it)->camera).x_ * board_size);
+            pstmt->setDouble(3, ((*obs_it)->camera).y_ * board_size);
             pstmt->setDouble(4, ((*obs_it)->camera).azimuth_);
             pstmt->setDouble(5, ((*obs_it)->camera).angle_);
-            pstmt->setDouble(6, ((*obs_it)->camera).range_);
+            pstmt->setDouble(6, ((*obs_it)->camera).range_ * board_size);
             pstmt->setDouble(7, (*obs_it)->object_x);
             pstmt->setDouble(8, (*obs_it)->object_y);
             pstmt->setDouble(9, (*obs_it)->object_distance);
