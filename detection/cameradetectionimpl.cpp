@@ -85,8 +85,8 @@ float CameraDetectionImpl::azimuth(const std::pair<float, float> A,
                                   )
 {
     const float PI = acos((float)-1.0);
-    float delta_x = B.first - A.first;
-    float delta_y = B.second - A.second;
+    float delta_x = A.first - B.first;
+    float delta_y = A.second - B.second;
     float distance = this->distance(delta_x, delta_y);
 
     if((delta_x == 0.0 && delta_y == 0.0) || distance == 0.0)
