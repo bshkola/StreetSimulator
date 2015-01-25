@@ -1,11 +1,15 @@
 #include "../../common/events/trafficobjectaddedevent.h"
 
-TrafficObjectAddedEvent::TrafficObjectAddedEvent(Position coordinates, ObjectType objectType)
-    : coordinates_(coordinates), objectType_(objectType) {
+TrafficObjectAddedEvent::TrafficObjectAddedEvent(int id, Position coordinates, ObjectType objectType)
+    : id_(id), coordinates_(coordinates), objectType_(objectType) {
 }
 
 std::string TrafficObjectAddedEvent::getName() {
     return "TrafficObjectAdded";
+}
+
+int TrafficObjectAddedEvent::getId() {
+    return id_;
 }
 
 Position TrafficObjectAddedEvent::getCoordinates() {

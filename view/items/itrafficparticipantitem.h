@@ -25,7 +25,10 @@ public:
 
     IMovableItem* clone() = 0;
 
+    int getId();
+    void setId(int id);
 protected:
+    int id_;
     Qt::GlobalColor color_;
 
     Qt::GlobalColor selectedColor_;

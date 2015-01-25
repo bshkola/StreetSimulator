@@ -15,15 +15,18 @@ public:
     void removeStreet(Position coordinates);
 
     Board& getBoard();
-    void addCamera(Coordinates coordinates);
-    void replaceCamera(Coordinates oldCoordinates, Coordinates newCoordinates);
-    void removeCamera(Coordinates coordinates);
+    void addCamera(int id, Coordinates coordinates);
+    void replaceCamera(int id, Coordinates newCoordinates);
+    void removeCamera(int id);
 
-    void addTrafficObject(Position coordinates, ObjectType objectType);
-    void replaceTrafficObject(Position oldCoordinates, Position newCoordinates);
-    void removeTrafficObject(Position coordinates);
+    void changeCameraOptions(int cameraId, const CameraOptions& cameraOptions);
+    CameraOptions getCameraOptions(int cameraId);
 
-    void replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates);
+    void addTrafficObject(int id, Position coordinates, ObjectType objectType);
+    void replaceTrafficObject(int id, Position newCoordinates);
+    void removeTrafficObject(int id);
+
+    void replaceDestination(int trafficObjectId, Position newCoordinates);
 
     void startSimulation();
 private:

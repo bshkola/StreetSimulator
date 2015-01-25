@@ -75,7 +75,10 @@ SOURCES += main.cpp\
     controller/strategies/destinationreplacedstrategy.cpp \
     common/events/destinationreplaceevent.cpp \
     database/databaseconnector.cpp \
-    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.cpp
+    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.cpp \
+    common/cameraoptions.cpp \
+    common/events/cameraoptionschangedevent.cpp \
+    controller/strategies/cameraoptionschangedstrategy.cpp
 
 HEADERS  += controller/icontroller.h \
     controller/controllerimpl.h \
@@ -158,7 +161,10 @@ HEADERS  += controller/icontroller.h \
     controller/strategies/trafficobjectreplacedstrategy.h \
     controller/strategies/trafficobjectremovedstrategy.h \
     database/databaseconnector.h \
-    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h
+    common/exceptions/notwaybetweensourceanddestinationtargetpointexceptions.h \
+    common/cameraoptions.h \
+    common/events/cameraoptionschangedevent.h \
+    controller/strategies/cameraoptionschangedstrategy.h
 
 FORMS    += mainwindow.ui \
     mainwindow.ui

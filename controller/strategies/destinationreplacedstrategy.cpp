@@ -9,5 +9,5 @@ DestinationReplacedStrategy::~DestinationReplacedStrategy() {
 
 void DestinationReplacedStrategy::perform(std::shared_ptr<IEvent> event) {
     DestinationReplaceEvent* destinationReplacedEvent = static_cast<DestinationReplaceEvent*>(event.get());
-    model_->replaceDestination(destinationReplacedEvent->getOldCoordinates(), destinationReplacedEvent->getNewCoordinates(), destinationReplacedEvent->getTrafficObjectCoordinates());
+    model_->replaceDestination(destinationReplacedEvent->getTrafficObjectId(), destinationReplacedEvent->getNewCoordinates());
 }

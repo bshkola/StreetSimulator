@@ -71,150 +71,12 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="streetsLabel">
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>Streets:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QPushButton" name="streetButton">
-          <property name="text">
-           <string>Add</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-          <property name="flat">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="removeStreetButton">
-          <property name="text">
-           <string>Remove</string>
-          </property>
-          <property name="checkable">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="Line" name="line_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="movableObjectsLabel">
-        <property name="text">
-         <string>Movable objects:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="movableObjectButton">
-        <property name="text">
-         <string>Add</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QFormLayout" name="formLayout_2">
-        <property name="fieldGrowthPolicy">
-         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_5">
-          <property name="text">
-           <string>Pedestrian:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QRadioButton" name="pedestrianRadioButton">
-          <property name="text">
-           <string>pedestrian</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_6">
-          <property name="text">
-           <string>Car:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QRadioButton" name="passangerCarRadioButton">
-          <property name="text">
-           <string>passanger car</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QRadioButton" name="truckRadioButton">
-          <property name="text">
-           <string>truck</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <widget class="Line" name="line_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLabel" name="camerasLabel">
         <property name="text">
-         <string>Cameras:</string>
+         <string>Camera:</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="cameraButton">
-        <property name="text">
-         <string>Add</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -279,6 +141,23 @@
        </layout>
       </item>
       <item>
+       <widget class="QPushButton" name="cameraButton">
+        <property name="text">
+         <string>Change</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="simmulationButton">
         <property name="text">
          <string>Start simulation</string>
@@ -320,13 +199,6 @@
   <tabstop>graphicsView</tabstop>
   <tabstop>boardSizeSpinBox</tabstop>
   <tabstop>sizeButton</tabstop>
-  <tabstop>streetButton</tabstop>
-  <tabstop>removeStreetButton</tabstop>
-  <tabstop>movableObjectButton</tabstop>
-  <tabstop>pedestrianRadioButton</tabstop>
-  <tabstop>passangerCarRadioButton</tabstop>
-  <tabstop>truckRadioButton</tabstop>
-  <tabstop>cameraButton</tabstop>
   <tabstop>cameraDirectionSpinBox</tabstop>
   <tabstop>cameraAngleSpinBox</tabstop>
   <tabstop>cameraRangeSpinBox</tabstop>

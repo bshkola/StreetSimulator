@@ -27,11 +27,7 @@ public:
     QPointF getDiscretePosition(const QPointF& point);
     Position getDiscreteCoordinates(const QPointF& point);
 
-protected:
-
-signals:
-
-public slots:
+    int getActiveCameraId();
 
 private:
     int boardSizeInPixels;

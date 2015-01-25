@@ -23,39 +23,40 @@ Board& ModelImpl::getBoard() {
     return objectsOnMap_.getBoard();
 }
 
-void ModelImpl::addCamera(Coordinates coordinates) {
-    objectsOnMap_.addCamera(coordinates, 0, 0, 0);
+void ModelImpl::addCamera(int id, Coordinates coordinates) {
+    objectsOnMap_.addCamera(id, coordinates, 0, 0, 0);
 }
 
-void ModelImpl::replaceCamera(Coordinates oldCoordinates, Coordinates newCoordinates) {
-    objectsOnMap_.replaceCamera(oldCoordinates, newCoordinates);
+void ModelImpl::replaceCamera(int id, Coordinates newCoordinates) {
+    objectsOnMap_.replaceCamera(id, newCoordinates);
 }
 
-void ModelImpl::removeCamera(Coordinates coordinates) {
-    objectsOnMap_.deleteCamera(coordinates, 0, 0, 0);
+void ModelImpl::removeCamera(int id) {
+    objectsOnMap_.deleteCamera(id);
 }
 
-void ModelImpl::addTrafficObject(Position coordinates, ObjectType objectType) {
-    objectsOnMap_.addTrafficObject(coordinates, objectType);
-    //std::cout << "AddCar " << coordinates.first << " " << coordinates.second << std::endl;
+void ModelImpl::changeCameraOptions(int cameraId, const CameraOptions& cameraOptions) {
+    objectsOnMap_.changeCameraOptions(cameraId, cameraOptions);
 }
 
-void ModelImpl::replaceTrafficObject(Position oldCoordinates, Position newCoordinates) {
-    objectsOnMap_.replaceObject(oldCoordinates, newCoordinates);
-    //std::cout << "ReplaceCar " << oldCoordinates.first << " " << oldCoordinates.second << std::endl;
-    //std::cout << "To         " << newCoordinates.first << " " << newCoordinates.second << std::endl;
+CameraOptions ModelImpl::getCameraOptions(int cameraId) {
+    return objectsOnMap_.getCameraOptions(cameraId);
 }
 
-void ModelImpl::removeTrafficObject(Position coordinates) {
-    objectsOnMap_.deleteObject(coordinates, coordinates, coordinates);
-    //std::cout << "RemoveCar " << coordinates.first << " " << coordinates.second << std::endl;
+void ModelImpl::addTrafficObject(int id, Position coordinates, ObjectType objectType) {
+    objectsOnMap_.addTrafficObject(id, coordinates, objectType);
 }
 
-void ModelImpl::replaceDestination(Position oldCoordinates, Position newCoordinates, Position trafficObjectCoordinates) {
-    objectsOnMap_.replaceDestination(oldCoordinates, newCoordinates, trafficObjectCoordinates);
-//    std::cout << "ReplaceCar " << oldCoordinates.first << " " << oldCoordinates.second << std::endl;
-//    std::cout << "To         " << newCoordinates.first << " " << newCoordinates.second << std::endl;
-//    std::cout << "Parent     " << trafficObjectCoordinates.first << " " << trafficObjectCoordinates.second << std::endl;
+void ModelImpl::replaceTrafficObject(int id, Position newCoordinates) {
+    objectsOnMap_.replaceTrafficObject(id, newCoordinates);
+}
+
+void ModelImpl::removeTrafficObject(int id) {
+    objectsOnMap_.deleteTrafficObject(id);
+}
+
+void ModelImpl::replaceDestination(int trafficObjectId, Position newCoordinates) {
+    objectsOnMap_.replaceDestination(trafficObjectId, newCoordinates);
 }
 
 void ModelImpl::startSimulation() {

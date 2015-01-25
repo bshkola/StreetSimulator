@@ -9,5 +9,5 @@ TrafficObjectReplacedStrategy::~TrafficObjectReplacedStrategy() {
 
 void TrafficObjectReplacedStrategy::perform(std::shared_ptr<IEvent> event) {
     TrafficObjectReplacedEvent* trafficObjectReplacedEvent = static_cast<TrafficObjectReplacedEvent*>(event.get());
-    model_->replaceTrafficObject(trafficObjectReplacedEvent->getOldCoordinates(), trafficObjectReplacedEvent->getNewCoordinates());
+    model_->replaceTrafficObject(trafficObjectReplacedEvent->getId(), trafficObjectReplacedEvent->getNewCoordinates());
 }
