@@ -23,10 +23,12 @@ public:
     ObjectsOnMap();
     ~ObjectsOnMap();
 
+    void resizeBoard(int newSize);
+
     void addStreet(Position coordinates);
     void removeStreet(Position coordinates);
 
-    void addCamera(int id, Coordinates location, float azimuth, float angle, float range);
+    void addCamera(int id, Coordinates location);
     void replaceCamera(int id, Coordinates newCordinates); //erase camera which has this argument from list
     void deleteCamera(int id); //erase camera which has this argument from list
 

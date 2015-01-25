@@ -6,6 +6,7 @@ class Board
 public:
     Board() {}
     Board(int size);
+   // ~Board();
 
     bool** boardMap_;
     int size_;

@@ -52,7 +52,7 @@ bool CameraItem::hasDiscretePosition() {
 }
 
 MouseEventHandler* CameraItem::getMouseEventHandler() {
-    return new CameraMouseEventHandler();
+    return CameraMouseEventHandler::getInstance();
 }
 
 void CameraItem::setSelected(bool isSelected) {

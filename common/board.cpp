@@ -13,3 +13,4 @@ Board::Board(int size) : size_(size)
         }
     }
 }
+

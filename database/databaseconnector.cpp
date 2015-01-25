@@ -40,7 +40,7 @@ DatabaseConnector::DatabaseConnector()
         //default configuration
         db_host_ = "localhost";
         db_user_ = "root";
-        db_passwd_ = "toor";
+        db_passwd_ = "23530";
         db_dbname_ = "StreetSimulator";
         db_table_ = "observations";
     }

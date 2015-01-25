@@ -3,14 +3,6 @@
 #include "itrafficparticipantitem.h"
 #include <QPainter>
 
-/*TruckCarItem::TruckCarItem(int itemIndex, qreal x, qreal y, qreal width, qreal height, QGraphicsItem* parent) :
-    IMovableItem(x + width / 4, y + height / 4, width / 2, height / 2, parent) {
-    color_ = Qt::blue;
-    coordinates_.x = -1;
-    coordinates_.y = -1;
-    item_index_ = itemIndex;
-}*/
-
 TruckCarItem::TruckCarItem(const QRectF& rect, QGraphicsItem* parent) :
     ITrafficParticipantItem(rect, parent) {
 
@@ -60,6 +52,6 @@ bool TruckCarItem::hasDiscretePosition() {
 }
 
 MouseEventHandler* TruckCarItem::getMouseEventHandler() {
-    return new TrafficParticipansMouseEventHandler();
+    return TrafficParticipansMouseEventHandler::getInstance();
 }
 

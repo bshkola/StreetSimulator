@@ -18,6 +18,12 @@ ObjectsOnMap::~ObjectsOnMap()
     }
 }
 
+void ObjectsOnMap::resizeBoard(int newSize) {
+    objects.clear();
+    cameras.clear();
+    board = Board(newSize);
+}
+
 void ObjectsOnMap::addStreet(Position coordinates) { // TODO check if inside the board
     board.boardMap_[coordinates.first][coordinates.second] = true;
 }
@@ -75,9 +81,9 @@ void ObjectsOnMap::deleteTrafficObject(int id)
     throw WrongIdObjectException("wrong id object on map, the object with this id doesn't exist");
 }
 
-void ObjectsOnMap::addCamera(int id, Coordinates location, float azimuth, float angle, float range)
+void ObjectsOnMap::addCamera(int id, Coordinates location)
 {
-    cameras.push_back(new Camera(id, location.first, location.second, azimuth, angle, range));
+    cameras.push_back(new Camera(id, location.first, location.second, 0.0, 30.0, 1.0));
     for (Camera* camera : cameras) {
         std::cout << camera->x_ << " " << camera->y_ << " " << camera->angle_ << std::endl;
     }

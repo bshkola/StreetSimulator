@@ -5,13 +5,17 @@
 
 class CameraMouseEventHandler : public MouseEventHandler
 {
-public:
     CameraMouseEventHandler();
+public:
 
     void handlePress(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
     void handleMove(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
     void handleRelease(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
 
+    static CameraMouseEventHandler* getInstance() {
+        static CameraMouseEventHandler instance;
+        return &instance;
+    }
 private:
     static int indexCounter;
 };

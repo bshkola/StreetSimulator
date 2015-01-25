@@ -53,7 +53,7 @@ bool DestinationItem::hasDiscretePosition() {
 }
 
 MouseEventHandler* DestinationItem::getMouseEventHandler() {
-    return new DestinationMouseEventHandler();
+    return DestinationMouseEventHandler::getInstance();
 }
 
 void DestinationItem::setSelected(bool selected) {
