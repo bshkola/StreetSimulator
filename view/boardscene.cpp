@@ -1,5 +1,6 @@
 #include "../view/boardscene.h"
 #include "boardcell.h"
+#include "items/pedestrianitem.h"
 #include "items/truckcaritem.h"
 #include "items/passengercaritem.h"
 #include "items/destinationitem.h"
@@ -45,6 +46,7 @@ void BoardScene::updateBoardSize(int size) {
     }
 
     std::vector<IMovableItem*> menuItems;
+    menuItems.push_back(new PedestrianItem(QRectF(shiftSize / 3, shiftSize / 3, shiftSize / 3, shiftSize / 3)));
     menuItems.push_back(new TruckCarItem(QRectF(shiftSize / 4, shiftSize / 4, shiftSize / 2, shiftSize / 2)));
     menuItems.push_back(new PassengerCarItem(QRectF(shiftSize / 4, shiftSize / 4, shiftSize / 2, shiftSize / 2)));
     menuItems.push_back(new CameraItem(QRectF(shiftSize * 3 / 8, shiftSize * 3 / 8, shiftSize / 8, shiftSize / 8)));

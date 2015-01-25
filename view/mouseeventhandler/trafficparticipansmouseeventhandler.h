@@ -5,12 +5,16 @@
 
 class TrafficParticipansMouseEventHandler : public MouseEventHandler
 {
-public:
     TrafficParticipansMouseEventHandler();
-
+public:
     void handlePress(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
     void handleMove(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
     void handleRelease(QGraphicsSceneMouseEvent* event, BoardScene* scene, IMovableItem* item);
+
+    static TrafficParticipansMouseEventHandler* getInstance() {
+        static TrafficParticipansMouseEventHandler instance;
+        return &instance;
+    }
 
 private:
     static int indexCounter;

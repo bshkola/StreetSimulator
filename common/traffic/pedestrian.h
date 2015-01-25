@@ -4,7 +4,7 @@
 #define PEDESTRIAN_H
 
 #include "trafficparticipant.h"
-//#include "../../view/items/pede"
+#include "../../view/items/pedestrianitem.h"
 
 struct Pedestrian : public TrafficParticipant {
     Pedestrian(int id, float speed, std::pair<int, int> start_point, std::pair<int, int> target_point):
@@ -12,8 +12,7 @@ struct Pedestrian : public TrafficParticipant {
     {}
 
     ITrafficParticipantItem* createItem(const QRectF& rect) {
-//        return new PassengerCarItem(rect);
-        return NULL;
+        return new PedestrianItem(rect);
     }
 };
 

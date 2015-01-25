@@ -12,6 +12,8 @@ public:
     ModelImpl();
     virtual ~ModelImpl();
 
+    void resizeBoard(int newSize);
+
     void addStreet(Position coordinates);
     void removeStreet(Position coordinates);
 

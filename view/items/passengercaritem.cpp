@@ -52,6 +52,6 @@ bool PassengerCarItem::hasDiscretePosition() {
 }
 
 MouseEventHandler* PassengerCarItem::getMouseEventHandler() {
-    return new TrafficParticipansMouseEventHandler();
+    return TrafficParticipansMouseEventHandler::getInstance();
 }
 
