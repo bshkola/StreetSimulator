@@ -61,7 +61,8 @@ void Engine::run()
         {
             iCameraDetection -> calculate( objectsOnMap.getCameras(),
                                            objectsPositionUpdater.getTrafficParticipants(),
-                                           database.getCameraObservation());
+                                           database.getCameraObservation(),
+                                           objectsOnMap.getBoard().size_);
             database.saveMeasurent();
             
             camerasTime = std::chrono::duration<int, std::milli> (0);
