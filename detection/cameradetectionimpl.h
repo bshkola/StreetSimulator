@@ -8,16 +8,17 @@
 
 class CameraDetectionImpl : public ICameraDetection {
 public:
-    CameraDetectionImpl(ICameraNoise *NoiseGenerator): ICameraDetection(NoiseGenerator), NoiseGenerator(NoiseGenerator) {};
-    virtual ~CameraDetectionImpl() { delete NoiseGenerator; };
+    CameraDetectionImpl(ICameraNoise *NoiseGenerator): ICameraDetection(NoiseGenerator), NoiseGenerator(NoiseGenerator) {}
+    virtual ~CameraDetectionImpl() { delete NoiseGenerator; }
     
     ICameraNoise *NoiseGenerator;
     
-    virtual void calculate( const std::list<Camera*>&,
+    virtual void calculate(const std::list<Camera*>&,
                             const std::list<TrafficParticipant*>&,
-                            std::list<CameraObservation*>&);
+                            std::list<CameraObservation*>&,
+                            const int);
 
-    float distance(const std::pair<float, float>, const std::pair<float, float>);
+    float pair_distance(const std::pair<float, float>, const std::pair<float, float>);
     float distance(const float, const float);
     float azimuth(const std::pair<float, float>, const std::pair<float, float>);
     bool withinTheAngle(float, float, float);
