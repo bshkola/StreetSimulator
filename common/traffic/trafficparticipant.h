@@ -6,6 +6,7 @@
 #include <utility>
 #include <deque>
 #include "../../common/types.h"
+#include "../../view/items/itrafficparticipantitem.h"
 
 struct TrafficParticipant {
     const int id_;
@@ -18,6 +19,9 @@ protected:
     TrafficParticipant(int id, int x, int y, float speed, Position startPoint, Position targetPoint):
         id_(id), x_(x), y_(y), speed_(speed), startPoint_(startPoint), targetPoint_(targetPoint)
     {}
+
+public:
+    virtual ITrafficParticipantItem* createItem(const QRectF& rect) = 0;
 };
 
 #endif // TRAFFICPARTICIPANT_H

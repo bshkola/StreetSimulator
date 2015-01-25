@@ -9,7 +9,7 @@
 #include "../common/board.h"
 #include "../common/traffic/pedestrian.h"
 #include "../common/traffic/car.h"
-#include "../common/traffic/vehicle.h"
+#include "../common/traffic/truck.h"
 #include "../common/camera.h"
 #include "../common/types.h"
 #include "../common/cameraoptions.h"

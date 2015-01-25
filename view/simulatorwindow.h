@@ -7,6 +7,8 @@
 #include "ui_simulationwindow.h"
 #include "../common/traffic/trafficparticipant.h"
 #include "../model/engine/engine.h"
+#include "../common/traffic/truck.h"
+#include "../common/traffic/car.h"
 
 typedef list<TrafficParticipant*> TrafficParticipants;
 
@@ -35,9 +37,11 @@ public slots:
     void showBoard(const Board& board);
     void showTraffic(TrafficParticipants trafficParticipants);
 private:
+    void addTraffic(TrafficParticipant* trafficParticipant);
     Ui::SimulationWindow *ui;
     int shiftSize_;
     Engine* engine_;
+    std::vector<ITrafficParticipantItem*> items;
 };
 
 #endif // SIMULATORWINDOW_H
