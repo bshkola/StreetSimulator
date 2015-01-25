@@ -149,6 +149,6 @@ void DatabaseConnector::insertObservations(const std::list<CameraObservation*>& 
         //disconnect from database
         delete con;
     } catch (sql::SQLException &e) {
-        std::cout << "# Error in database connection in DatabaseConnector::insertObservations(const std::list<CameraObservation*>&)" << std::endl;
+        std::cout << "# Error in database connection in DatabaseConnector::insertObservations(const std::list<CameraObservation*>&)" << e.what() << db_user_ << db_passwd_ << std::endl;
     }
 }

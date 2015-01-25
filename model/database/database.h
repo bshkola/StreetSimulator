@@ -3,6 +3,7 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
+#include "../../database/databaseconnector.h"
 #include "list"
 #include "../../detection/cameraobservation.h"
 
@@ -17,7 +18,8 @@ public:
     void saveMeasurent(); //save information to database
     list<CameraObservation*> &getCameraObservation();   //get information from database paramerts - about which camera we would get information
 private:
-    list<CameraObservation*> cameraObservations; //list of result measured by camera
+    list<CameraObservation*> cameraObservations_; //list of result measured by camera
+    DatabaseConnector databaseConnector_; //connect to database
 };
 
 #endif // DATABASE_H
