@@ -37,16 +37,10 @@ void TrafficParticipansMouseEventHandler::handleRelease(QGraphicsSceneMouseEvent
             BlockingEventQueue::getInstance().push(
                         new TrafficObjectReplacedEvent(trafficParticipantItem->getId(), scene->getDiscreteCoordinates(event->scenePos())));
         }
-        // if there was a move than do next
-        //((ITrafficParticipantItem*)item)->resetDestinationPosition();
     } else {
         scene->removeItem(item);
-        std::cout << "Here 1" << std::endl;
         if (scene->isInsideBoard(event->buttonDownScenePos(Qt::LeftButton))) {
-            std::cout << "Here 11" << std::endl;
             BlockingEventQueue::getInstance().push(new TrafficObjectRemovedEvent(trafficParticipantItem->getId()));
         }
-        std::cout << "Here 2" << std::endl;
-
     }
 }

@@ -22,25 +22,22 @@ class MainWindow : public QMainWindow, public IView
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    virtual ~MainWindow();
     void resizeEvent(QResizeEvent *event);
     void closeEvent(QCloseEvent *event);
     void showBoard(const Board& board);
     void show();
     void setCameraOptions(const CameraOptions& cameraOptions);
-    virtual ~MainWindow();
-
 
 signals:
     void showSimulationWindow();
-    void showSimulationBoard(const Board& board);
-
+    void showMessageSignal(std::string message);
 
 public slots:
     void updateBoardSize();
     void startSimulation();
     void changeCameraOptionsPressed();
-
-protected:
+    void showMessage(std::string message);
 
 private:
     Ui::MainWindow *ui;

@@ -18,7 +18,9 @@ public:
     virtual void setCameraOptions(const CameraOptions& cameraOptions) = 0;
 
     virtual void showSimulationWindow() = 0;
-    virtual void showSimulationBoard(const Board& board) = 0;
+
+    virtual void showMessageSignal(std::string message) = 0;
 };
+
 
 #endif // IVIEW_H

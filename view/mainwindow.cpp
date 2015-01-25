@@ -22,13 +22,14 @@ MainWindow::MainWindow(QWidget *parent) :
     simulationWindow_ = new SimulatorWindow(this);
 
     // initialize signals-slots
+    qRegisterMetaType<Board>("Board");
+    qRegisterMetaType<std::string>("std::string");
     connect(ui->sizeButton, SIGNAL(pressed()), this, SLOT(updateBoardSize()));
     connect(ui->cameraButton, SIGNAL(pressed()), this, SLOT(changeCameraOptionsPressed()));
     connect(ui->simmulationButton, SIGNAL(pressed()), this, SLOT(startSimulation()));
+    connect(this, SIGNAL(showMessageSignal(std::string)), this, SLOT(showMessage(std::string)));
 
-    qRegisterMetaType<Board>("Board");
     connect(this, SIGNAL(showSimulationWindow()), simulationWindow_, SLOT(show()));
-    connect(this, SIGNAL(showSimulationBoard(Board)), simulationWindow_, SLOT(showBoard(Board)));
 }
 
 MainWindow::~MainWindow()
@@ -84,7 +85,14 @@ void MainWindow::closeEvent(QCloseEvent *event)
 }
 
 void MainWindow::showBoard(const Board& board) {
-    std::cout << "showing Board" << std::endl;
-    ui->boardSizeSpinBox->setValue(8);
-    boardScene->updateBoardSize(8);
+    ui->boardSizeSpinBox->setValue(board.size_);
+    boardScene->updateBoardSize(board.size_);
+}
+
+void MainWindow::showMessage(std::string message) {
+    QMessageBox messageBox;
+    messageBox.setText(message.c_str());
+    messageBox.exec();
+//    messageBox = QMessageBox::(this, "Warning", "Do you want to change the size of the board? All information will be lost",
+//                                QMessageBox::Yes|QMessageBox::No);
 }
